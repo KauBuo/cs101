@@ -1,0 +1,240 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/simulation-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Simulation 1</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Simulation 1</h1>
+
+<p>
+
+
+
+<p>
+For this section we use loops to run little random scenarios -- like flipping a coin -- thousands of times to see what
+outcomes we get. In this way, the computer works as a sort of telescope, giving us insight about the space of outcomes
+but without requiring us to do any formal mathematics. Just run the simulation and see what it does! This is also known as "monte carlo simulation".
+
+<p>Class technique: can have students flip coins or dice or whatever, write sums on the board to try experiments by hand before doing them on the computer.
+
+<p>
+For the simulation code, the function call <code>random(1, 6)</code> returns a random number in between the two numbers (inclusive), so the result of random(1, 6) is like rolling a 6-sided die, and random(1, 2) is like flipping a coin.
+
+<p>
+The strategy will have an outer loop to run, say, 1000 trials. Inside the loop we have the code to run one trial. The function <code>series(1000)</code> returns a collection of the numbers 1, 2, 3... 1000. Using this, we can write a loop to iterate 1000 (or whatever number) times, like this
+
+<pre>
+for (i: series(1000)) {
+  ...
+}
+</pre>
+
+<!-- njp - explain series with two args -->
+
+<p>
+To record what happens, we'll use the Histogram(min, max) class. Use histogram.add(val) to record one trial value, and print(histogram) to print its current state. The following code example demonstrates the use of all these functions:
+
+
+
+<h3>Coin Example 1</h3>
+
+<p>Flip a coin 100 times. How many times does heads come up? Try increasing the number of trials up from 100.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-coin1" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(1, 1);  // min=1 max=1
+for (i: series(100)) {  // run 100 trials
+
+  // --one trial--
+  coin = random(1, 2);  // 1=heads, 2=tails
+  if (coin == 1) {
+    histogram.add(1);  // record one trial on the histogram
+  }
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-coin1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-coin1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+<h3>Coin Example 2</h3>
+
+<p>Say we flip 2 coins. How often will we get heads on both coins?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-coin2" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(1, 1);
+for (i: series(100)) {
+
+  a = random(1, 2);
+  b = random(1, 2);
+  if (a == 1 && b == 1) {  // two heads
+    histogram.add(1);
+  }
+
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-coin2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-coin2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<h3>Coin Example 3</h3>
+
+<p>Say we flip 2 coins. How often will the two coins be the same?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-coin3" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(1, 1);
+for (i: series(100)) {
+
+  a = random(1, 2);
+  b = random(1, 2);
+  if (a == b) {  // coins are the same
+    histogram.add(1);
+  }
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-coin3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-coin3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<h2>Coin Problems</h2>
+
+<p>Now the code is not included, so there are two problems: what its the that implements the experiment, and what numerically is the answer?
+
+<h3>Coin Problem 4</h3>
+
+<p>Say we flip 2 coins. How often do we get at least one head across the 2 coins?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-coin4" rows=13 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(1, 1);
+for (i: series(100)) {
+
+  a = random(1, 2);
+  b = random(1, 2);
+  // your code here
+  
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-coin4")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-coin4-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+<div><button onclick='unhide(this)'>Show Code</button><div style='display:none'>
+
+<pre>
+  // your code here
+  if (a == 1 || b == 1) {  // at least one heads
+    histogram.add(1);
+  }
+</pre>
+
+</div></div>
+
+
+
+<h3>Coin Problem 5</h3>
+
+<p>Say we flip 3 coins, a b c. If a is tails, you automatically lose. If a is heads, then if at least one of b or c is tails, you win. How often do you win?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-coin5" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(1, 1);
+for (i: series(100)) {
+
+  a = random(1, 2);
+  b = random(1, 2);
+  c = random(1, 2);
+  // your code here
+  
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-coin5")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-coin5-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+
+<p>
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<pre>
+  // your code here
+  if (a == 1 && (b == 2 || c == 2)) {
+    histogram.add(1);
+  }
+  // Works out to 37.5%
+  // Note: parenthesis are needed to make the &&/|| precedence correct
+</pre>
+
+</div></div>
+
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/simulation-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

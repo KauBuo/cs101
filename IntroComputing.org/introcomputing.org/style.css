@@ -1,0 +1,110 @@
+
+/*
+p { max-width:650; }
+li { max-width:650; }
+*/
+
+
+p, ul, td, th {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+p {
+  margin: 0 0 9px;
+  line-height: 18px;
+}
+p, li, pre {
+  max-width:650;
+}
+
+/* nip add */
+th {
+  font-weight:bold;
+}
+th, td {
+    padding: 6px 6px;
+}
+table, th, td {
+ border: 2px solid black;
+}
+table { /* tried width 800 here */
+ border-collapse:collapse;
+ max-width: 750px;
+ min-width: 750px;
+ margin-top: 20px;
+}
+/* table now set up to *not* be inside a paragraph */
+/* table used for code/run-button, table.run, should not have border.
+ Note the lack of commas to select a th in this sort of table. */
+table.run, table.run th, table.run td {
+  border: none;
+}
+table.run { /* added this, so print output can get wide */
+  max-width: 1000px;
+}
+
+/*
+  Note: choosing fonts with "courier" look so code looks unlike surrounding text
+  Menlo, Monaco, color: #333333;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+*/
+code, pre, textarea.tacode {
+  padding: 0 3px 2px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+/*
+textarea.tacode {
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+*/
+/*  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8; */
+code {
+  padding: 3px 4px;
+}
+pre {
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 9px;
+  font-size: 13px;
+  line-height: 18px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre.prettyprint {
+  margin-bottom: 18px;
+}
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+h1, h2, h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/* slide ideas
+ pre-sections in a slide is a no-go
+ Setting font-size in the ul.slide seems to not work
+*/
+ul.slide { max-width:650; font-size:20px ; border:5px solid darkgreen; }
+ul.slide code { font-size:20px; } /* make code font also big in slide */
+li {  font-size:inherit  } /* So can get font-size from ul.slide */
+
+/* not sure about bold font-weight:bold; */
+/*
+pre, code { font-family:monospace; font-size:14; }
+*/

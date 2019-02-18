@@ -1,0 +1,116 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/code-2-variable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:29 GMT -->
+<head>
+<title>Variables and =</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Variables and =</h1>
+
+<p>
+
+
+
+<p>This is a short section, to add the idea of <b>variables</b> to the code.
+
+<ul class="slide">
+
+<li>A "variable" is like a box that holds a value
+<li><code>x = 7;</code>
+<li>The above line stores the value 7 into the variable named <b>x</b>
+<li>Later appearances of <b>x</b> in the code retrieve the value from the box
+<li>Using = in this way is called "variable assignment"
+</ul>
+
+<p>
+<br><img src="code-variable.png" alt="variable x as a box holding the value 7">
+
+<p>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code2-1" rows=8 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+x = 7;
+print(x);
+print("lucky", x);
+print("x is", x);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code2-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code2-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<ul class="slide">
+
+<li><b>Experiments:</b> try assigning (=) these values to x: 8, "hi"
+<li>The name <b>x</b> can be anything we choose, so long as we are consistent
+<br>--Try changing it to <b>xyz</b> throughout
+<li>The Point: store a value once, use it on several lines, can save repetition
+<li>Not the same as = in algebra, that means two things are equal forever
+<li>= in code is simple -- just put a value in a box when that line runs
+</ul>
+
+<p>
+Variables work as a shorthand -- we = assign a value into a variable, and then use that variable on later lines to retrieve that value. In the simplest case, this just works to avoid repeating a value: we store the value once, and then can use it many times. All computer languages have some form of variable like this -- storing and retrieving values.
+
+
+<h2>Code Example - The Curse</h2>
+
+<p>
+Change the code below so it produces the following output. Use a variable to store the string "Alice" in a variable on the first line like <code>x = "Alice";</code>, then use the variable x on the later lines. In this way, changing just the first line to use the value "Bob" or "Zoe" or whatever changes the output of the whole program.
+
+<pre>
+Alice Alice Alice Alice
+In high school I had a crush on Alice
+Now the Alice curse is lifted
+</pre>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code2-2" rows=7 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print(1, 2, "hi");</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code2-2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code2-2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<div><button onclick='unhide(this)'>Show Solution</button><div style='display:none'>
+
+<pre>
+x = "Alice";
+print(x, x, x, x);
+print("In high school I had a crush on", x);
+print("Now the", x, "curse is lifted");
+</pre>
+</div>
+
+<p>
+&gt; <a href='code-2-exercises.html'>exercises</a>
+
+</body>
+
+<!-- Mirrored from introcomputing.org/code-2-variable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:30 GMT -->
+</html>
+

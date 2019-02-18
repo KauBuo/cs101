@@ -1,0 +1,175 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-4-count1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Table Counting</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Table Counting</h1>
+
+<p>
+
+
+
+<!-- table2 -->
+<!-- table Q forms:
+
+2. Straight counting of above
+
+3. 2-var case .. (factor out var for output)
+ but without nesting
+
+
+-->
+
+<ul class="slide">
+<li>Thus far... print all matching rows
+<li><b>Count</b> the number of matching rows, make a "report"
+<li>Requires some new variable manipulation code
+</ul>
+
+<p>
+Thus far we've used an if/print structure inside a loop to select certain rows to print or not. In this short section, we'll use a variable with a little code to <b>count</b> how many times an if-test is true. Below is a loop as we have seen before that detects all the names that start with "A". After printing the rows, the code prints a summary of how many names started with "A".
+
+
+<h2>Code To Count</h2>
+
+<p>Three additions to the standard loop/if/print structure we've used up to now:
+
+<ul class="slide">
+<li>Three things to do counting:
+<li>1. Create a <b>count</b> variable and set it to 0 before the loop
+<br><code>count = 0;</code>
+<li>2. Inside the if-statement, increase count by 1
+<br><code>count = count + 1;</code>
+<br>--Above increases the value in <b>count</b> by 1 (if if-test is true)
+<br>--Evaluates the right hand side, then stores into variable (=)
+<li>3. Print the final value stored in count after the loop
+<br><code>print("count:", count);</code>
+<li><b>Pattern</b> three parts, the same every time (init, increment, print)
+<li>Just know that <code>x = x + 1;</code> increments the value stored in a variable
+</ul>
+
+<p>Inside the if-statement, <code>count = count + 1;</code>  increases whatever number is stored in count by 1 when the if-test is true. This is a weird use of the equal sign = vs. how it works it mathematics. First it evaluates the right hand side. Then it assigns that value back into the count variable, so in effect it increases the number stored in count by 1. The increase-by-1 operation is so common in computer code, many languages including Javascript support the shortcut <code>count++;</code> to mean increase by 1.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table4-1" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+count = 0;
+for (row: table) {
+  if (row.getField("name").startsWith("A")) {
+    print(row);
+    count = count + 1;  // increases the value in count by 1
+  }
+}
+print("count:", count);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table4-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table4-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>Experiments:
+
+<ul>
+ <li>1. Try commenting out or removing the print(row); line inside the { .. } then-code. What is the output now?
+
+ <li>2. How many names start with "X"? Then change to count starting with "Y"?
+
+ <li>3. How many girl names begin with "A"? Then change to count how many boy names begin with "A"?
+
+</ul>
+
+
+
+
+<p>Experiment solutions:
+
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+<p>If logic inside the loop:
+
+<pre>
+  // 1
+  // It still produces the count: NN output, just without all the row printing first.
+</pre>
+
+<hr>
+
+<pre>
+  // 2
+  // count names starting with "X" (then change to "Y")
+  if (row.getField("name").startsWith("X")) {
+    count = count + 1;
+  }
+</pre>
+
+
+<hr>
+
+<pre>
+  // 3
+  // count girl names beginning with "A" (then change "girl" to "boy")
+  if (row.getField("name").startsWith("A") &&
+      row.getField("gender") == "girl") {
+    count = count + 1;
+  }
+</pre>
+<hr>
+
+
+</div></div>
+
+<p>
+&gt; <a href='table-4-exercises.html'>exercises</a>
+
+
+<!--
+ <li>3. Suppose the <code>print("count:", count);</code> line is moved up to be the last line <b>inside</b> the loop, rather than being outside the loop. What does the output look like then.
+
+ <li>4. Suppose the <code>count = 0;</code> line is moved to be the first line inside the then-code. Then what will be the output? This shows the mechanical quality of code lines .. the computer just does whatever the line says when running across it.
+
+<pre>
+  // 3
+  // This will print the value in the count variable every time the loop runs (2000 times).
+  // We see the count gradually go up 0 0 0 1 1 1 1 1 2 2 2 ...
+  // essentially peeking at its value on every loop iteration
+  // regardless of the if-test, so we see 2000 numbers.
+  // When the if-test is true for a loop iteration, then count
+  // increased by 1. Some iterations that happens, and some count
+  // is left unchanged.
+</pre>
+<hr>
+
+<pre>
+  // 4
+  // In this case, the count variable is set back to 0 at the top of the loop
+  // overwriting whatever number was in there (2000 times).
+  // The final print number will probably just be 0, except in the rare case
+  // that the very last row makes the if-test true, in which case the count
+  // printed will be 1.
+</pre>
+
+-->
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-4-count1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

@@ -1,0 +1,162 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-custom-bluescreen.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:57:21 GMT -->
+<head>
+<title>Custom Bluescreen</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Custom Bluescreen</h1>
+
+<p>
+
+
+
+
+<!-- coursera/IE compat stuff
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+
+<body>
+ <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+-->
+
+<p>This page describes how to run Bluescreen or other code with your own images. We'll focus on the bluescreen computation, but really this page will work for any sort of image-code you want to do.
+
+<h2>1. Create An Image That's The Right Size</h2>
+
+<p>First create a "foreground" image with people or whatever in front of a colored background, and save that image on your computer. Note: you don't want to create an image that is too large to work with. Many digital cameras create very large images like 4000 by 3000. Such large images will probably cause problems for your browser. Therefore, it's best to create a moderate size image, such as 640 x 480, or 800 x 600. You can do this either by setting your camera to take a small image, or by resizing or cropping the image before loading it into this page. On the Mac, the built-in Preview application can crop and resize and export images, and on Windows I assume there's something similar. Or alternately you can use a free web site to do it such as  <a target="_blank" href="http://www.picresize.com/">picresize.com</a> (opens in a new window).
+
+
+<h2>2. Artistic Composition</h2>
+
+<p>You can try taking a variety of foreground images with people centered or otherwise placed to fit in with the interesting parts of the background. You can also try dressing the people in the foreground with blue clothes, so the background will show through those areas. You don't have to use blue -- green is also popular. Take a few foreground images, so you have different versions to experiment with. Note that the common cheap blue tarps don't work quite right as a background, because they tend to have shiny white areas which lack color. You might be able to fix this in "post" below.
+
+<h2>3. Fix It In Post (optional)</h2>
+
+<p>"Fix It In Post" is a sort of Hollywood joke, referring to fixing some on-camera mistake later on in the computer post-production phase. This is totally optional, but you can do the same sort thing with your bluescreen image. For example, if part of the blue background is not coming out the way you like, you can edit the image in a paint program, and draw a blue rectangle over the area to just <b>make</b> it be blue the way you want. (I did this, for example, a little with the homework-fish eyes, to make them really blue so the result really looked right.) Since the blue gets removed by the bluescreen algorithm, it never gets seen in the final image. You are just creating a sort of hole for the background image to show through. On the Mac, the built-in Preview image app has a very limited ability to put colored rectangles and ovals on things, and on Windows the Paint program is similar.
+
+
+<h2>4. Load Image Into This Page</h2>
+
+<p>
+To load an image into this page, use the Browse button to select an image file on your computer. This loads the image into this page so your code can refer to it by its file name, such as "myimage.jpg" or whatever. This does not upload the image to some server or anything like that; the image is just sitting on your computer the whole time.
+
+<style>
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+</style>
+
+<p>Browse:
+<br><input type="file" id="files" name="files[]" multiple></p>
+
+<h3>Files you have uploaded</h3>
+
+<output id="uploaded"></output>
+
+<script>
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var div = document.createElement('div');
+          div.innerHTML = [theFile.name, ':&nbsp;&nbsp;&nbsp;', '<img class="thumb" src="',
+                            e.target.result, '" title="', escape(theFile.name),
+                            '"/>'].join('');
+          document.getElementById('uploaded').insertBefore(div, null);
+          // NOTE: for some reason, need the window. here to get the global var
+          window.globalImgDb[theFile.name] = e.target.result;
+        };
+      })(f);
+
+      // Read in the image file as a data:xxx into the .result
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+</script>
+
+
+<p>
+With one or more images loaded above, your code can load them into your own code using the area at the bottom of this page. The code should look like the following, using the actual image name within the quotes.
+
+
+
+</p>
+<pre>
+image = new SimpleImage("myimage.jpg");  // image browsed earlier by name
+back = new SimpleImage("moon.jpg");
+back.setSameSize(image);   // often useful to do this
+
+// ...
+// code to work in image/back images
+// ...
+
+print(image);
+</pre>
+
+<p>
+You can load your own background, or use the backgrounds we already have: moon.jpg paris.jpg yosemite.jpg. As a special bonus, we have added <b>stanford.jpg</b> so you can picture yourself right here, sitting on the grass, thinking about computers!
+
+<p>
+When you have code that prints an image you want to keep, you can right-click the image to save it locally (saving works in Firefox, probably not other browsers).
+
+<!-- code goes here -->
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="custom-code-1" rows=28 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("abby.jpg");
+back = new SimpleImage("yosemite.jpg");
+back.setSameSize(image);
+
+for (pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+  // your code here
+  
+}
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("custom-code-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='custom-code-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/image-custom-bluescreen.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:57:21 GMT -->
+</html>

@@ -1,0 +1,113 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-5-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:45 GMT -->
+<head>
+<title>Image 5 Exercises</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Image 5 Exercises</h1>
+
+<p>
+
+
+
+<p>
+Here we'll do puzzles like the gold puzzle shown in lecture. Reminder: here is the line to use in the loop to multiply, for example, the red value of each pixel by 20:
+
+<pre>
+  pixel.setRed(pixel.getRed() * 20);
+</pre>
+
+
+<p>
+1. Iron Puzzle - write code to fix the puzzle-iron.png image. The green and red values in the image are random noise, so they should be set to 0. The real image is in the red values, which have been divide by 10. The "solution" image will look red, since it is exclusively in the red values, so don't worry about that. We'll see a way to fix that redness in a later section.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-5-ex1" rows=15 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("puzzle-iron.png");
+
+for (pixel: image) {
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-5-ex1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-5-ex1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+2. Copper Puzzle - write code to fix the puzzle-copper.png image. The red values in the image are random noise, so they should be set to 0. The real image is in the blue and green values, which have been divide by 10.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-5-ex2" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("puzzle-copper.png");
+
+for (pixel: image) {
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-5-ex2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-5-ex2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+3. (optional) There is an image hidden in cold-puzzle.png -- figure out code to change the pixels enough to be able to say what is in the image (even if the color is off).
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-5-ex3" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("cold-puzzle.png");
+
+for (pixel: image) {
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-5-ex3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-5-ex3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/image-5-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:45 GMT -->
+</html>
+

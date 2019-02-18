@@ -1,0 +1,285 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/software-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:36 GMT -->
+<head>
+<title>Computer Languages</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Computer Languages</h1>
+
+<p>
+
+
+
+<!--
+Want to tighten this up
+-Talk about languages with high level features
+
+-1. Compiler
+ -translation
+ --Do want to hit what "source code" is for sure
+
+2. Interpreter/Dynamic
+ -slower
+ -more programmer-friendly features
+
+
+-Get back to language evaluation
+ -faster
+ -features
+ -end with: language which let programmers finish sooner, generally winning
+ -reflection of Moore's law
+
+-->
+
+
+<h1>From Programmer to the CPU</h1>
+
+<ul class="slide">
+<li>We've written small Javascript programs
+<li>We've seen large program like Firefox
+<li>Computer language used by a person (e.g. Javascript)
+<li>vs. the simple machine code instructions in the CPU
+<li>What's the connection?
+<li>(Here the basic themes, not the details)
+</ul>
+
+
+<h2>Computer Languages</h2>
+
+<p>It is extremely rare to write machine code by hand. Instead, a programmer writes code in a more "high level" computer language with features that are more useful and powerful than the simple operations found in machine code. For CS101, we write code in Javascript which supports high level features such as strings, loops, and the print() function. None of those high level features are directly present in the low level machine code; they are added by the Javascript language. There are two major ways that a computer language can work.
+
+<h2>Source Code and Compiler</h2>
+
+<p>One common computer language strategy is based on a "compiler". The computer languages C and its derivative C++ are old and popular computer languages that use this strategy, although they tend to have fewer features than dynamic languages (below).
+
+<p>In C++, the programmer writes C++ code which includes high level facilities such as strings and loops (much as we have seen in Javascript). Here is some C++ code to append a "!" at the end of a string.
+
+<ul class="slide">
+<li>Computer languages -- "high level" features
+<br>--e.g. loops, if-statements, strings
+<li>e.g. C, C++, Javascript, Java
+<li>Programmer writes "source code" of a program in a language, say, C++
+<li>Example C++ code -- how to get to the CPU?
+</ul>
+
+<pre>
+  // C++ code
+  a = "hi";
+  b = a + "!";
+</pre>
+
+<p>This code appends the string "!" on to the end of "hi", resulting in the string "hi!" stored into the variable b. The machine code instructions in the CPU are too primitive to implement this append operation as one or two instructions. However, the operation can be accomplished by a longer sequence of machine code instructions strung together.
+
+
+<h2>Compiler</h2>
+
+<ul class="slide">
+<li>"Compiler" looks at the source code
+<li>Compiler <b>translates</b> the source code into a large number of machine code instructions
+<li>Suppose a high level construct, like an if-statement, can be implemented by a sequence of 5 machine code instructions
+<li>e.g. Firefox -- written in C++
+<br>--Compiler takes in Firefox C++ source code, produces Firefox.exe
+<li>The compilation step can be done once and long before the program is run (e.g. produce Firefox.exe at Mozilla headquarters)
+<li>The end user does not need to the source code or the compiler. Distribute the program.exe file in working form
+<li>Does not work backwards -- having the .exe, you cannot recover the source code (well)
+</ul>
+
+<p>
+<img src=software-compiler.png alt="compiler takes in source code, produces machine code program">
+
+<p>The <b>Compiler</b> for the C++ language, reads that C++ code and translates and expands it to a larger sequence of the machine code instructions to implement the sequence of actions specified by the C++ code. The output of the compiler is, essentially, a program file (.exe or whatever) made of many machine code instructions that implements the actions specified in the C++ code. The compiler produces the .exe file from the C++ code, and it is finished. Running the .exe can happen later, and is a separate step.
+
+<h2>Source Code</h2>
+
+<ul class="slide">
+<li>Having the .exe allows one to run the program
+<li>To add feature or fix a bug, ideally you want the source code
+<br>--Add a feature in the source code, then run the compiler again to make a new version of the .exe
+<li><b>Open Source</b> software
+<li>The source code is available to all, along with the right to make modifications
+<li>1. Typically the software does not cost anything
+<li>2. <b>Freedom</b> the end user is not dependent on the original vendor to fix bugs, or perhaps the vendor goes out of business
+<li>The user can make the change themselves (since they have access to the source)
+<li>Insurance/freedom policy
+<li>Often the license terms will require the change to made available to the wider community in some cases ... sharing back to the community
+<li>Open source is a very successful model for some cases
+<li>Talk about this more later, mentioning now since it is so close to the idea of what "source code" is
+</ul>
+
+<p>The "source code" is the high level code authored by the programmer and fed into the compiler. Generally just the program.exe file is distributed to users. The programmer retains the source code. Changing the program in the future generally requires access to the source code. For example to add a feature, the programmer would make changes in the source code, and then run the compiler to produce a new version of the program.
+
+<h2>Open Source</h2>
+
+<p>"Open Source" refers to software where the program includes access to its source code, and a license where the user can make their own modifications. Typically open source software is distributed for free. Critically, beyond the free price, open source software also includes <b>freedom/independence</b> since the user is not dependent on the original vendor to make changes or fixes or whatever to the source code. Since the source code is available, if a user feels strongly enough about some feature, they can add the feature themselves, or pay someone to add the feature. Open source means you are not dependent on some other part .. attractive as software is such a critical part of many organizations. Typically open source licenses include a requirement that such improvements to the source code be made available back to the community at large. We'll talk about open source more later on, but I wanted to touch on it here since it is a good example of the difference between a program and its source code.
+
+
+<h2>Dynamic (interpreter) Languages</h2>
+
+<ul class="slide">
+<li>Dynamic languages (big tent here)
+<li>e.g. Java, Javascript, Python
+<li>Can be implemented by an "interpreter"
+</ul>
+
+<p>There is a broad category of more modern languages such as Java (the world's most popular language, used in Stanford CS106A), Javascript, and Python, which do not use the compiler/machine-code strategy. Instead, these languages can be implemented by an "interpreter", and I will lump them into the category of "dynamic" languages.
+
+<h2>Interpreter</h2>
+
+<ul class="slide">
+<li>Interpreter is a program which "runs" other code
+<li>e.g. web browsers includes a Javascript interpreter
+<br>--Browser "runs" bits of Javascript code in a web page, such as ours
+<li>Interpreter looks at one line at a time
+<li>Deconstructs what each line says to do
+<li>The interpreter then does that action, in the moment
+<li>Then proceeds to the next line
+</ul>
+
+
+<p>So in Javascript when we have code lines like:
+
+<pre>
+  // Javascript code
+  a = 1;
+  b = a + 2;
+</pre>
+
+<ul class="slide">
+<li>e.g. Interpreter looks at <code>a = 1;</code>, does it
+<li>e.g. Interpreter looks at <code>b =  a + 2;</code>, does it
+<li>The compiler <b>translates</b> source code to equivalent machine code
+<li>The interpreter <b>does</b> the code, looking at each line and doing it
+</ul>
+
+<p>An interpreter is a program which reads in source code as its input, and "runs" the input code. The interpreter proceeds through the code given to it, line by line. For each line, the interpreter deconstructs what the line says and performs those actions, piece by piece. For example, Javascript which we have been using, is implemented by a Javascript interpreter which is built into Firefox.
+
+<p>The interpreter runs this code, by taking the lines one at a time, and for each, interpreting its actions. For "a = 1;" the interpreter reserves a few bytes to store the value of a, then stores the value 1 into those bytes. Then for "b = a + 2;" the interpreter evaluates (a + 2) getting the value 3, reserves some bytes for the b variable, then stores the 3 into the b bytes.
+
+<p>A <b>compiler</b> translates all the source code into equivalent machine code program.exe to be run later -- it is a bulk translation. An <b>interpreter</b> looks at each line of code, and translates and runs it in the moment, and then proceeds to the next line of source code. The interpreter does not produce a program.exe, instead it performs the actions specified in the source code directly.
+
+<h2>Compiler vs. Interpreter Evaluation</h2>
+
+<ul class="slide">
+<li>Disclaimer: there are many languages, no one "best" language, it depends!
+<li>Compiled code tends to run faster
+<li>The .exe tends to be "lean" .. compiler has removed overhead, some decisions
+<li>Dynamic/interpreter languages
+<br>--Tend to have a greater number of programmer-friendly features
+<Br>--i.e. programmers are often more productive in dynamic languages
+<br>--The resulting program tends to run somewhat slower than compiled code
+</ul>
+
+<p>Compiled code generally runs faster than interpreted code. This is because many questions -- how to append to this string, how many bytes do I need here -- are resolved by the compiler at compile time, long before the program runs. The compiler has, in effect, pre-processed the source code, stripping out many questions and complications, leaving the program.exe as lean and direct as it can be to just run.
+
+<p>In contrast, the interpreter deals with each line in the moment, so all the deciphering and overhead costs of interpreting each line are paid as it runs. These overhead costs in effect make the interpreted program run more slowly than the equivalent compiled program.
+
+
+<h2>Dynamic Languages - More Features / Slower</h2>
+
+
+<ul class="slide">
+<li>Dynamic languages tend to have more features (programmer-friendly)
+<li>e.g. Memory Management
+<br>--C and C++: partially manual, some programmer input required
+<br>--Dynamic languages: automatic memory management, no programmer input needed
+<br>--Automatic memory management not free: spending CPU cycles to lighten programmer workload
+<li>Tradeoff
+<br>--Dynamic languages often allow the programmer to get things done faster
+<br>--However the dynamic code runs a bit more slowly compared to compiled code
+<li>Current trend is towards dynamic languages
+<br>--<b>Programmers</b> are scarce
+<br>--It's attractive to save some programmer time at the expense of some CPU/memory use
+<br>--Moore's law reinforces: CPU cheap, programmer relatively rare/expensive
+</ul>
+
+<p>Supporting features tends to be easier in dynamic languages compared to compiled languages, which is why dynamic languages tend to have a greater number of programmer-friendly features.
+
+<p>"Memory management" is the problem in a program of knowing, over time, when bytes of RAM are needed and when they can be reclaimed and use for something else. Every program must solve this problem. Memory management is an excellent example of a feature different between compiled and dynamic languages -- most modern dynamic languages manage memory automatically. The programmer can focus on the problem to be solved, and the dynamic language will take care of managing the memory.
+
+<p>In contrast, in C and C++, the programmer at times must think about memory management at times, and may have to author lines of code to help solve it.  (Aside: many crashes in C and C++ programs are due to errors in the programmer's memory management scheme. It is a difficult problem to solve manually.)
+
+<p>The memory management in dynamic languages is not free. The CPU must run extra lines to solve the memory management. Dynamic languages, in effect, spend CPU cycles to manage the memory. This fits the general pattern that dynamic languages run with more overhead (i.e. more slowly) than compiled languages, but offer superior programmer-friendly features.
+
+<p>Because dynamic languages like Java and Python have more features, a programmer can often write the code to solve a problem more quickly in a dynamic language than they can in C++. The time and attention of programmers is generally quite scarce (translation: programmers are scarce and expensive, which is why you want to be a CS major, or at least a minor!). Therefore, dynamic languages which allow the programmer to produce a correct program more quickly and reliably are pretty attractive, even if the resulting program uses more CPU and more RAM. Aside: Moore's law in effect, keeps making the programmer relatively more expensive compared to the CPU.
+
+<p>Overall, different computer languages have different strengths and weaknesses, and best language for a particular problem depends on the situation. As above, dynamic languages like Java and Python can run slower and generally operate with higher overhead than C++ code, so for some problems, writing in C or C++ is the best strategy. Also, Java and Python lack certain "low level access" features which are needed in rare cases.
+
+<h2>JIT Just In Time Compiler</h2>
+
+<ul class="slide">
+<li>JIT -- compile code of a dynamic language on the fly
+<li>All major browsers now have a JIT for the Javascript code they run (Chrome)
+<li>Best of both worlds
+<li>Flexibility of dynamic languages
+<li>Combined with most of the performance of the compiled world
+<li>Active area of research, works pretty well
+</ul>
+
+<p>The most modern form of dynamic language is implemented with an interpreter paired with a Just In Time compiler (JIT) trying to get the best of both worlds. The JIT looks a sections of dynamic code that are being run very frequently, and for those, does a compile to native code for that section on the fly. So the interpreter is used for simple cases, but for important sections of dynamic code (like the inside of a loop), the JIT creates a block of machine code in RAM for that section. The machine code is run for that section of dynamic code, giving similar performance to C++, and is discarded when the program exits. Java and Javascript both use JIT technology extensively. The great speedup of browsers in the last few years has been largely due to the implemented of JIT technology for Javascript. The JIT erases most but not all of the "10x" penalty. Even with JITs, dynamic languages still have higher overhead use of resources compared to C and C++.
+
+
+<!--
+could have "conclusion" section here
+
+-->
+
+
+<!--
+
+<h2>Common Scenarios To Understand</h2>
+
+<ul>
+<li><b>Computer boots up</b> -- when first powered up, the hardware runs a tiny "boot loader" program which examines the available hardware and allows the user to select what operating system to start. The operating system starts up, sets up housekeeping, and typically launches a file viewer program to show the user the file systems available.
+<li><b>User double clicks on Firefox</b> -- the Firefox icon basically points to a file (actually a group of files) that contain the machine code for Firefox (Firefox is written in C++). The OS sets up a new program environment -- some RAM, a window to draw to --  copies the first section of machine code from the .exe file up to RAM, and starts the CPU running that code.
+<li><b>User double clicks on a flowers.jpg file</b> the OS launches a viewer program to display the image stored in that file. The ".jpg" "extension" on the filename suggests what type of file it is. Note however, the extension can definitely be wrong; changing it is as easy as renaming the file. Typically, the operating system keeps associations of what file type to open with what program -- open .jpg files with one program, .pdf files with another, and so on. In this case, the OS would launch an image viewing program, pointing it to the flowers.jpg file as the one to display (that is, display the image whose bytes are stored in that file).
+</ul>
+
+-->
+
+<!--
+<p>However, interpreted languages generally have more powerful features than compiled languages. This stems from the flexibility of the interpreter strategy. It's relatively easy to add a new language feature to be supported by an interpreter.
+
+
+<p>The compiler does many things ahead of time. For example, looking at all the C++ source code, and producing a .exe block of machine code that completely implements what is specified in the C++ source code. At run time, we just have the .exe; we do not need the original C++ code. It is not possible to reverse the compile process, starting with the .exe and recovering the original C++ code. The reverse can only be done in a very limited way, not producing the full, useful C++ code (all the comments are missing, as a first example).
+
+
+<p>The native compiled code runs fast because many questions - is there an = sign here, does this line deal with strings or numbers - all those questions are sorted out at compile-time, not when the program is running. In contrast, the dynamic language deals with all those issues as the program is running, making the dynamic code, in effect, slower.
+
+<p>Javascript code that is "run" by an interpreter is another form of program that can run on a computer. Behind the curtain, the interpreter is itself a program, for example written in C++. So we are building one layer on top of another. This works!
+
+-->
+
+<!--
+
+-data file vs. program (security)
+
+-cpu .. native code (network effect)
+-program
+
+-operating system/ boot up
+-reboot
+
+-higher level languages
+
+5 common actions
+1. boot up
+2. double click a jpeg file
+3. double click firefox, then enter a url
+
+-->
+
+</body>
+<!-- Mirrored from introcomputing.org/software-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:37 GMT -->
+</html>
+

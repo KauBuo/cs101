@@ -1,0 +1,120 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/bits-bytes-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:34 GMT -->
+<head>
+<title>Kilobytes Megabytes Gigabytes</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Kilobytes Megabytes Gigabytes</h1>
+
+<p>
+
+
+
+<p>The size of information in the computer is measured in kilobytes, megabytes, and gigabytes. In this section, we'll look at common sizes you would see in real life.
+
+<h2>Kilobyte or KB</h2>
+
+<ul class="slide">
+<li>Kilobyte KB - about 1 thousand bytes
+<li>A small email text is about 2 KB
+<li>A 5 page paper might be 100 KB
+<li>Text does not take a lot of bytes to store compared to images or video
+</ul>
+
+<p>One kilobyte (KB) is a collection of about 1000 bytes. A page of ordinary roman alphabetic text takes about 2 kilobytes to store (about one byte per letter). A typical short email would also take up just 1 or 2 kilobytes. Text is one of the most naturally compact types of data at about one byte required to store each letter. In non-roman alphabets, such as Kanji, the storage takes up 2 or 4 bytes per "letter" which is still pretty compact compared to audio and images.
+
+<h2>Megabyte or MB</h2>
+
+<ul class="slide">
+<li>Megabyte (MB) - about 1 million bytes
+<li>aka about 1000 KB
+<li>MP3 audio is about 1 megabyte per minute
+<li>A high quality digital picture is about 2-5 megabytes
+</ul>
+
+
+<p>One megabyte is about 1 million bytes (or about 1000 kilobytes). An MP3 audio file of a few minutes or a 10 million pixel image from a digital camera would typically take up few megabytes. The rule of thumb for MP3 audio is that 1 minute of audio takes up about 1 megabyte. Audio and image and video data typically stored in "compressed" form, MP3 being an example. We'll talk about how compression works later. A data CD disk stores about 700 MB. The audio on a CD is not compressed, which is why it takes so much more space than the MP3. The series of bits are represented as spiral path of tiny pits in the silver material in the disk. Imagine that each pit is interpreted as a 0, and the lack of a pit is a 1 as the spiral sequence is read. Fun fact: the whole spiral on a CD is over 5km long.
+
+<h2>Gigabyte or GB</h2>
+
+<ul class="slide">
+<li>Gigabyte GB = about a billion bytes
+<li>aka about 1000 MB
+<li>Common sized unit modern hardware
+<li>4000 MB = 4 GB
+<li>An ordinary computer in 2012 might have 4 GB or RAM
+<li>A DVD disk has a capacity 4.7GB (single layer)
+<li>--Figure 2 GB per hour of video (varies greatly)
+<li>A flash drive might hold 16 GB
+<li>A hard drive might hold 750 GB
+</ul>
+
+<p>One gigabyte (GB) is about 1 billion bytes, or 1 thousand megabytes. A typical hard drive in 2012 stores about 750 GB. A computer might have 4 GB of RAM. A flash memory card used in a camera might store 4 GB. A DVD movie is roughly 4-8 GB.
+
+<h2>Terabyte or TB</h2>
+
+<p>One terabyte (TB) is about 1000 gigabytes, or roughly 1 trillion bytes. You can buy 1 TB and 2 TB hard drives today, so we are just beginning the time when this term comes in to common use. Gigabyte used to be a rare term too, until Moore's law made it common.
+
+<h2>Gigahertz - Speed, not Bytes</h2>
+
+<p>One gigahertz is 1 billion cycles per second (a megahertz is a million cycles per second). Gigahertz is a measure of speed, very roughly the rate that at a CPU can do its simplest operation per second. Gigahertz does not precisely tell you how quickly a CPU gets work done, but it is roughly correlated. Higher gigahertz CPUs also tend to be more expensive to produce and they use more power (and as a result give off more heat) .. a challenge for putting fast CPUs in small devices like phones. The ARM company is famous for producing chips that are very productive with minimal power and heat. Almost all cell phones currently use ARM CPUs.
+
+<h2>Kilobyte / Megabyte / Gigabyte Word Problems</h2>
+
+<p>Anyone today should be comfortable doing simple arithmetic to figure MB / GB sizes, such as with these word problems:
+
+<p>
+<table>
+
+<tr><th>Word Problems</th><th>Solution</th></tr>
+
+
+<tr><td width="40%">Alice has 600 MB of data. Bob has 700 MB of data. Will it all fit on Alice's 2 GB thumb drive?</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+Yes it fits: 600 MB + 700 MB is 1300 MB. 1300 MB is 1.3 GB, so it will fit on the 2 GB drive no problem. Equivalently we could say that the 2 GB drive has space for 2000 MB, so the 1300 MB fits.
+</div></td></tr>
+
+<tr><td width="40%">Alice has 100 small images, each of which is 500 KB. How much space do they take up overall in MB?</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+100 times 500 KB is 50000 KB, which is 50 MB.
+</div></td></tr>
+
+<tr><td width="40%">Your ghost hunting group is recording the sound inside a haunted Stanford classroom for 20 hours as MP3 audio files. About how much data will that be, expressed in GB?</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+MP3 audio takes up about 1 MB per minute. 20 hours, 60 minutes/hour, 20 * 60 yields 1200 minutes. So that's about 1200 MB, which is 1.2 GB.
+</div></td></tr>
+
+<!-- omitting last problem
+<tr><td width="40%">Suppose we have an image which is 800 pixels by 600 pixels. Each pixel has its own red, green, and blue values, each stored in 1 byte. How many bytes are required to store the whole image in RAM?</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+800 x 600 is 480,000 pixels. Each pixel takes 3 bytes (one byte each for red/green/blue), so 480,000 * 3 is 1,440,000 bytes overall, i.e. about 1.4 MB, which is the space required for the image in RAM. On disk, you will notice that .jpg files takes up much less space than that; this is due to "compression" which is a very effective space-reduction technique for image and audio data - a future topic.
+</div></td></tr>
+-->
+
+</table>
+
+
+<h2>Alternate Terminology: Kibibyte Mebibyte Gibibyte Tebibyte</h2>
+
+<p>When I say "about a thousand" .. 1000 or 1024? There are two schemes, the "1000" system, and the "1024" system .. these result in definitions of MB GB TB which differ by up to 10%. For this class, I'm willing to ignore that level of detail, and think of the factors as just "about a thousand". For more information about this issue, see below.
+
+
+<p>There's this problem with the word "megabyte" .. does it mean 1024 * 1024 bytes, i.e. 2^20 which is 1,048,576, or does it mean exactly 1 million. It's just a 5% difference, but marketers tend to prefer the 1 million, interpretation, since it makes their hard drives etc. appear to hold a little bit more. Also, the difference grows larger and larger for the gigabyte and terabyte sizes. In an attempt to fix this, the terms "kibibyte" "mebibyte" "gibibyte" "tebibyte" have been introduced to specifically mean the 1024 based units (see <a href="http://en.wikipedia.org/wiki/Kibibyte">wikipedia kibibyte article</a>). These terms do not seem to have caught on very strongly thus far. If nothing else, remember that terms like "megabyte" have this little wiggle room in them between the 1024 and 1000 based meanings. We will never grade off for this distinction .. "about a million" will be our close-enough interpretation for "megabyte". The "error" at the megabyte level is about 5%. At the terabyte level the error is about 10%.
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/bits-bytes-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:34 GMT -->
+</html>
+

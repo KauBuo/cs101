@@ -1,0 +1,128 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-1-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Table 1 Exercises</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Table 1 Exercises</h1>
+
+<p>
+
+
+
+<p>
+For these exercises, you write code to print some rows from a table. All of the problems here use the baby-2010.csv data as in lecture. Recall that the fields in the baby data are: "name", "rank", "gender", "year".
+
+<!--
+The output checker looks at the output printed by the code see if it matches what we expexct; therefore, don't print anything extra as that might confuse the checker. You'll also notice that the computations here are very fast. That's because your code is just looking at a few thousand data items, compared to millions of items for the image algorithms.
+-->
+
+
+<p>
+1. Write code to print the row for the name "Atticus"
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-ex1" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-ex1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-ex1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+<p>
+2. Write code to print the rows for the name "River". In this case, there are two such rows, but the same basic code pattern as for question 1 works. This shows how the loop really is just testing every row.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-ex2" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-ex2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-ex2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+3. Write code to print the rows where the rank is less than 10 (i.e. &lt;).
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-ex3" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-ex3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-ex3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+4. Write code to print the rows where the rank is greater than 950.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-ex4" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-ex4")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-ex4-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-1-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

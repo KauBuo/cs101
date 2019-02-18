@@ -1,0 +1,369 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/simulation-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Simulation 2</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Simulation 2</h1>
+
+<p>
+
+
+
+
+<h3>Pair of Dice Example</h3>
+
+<p>
+Here we'll simulate rolling a pair or 6-sided dice, keeping track of what numbers we get. So one trial = roll a pair of 6 sided dice. How often should a 7 appear (aka the ideal "expected" result)? How often should a 2 appear?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-pairdice" rows=12 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(2, 12);  // min=2, max=12 (inclusive)
+for (i: series(100)) {
+
+  // --one trial--
+  roll = random(1, 6) + random(1, 6); // 2..12
+  histogram.add(roll);  // record one trial on the histogram
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-pairdice")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-pairdice-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+Mathematically, the 7 should appear 1/7 of the time. As then number of trials gets larger (100, 1000, 10000), note how the simulation produces a count which gets closer to the mathematically expected result.
+
+<h3>Head Count Example</h3>
+
+<p>
+Trial = flip a coin 10 times, count the number of heads. Here we use a second, nested loop to flip a coin 10 times, counting the number of times that heads comes up.
+
+<p>How often do you expect that all 10 flips are heads?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-headcount" rows=19 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(0, 10);
+for (i: series(100)) {
+
+  // --one trial--
+  count = 0;
+  for (j: series(10)) {
+    roll = random(1, 2); // 1=heads
+    if (roll == 1) {
+      count = count + 1;
+    }
+  }
+  histogram.add(count);
+
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-headcount")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-headcount-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+<h3>Heads In A Row Example</h3>
+
+<p>
+Flip a coin 10 times, but stop on the first tails. How many heads in a row do you get? ("break;" is a command to immediately exit the current loop.)
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-headsrow" rows=18 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(0, 10);
+for (i: series(1000)) {
+
+  count = 0;
+  for (j: series(10)) {
+    roll = random(1, 2); // 1=heads, 2=tails
+    if (roll == 2) {
+      break;  // end loop, record this count
+    }
+    count++;
+  }
+  histogram.add(count);
+
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-headsrow")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-headsrow-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<h3>Mehran Class Bet Exercise</h3>
+
+<p>On certain days in Mehran's probability class, Mehran will give a student $50 if they can roll 10 6-sided dice and get a total of 25 or less or 45 or more. What are the odds of the student winning?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-mehran" rows=16 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+var histogram = new Histogram(1, 1);
+for (i: series(1000)) {
+
+  // your code here
+
+
+
+
+
+
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-mehran")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-mehran-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<pre>
+  // your code here
+  sum = 0;
+  for (j: series(10)) {
+    sum = sum + random(1, 6);
+  }
+  if (sum <= 25 || sum >= 45) {
+    histogram.add(1);
+  }
+  // the odds work out to about 7.8%
+</pre>
+
+</div></div>
+
+<h3>Roulette Exercise</h3>
+
+<p>
+Roulette -- the wheel with the little ball that falls into a slot, appearing in many movies
+(<a target=_blank href="http://en.wikipedia.org/wiki/Roulette">Roulette wikipedia</a>). The slots are numbered 0..36. The simplest bet is to take 19..36 (or 1..18), which pays double if the ball falls in that range. If the ball falls in the 0 slot, then all players lose -- this provides the small house edge which is magnified greatly the more times the player plays. The effect of playing more and more times can be explored with the simulation.
+
+<p>
+Add code here so one trial is playing roulette with a starting balance of 10, betting 1 each time, and playing 50 rounds (or until out of money). For each trial, record the ending balance in the histogram. (Solution available.)
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-ex-roulette" rows=17 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+histogram = new Histogram(0, 35);
+for (i : series(1000)) {
+
+  bal = 10;
+  for (j: series(50)) {
+    // your code here
+
+  }
+  histogram.add(bal);
+
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-ex-roulette")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-ex-roulette-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+The code shows the range of outcomes playing roulette 50 times. What happens if the player plays 500 or 5000 times?
+Side question: if the player plays 10 times, there is an even/odd pattern in their possible balance. Why is this?
+
+<p>
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<pre>
+    // your code here
+    if (bal == 0) {
+      break;
+    }
+    bal = bal - 1;  // place the bet
+    roll = random(0, 36);
+    if (roll >= 19) { // get double back on win
+      bal = bal + 2;
+    }
+</pre>
+
+</div></div>
+
+
+
+
+
+
+<h3>Rickety Bridge Exercise</h3>
+
+<p>
+You are in a party of 6 on one side of a deep ravine. Pirates are making you all walk across a rickety bridge across the ravine, but only one person can go across at a time. For the 1st person to go across, there is 1/6 chance of bridge collapse. For the 2nd person, a 2/6 chance of collapse, and so on.
+The 6th person has a 6/6 (100%) chance of collapse if they have to go. If the bridge collapses,
+nobody else has to go. If you want to avoid being on the bridge when it collapses, which person 1-6 do you want to be?
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-ex-rickety" rows=18 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+var histogram = new Histogram(1, 6);
+for (i: series(10)) {
+
+  // person j goes: 1, 2, ..
+  for (j: series(1, 6)) {
+    // Generate a random roll to decide if
+    // bridge collapses for person j.
+    // If bridge collapses for person j, break;
+    // your code here
+
+  }
+  histogram.add(j);  // after break, j is the last person
+  
+}
+print(histogram);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-ex-rickety")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-ex-rickety-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+What is the best person to be? It's harder to see which is the worst person to be, but it can be done with a large number of trials.
+
+<p>
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<pre>
+    // your code here
+    roll = random(1, 6);
+    if (roll <= j) { // bridge collapses for person j
+      break;
+    }
+    // i.e. random(1, 6) <= the person's number (1, 2, 3, ...)
+    // is the probability of the bridge breaking (1/6, 2/6, 3/6, ...)
+</pre>
+
+</div></div>
+
+<p>
+If you are interested in probability, it is also possible to work out the exact mathematics for each person. Construct a tree of the events. From the start position, there are two branches: a. person 1 bridge collapse (1/6), b. person 1 makes it across (5/6). Then extending from branch (b) there are two branches for person 2, and so on. For the probability of a particular outcome, work from the start, multiplying together the probabilities of each branch taken. Note that for each a/b branch, the probabilities add to 1 (either a or b happens). Working out just the first couple layers of the tree, you can check your math vs. the results of the simulation.
+
+<!-- njp fun background: this problem appeared as a Stanford probability midterm exam question -->
+
+<h3>Monty Hall Problem</h3>
+
+<p>
+This is a very famous probability problem based on the Lets Make A Deal TV show. See <a target=_blank href=http://en.wikipedia.org/wiki/Monty_Hall_problem>Monty Hall Problem (wikipedia)</a> for background. Provided for this problem is a <code>neitherOfThese(a, b)</code> function which given two numbers that are 1, 2, or 3, returns one of 1, 2, or 3 which is not equal to the two passed in numbers. This function is simple, but turns out to be very useful for the Monty Hall problem.
+
+<p>
+For the standard strategy, the player keeps their original pick, and so wins 1/3 of the time. The code below simulates the standard strategy.
+The "switch" strategy means the player changes their pick to the door which is not their original pick and is not the door revealed by Monty. Is the switch strategy superior? The reasoning is very unintuitive, however the simulation can quite clearly show the performance of both strategies. Add code below the standard strategy to implement/print the results of the switch strategy to answer this question.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="simulation1-ex-montyhall" rows=34 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+win1 = 0;  // count regular strategy wins
+win2 = 0;  // count "switch" strategy wins
+ 
+for (i: series(1000)) {
+
+  // have doors 1,2,3. First select one of them as the "good" one
+  // the other two contain goats. 
+  good = random(1, 3)
+
+  // contestant picks one at random
+  pick = random(1, 3)
+
+  // Monty hall now reveals a door which is not
+  // the good one, and not the one picked.
+  reveal = neitherOfThese(pick, good);
+
+  // The standard strategy: don't switch so you win
+  // if the pick is the good door.
+  if (pick == good) {
+    win1 = win1 + 1;
+  }
+
+  // add switch/win2 strategy here
+  // your code here
+
+}
+
+print("win1", win1, "win2", win2, "total", i);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("simulation1-ex-montyhall")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='simulation1-ex-montyhall-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<pre>
+  // change our pick to the *other* one -- not our original
+  // pick and not what Monty revealed.
+  pick = neitherOfThese(pick, reveal);
+  if (pick == good) {
+    win2++;
+  }
+</pre>
+
+</div></div>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/simulation-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

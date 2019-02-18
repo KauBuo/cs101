@@ -1,0 +1,305 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-3-boolean.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Table Boolean Logic</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Table Boolean Logic</h1>
+
+<p>
+
+
+
+<p>In this section, we'll extend our code with "boolean logic" .. using <b>and</b> <b>or</b> to combine multiple true/false tests.
+
+<h2>Boolean Logic: && || !</h2>
+
+<ul class="slide">
+<li>Want to be able to combine tests, in English like this
+<br>-- Name starts with "A" <b>and</b> ends with "y"
+<li>In code "boolean logic"
+<li><b>and</b> <code>&&</code>  (two ampersands)
+<li><b>or</b> <code>||</code>  (two vertical bars)
+<li><b>not</b> <code>!</code> (exclamation mark, we're not doing this one)
+<li>Sorry syntax is a bit cryptic -- historical syntax accident
+</ul>
+
+<h2>Boolean Logic Example 1</h2>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table3-1" rows=11 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name").startsWith("A") &&
+      row.getField("name").endsWith("y")) {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table3-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table3-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<ul class="slide">
+<li>The && joins a startsWith test and a endsWith test
+<li>The whole test is written across two lines because it is kind of long (optional)
+<li><b>Standalone rule</b>
+<br>--Note that the tests joined by && || are syntactically complete tests on their own, then joined with && or ||
+<li><b>Looks reasonable but is incorrect:</b> <code>row.getField("name).startsWith("A") && endsWith("y")</code>
+<li>Common error: too few right parenthesis around the test
+<li>Run tries to detect certain common errors, like omitting the {, or typing & instead of &&, giving an error message
+</ul>
+
+
+<h2>Boolean Logic Example 2</h2>
+
+<p>Change the code below so it prints rows where the following is true:
+<br>Name starts with "A" and rank is <= 50
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table3-2" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name").startsWith("A")) {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table3-2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table3-2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<div><button onclick='unhide(this)'>Show Solution</button><div style='display:none'>
+<p>If logic inside the loop:
+
+<pre>
+  if (row.getField("name").startsWith("A") &&
+      row.getField("rank") <= 50) {
+    print(row);
+  }
+</pre>
+</div></div>
+
+
+
+<h2>Boolean Logic Example 3</h2>
+
+<p>Now do an example with <b>or</b> || -- change the code below to print rows where the following is true:
+<br>Name starts with "X" or name starts with "Y" or name starts with "Z"
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table3-3" rows=11 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  if (row.getField("name").startsWith("X")) {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table3-3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table3-3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<div><button onclick='unhide(this)'>Show Solution</button><div style='display:none'>
+<p>If logic inside the loop:
+
+<pre>
+  // your code here
+  if (row.getField("name").startsWith("X") ||
+      row.getField("name").startsWith("Y") ||
+      row.getField("name").startsWith("Z")) {
+    print(row);
+  }
+</pre>
+</div></div>
+
+
+<h2>Many Boolean Examples</h2>
+
+<p>
+Here is the working code for the Popular A names test mentioned above.
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table3-4" rows=11 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name").startsWith("A") &&
+      row.getField("rank") <= 50) {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table3-4")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table3-4-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>Experiments to try:
+
+<!-- here I left the last 3 or so for the students to try in class -->
+
+<ul>
+<li>For these examples, we'll use one of && || but not both.
+<li>1. name starts with "Ab" or name starts with "Ac"
+<li>2. name starts with "Ab" or name starts with "Ac" or name starts with "Al"
+<li>3. name starts with "O" and name ends with "a"
+<li>4. name starts with "O" and gender is "girl"
+<li>5. name ends with "a" and gender is "boy"
+<li>6. rank is <= 10 and gender is "girl" (translation: "top 10 girl names")
+<li>7. rank is <= 10 or gender is "girl" (this one doesn't make a ton of sense, but what does this print?)
+<li>8. name ends with "ia" and gender is "boy" (hah, then try with gender is "girl")
+<li>9. name ends with "io" and gender is "girl" (then try "boy")
+<li>10. name ends with "o" and gender is boy and rank is >= 900
+</ul>
+
+<p>Experiment solution code:
+
+<div><button onclick='unhide(this)'>Show Solution</button><div style='display:none'>
+<p>If logic inside the loop:
+
+<pre>
+  // 1
+  if (row.getField("name").startsWith("Ab") ||
+      row.getField("name").startsWith("Ac")) {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 2
+  if (row.getField("name").startsWith("Ab") ||
+      row.getField("name").startsWith("Ac") ||
+      row.getField("name").startsWith("Al")) {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 3
+  if (row.getField("name").startsWith("O") &&
+      row.getField("name").endsWith("a")) {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 4
+  if (row.getField("name").startsWith("O") &&
+      row.getField("gender") == "girl") {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 5
+  if (row.getField("rank") <= 10 &&
+      row.getField("gender") == "girl") {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 6
+  if (row.getField("name").endsWith("ia") &&
+      row.getField("gender") == "boy") {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 7
+  if (row.getField("rank") <= 10 ||
+      row.getField("gender") == "girl") {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 8
+  if (row.getField("name").endsWith("ia") &&
+      row.getField("gender") == "boy") {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 9
+  if (row.getField("name").endsWith("io") &&
+      row.getField("gender") == "girl") {
+    print(row);
+  }
+</pre>
+<hr>
+
+<pre>
+  // 10
+  if (row.getField("name").endsWith("o") &&
+      row.getField("gender") == "boy" &&
+      row.getField("rank") >= 900) {
+    print(row);
+  }
+</pre>
+
+
+</div></div>
+
+
+<p>
+&gt; <a href='table-3-exercises.html'>exercises</a>
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-3-boolean.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

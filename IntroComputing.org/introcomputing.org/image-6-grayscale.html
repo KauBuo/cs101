@@ -1,0 +1,210 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-6-grayscale.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:45 GMT -->
+<head>
+<title>Grayscale Images</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Grayscale Images</h1>
+
+<p>
+
+
+
+<p>
+In this section, we'll look at the structure of grayscale vs. color images, and some code to play with that difference.
+
+<!--
+
+-RGB gray idea
+
+-show red->gray fix for liberty
+
+-then show avg B&W conversion of a couple images
+-talk about avg in the loop
+
+-exercises: convert ? to B&W .. maybe just one exercise?
+
+-->
+
+<h2>Gray Among The RGB</h2>
+
+<ul class="slide">
+<li>Visit the <a href=image-rgb-explorer.html>RGB explorer</a>
+<li>Figure out how to make colors on the grayscale spectrum
+<li>e.g. RGB values to make: dark gray, medium gray, light gray
+<li>We'll say that these grays lack "hue"
+</ul>
+
+<p>
+Answer: the RGB scale is calibrated so that when all three red/green/blue numbers of a pixel are equal, the pixel is a shade of gray. Making all the numbers equal, like red=50 green=50 blue=50 drains any bias towards red, green, or blue. If a pixel were red=50 green=75 blue=50 it would be a bit greenish, but making them all equal, it's not towards any particular hue. This works because the displays and other systems using RGB are calibrated so that the all-equal cases are on the black..gray..white spectrum.
+
+<p>Examples of gray colors in RGB:
+<table>
+
+<tr> <th>red</th> <th>green</th> <th>blue</th> <th>color</th> </tr>
+<tr> <td>50</td> <td>50</td> <td>50</td> <td>dark gray</td> </tr>
+<tr> <td>120</td> <td>120</td> <td>120</td> <td>medium gray</td> </tr>
+<tr> <td>200</td> <td>200</td> <td>200</td> <td>light gray</td> </tr>
+<tr> <td colspan = 4>In fact, the original pure black/white colors fit this all-equal pattern too, just using the values 0 and 255.</td> </tr>
+<tr> <td>0</td> <td>0</td> <td>0</td> <td>pure black</td> </tr>
+<tr> <td>255</td> <td>255</td> <td>255</td> <td>pure white</td> </tr>
+
+</table>
+
+<h2>Red Liberty Example Problem</h2>
+
+<p>Here is an image of the Statue or Liberty where all of the data is in the red values, so the whole image looks red. The green and blue values are all zero. This image looks quite wrong.
+
+<p>For this example, we'll write code to fix this image by copying the red value over to be used as the green and blue value. So for a pixel, if red is 27, set green and blue to also be 27. What will be the visual result of this?
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-gray1" rows=12 cols=65  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("liberty-red.jpg");
+for (pixel: image) {
+  // your code here
+  
+}
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-gray1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-gray1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>Solution code:
+<div>
+<button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+  // your code here
+  pixel.setGreen(pixel.getRed());
+  pixel.setBlue(pixel.getRed());
+  // Usually code combines setRed() with getRed(),
+  // but this code gets a value from one color
+  // and sets it into another color.
+  // Visual result: grayscale image, since
+  // red/blue/green are made equal for each pixel.
+</pre></div>
+</div>
+
+
+<h2>Converting Color To Grayscale</h2>
+
+<p>
+<br><img src=flowers.jpg alt="the yellow flowers.jpg image">
+
+<ul class="slide">
+<li>How to covert a regular color image to grayscale?
+<li>Problem: for each pixel, how dark/light is it (ignoring hue)
+<li>Choose a few pixels out of flowers.jpg, each in a row below
+<li>Q: which pixel is brightest? darkest?
+<li>We compute average for each pixel
+<li>Reminder: to average 3 numbers, add them up and divide by 3
+<li>average = (red + green + blue)/3
+</ul>
+
+
+<table>
+
+<tr> <th>red</th> <th>green</th> <th>blue</th> <th>average</th> </tr>
+<tr> <td></td> <td></td> <td></td> <td>average = (red + green + blue) / 3</td> </tr>
+<tr> <td>200</td> <td>50</td> <td>50</td> <td>100 (medium bright)</td> </tr>
+<tr> <td>0</td> <td>75</td> <td>75</td> <td>50 (darkest)</td> </tr>
+<tr> <td>100</td> <td>250</td> <td>250</td> <td>200 (brightest)</td> </tr>
+
+</table>
+
+
+<p>Looking at just red or blue or green in isolation, it's hard to tell which pixel is brightest or darkest in the above table. The <b>average</b> combines and summarizes the three values into one number 0..255. The average shows how bright the pixel is, ignoring hue: 0 = totally dark, 255=totally bright, with intermediate average values corresponding to intermediate brightnesses. More complicated brightness measures are possible, but average is simple and works fine for our purposes.
+
+<ul class="slide">
+<li>Average combines red/green/blue into one number
+<li>The average measures how bright the pixel is 0..255
+<li>Ignoring hue
+</ul>
+
+
+<h2>Grayscale Conversion Example</h2>
+
+<p>For this example, we'll write code to change the flowers.jpg image to grayscale, using the "average" strategy: for each pixel, compute the average of its red/green/blue values. This average number represents the brightness of the pixel 0..255. Then set the red, green, and blue values of the pixel to be that average number. The result is a grayscale version of the original color image. Once its working with flowers.jpg, try it with poppy.jpg or oranges.jpg. (Solution code available below)
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-gray2" rows=12 cols=65  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("flowers.jpg");
+for (pixel: image) {
+  // your code here
+  
+}
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-gray2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-gray2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<ul class="slide">
+<li>Q: must the "avg = ... " line be inside the loop?
+<li>A: yes, it must be inside the loop
+<li>The equals sign (=) does not set up some formula to work for all time
+<li>Computer code is not that powerful generally
+<li>The = just does math <b>when that line runs</b>
+<li>Each pixel has different red/green/blue values
+<li>We need to re-do the addition / divide-3 for each pixel
+</ul>
+
+
+<p>Solution code:
+<div>
+<button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+  // your code here
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+  pixel.setRed(avg);
+  pixel.setGreen(avg);
+  pixel.setBlue(avg);
+</pre></div>
+</div>
+
+
+<h2>Grayscale Summary</h2>
+
+<ul class="slide">
+<li>When red/green/blue values are equal .. shade of gray
+<li>Average combines red/green/blue into one number
+<li>The average measures how bright the pixel is 0..255
+<li>Convert pixel to grayscale: set red, green, and blue to be the average
+<li>Standard code line to compute average within loop. We'll use this line often for later problems.
+<br>&nbsp;<code style="font-size:75%">avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;</code>
+</ul>
+
+<p>
+&gt; <a href='image-6-exercises.html'>exercises</a>
+
+</body>
+<!-- Mirrored from introcomputing.org/image-6-grayscale.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:45 GMT -->
+</html>
+

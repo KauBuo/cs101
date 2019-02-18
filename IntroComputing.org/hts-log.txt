@@ -1,0 +1,26 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 24 Jan 2019 18:55:51 at https://introcomputing.org/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://introcomputing.org/ -O1 "D:\My Web Sites\IntroComputing.org" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+18:59:38	Warning: 	Retry after error -4 (Incorrect length (65283 Bytes, 114174 expected)) at link https://introcomputing.org/monkey.jpg (from https://introcomputing.org/code-1-introduction.html)
+18:59:40	Warning: 	Retry after error -4 (No data (connection closed)) at link ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css (from https://introcomputing.org/image-rgb-explorer.html)
+19:00:01	Warning: 	Retry after error -4 (No data (connection closed)) at link ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js (from https://introcomputing.org/image-rgb-explorer.html)
+19:00:04	Warning: 	Retry after error -4 (No data (connection closed)) at link ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js (from https://introcomputing.org/image-rgb-explorer.html)
+19:00:04	Warning: 	Retry after error -4 (Incorrect length (229123 Bytes, 273579 expected)) at link https://introcomputing.org/pebbles.jpg (from https://introcomputing.org/image-8-exercises.html)
+19:00:08	Error: 	"Not Found" (404) at link https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/153056995_5ef8b01016_o.jpg/776px-153056995_5ef8b01016_o.jpg (from https://introcomputing.org/hardware-1.html)
+19:01:13	Warning: 	Retry after error -4 (Incorrect length (196355 Bytes, 257160 expected)) at link https://introcomputing.org/hardware-cpu.jpg (from https://introcomputing.org/hardware-1.html)
+19:01:13	Warning: 	Retry after error -4 (Incorrect length (163587 Bytes, 279405 expected)) at link https://introcomputing.org/hardware-cpu2.jpg (from https://introcomputing.org/hardware-1.html)
+19:01:32	Warning: 	Retry after error -2 (Receive Time Out) at link https://introcomputing.org/hardware-motherboard2.jpg (from https://introcomputing.org/hardware-1.html)
+19:01:32	Warning: 	Retry after error -4 (Connect Error) at link ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css (from https://introcomputing.org/image-rgb-explorer.html)
+19:01:32	Warning: 	Retry after error -4 (No data (connection closed)) at link ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js (from https://introcomputing.org/image-rgb-explorer.html)
+19:01:32	Warning: 	Retry after error -4 (No data (connection closed)) at link ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js (from https://introcomputing.org/image-rgb-explorer.html)
+19:01:39	Error: 	"No data (connection closed)" (-4) after 2 retries at link ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css (from https://introcomputing.org/image-rgb-explorer.html)
+19:02:05	Error: 	"No data (connection closed)" (-4) after 2 retries at link ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js (from https://introcomputing.org/image-rgb-explorer.html)
+19:02:05	Error: 	"Connect Error" (-4) after 2 retries at link ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js (from https://introcomputing.org/image-rgb-explorer.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 6 minutes 14 seconds : 106 links scanned, 90 files written (5763544 bytes overall) [5633318 bytes received at 15062 bytes/sec], 256585 bytes transferred using HTTP compression in 43 files, ratio 38%, 4.0 requests per connection
+(4 errors, 11 warnings, 0 messages)

@@ -1,0 +1,203 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-1-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:30 GMT -->
+<head>
+<title>Introduction to Digital Images</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Introduction to Digital Images</h1>
+
+<p>
+
+
+
+<p>
+In this section we'll look at how digital images work.
+
+(Hat tip to Mark Guzdial and Barbara Ericson for promoting the <a href="http://coweb.cc.gatech.edu/mediaComp-teach">media computation</a> idea of using images, sounds etc. to introduce computers.)
+
+<h2>Digital Images</h2>
+
+<ul class=slide>
+<li>Digital images everywhere
+<li>Look natural, rounded
+<li>Behind the scenes: lots of little numbers
+</ul>
+
+<p>You see images on computers all the time. Here we will look behind the curtain, seeing how images are put together. What looks like a whole image to us, in the computer is a structure made of many little numbers.
+
+<p>
+Here is an image of some yellow flowers:
+<br>
+<img src=flowers.jpg alt="yellow flowers">
+
+<h2>Zoom In - Pixels</h2>
+
+<ul class=slide>
+<li>Zoom in 10x - small square "pixels"
+<li>Pixel one solid color, quite small
+<li>Perceive the whole scene, not tiny pixels
+<li>Image 800 pixel wide, 600 pixels high image
+<li>&nbsp; Multiply .. 480,000 pixels (about 0.5 "megapixels")
+<li>Digital camera 5-20 megapixels
+</ul>
+
+
+<br>
+<img src=flowers-pixels.png alt="zoom in to see pixels">
+
+<p>
+Zooming in on the upper left flower, we can see that it is actually made of many square "pixels", each showing one color.
+
+<ul>
+ <li>Each pixel is a small square that shows a single color
+ <li>An 800 x 600 image is 800 pixels wide by 600 pixels high, 480,000 pixels in all (0.5 megapixels)
+ <li>Digital cameras today produce images with several megapixels per image, say 8000 x 6000 for about 5 megapixels
+</ul>
+
+<p>
+We will not work with individual x/y coordinates too much. You just need to appreciate that there is this x/y coordinate system, so that every pixel in an image has some x/y coordinate that identifies its location within the image grid.
+
+<h2>Image Diagram</h2>
+
+<ul class=slide>
+<li>Each pixel - small, one color
+<li>Organize pixels as a grid
+<li>Every pixel can be identified by x,y numbers, "address"
+<li>x=0, y=0 upper left -- (0, 0)
+<li>x=1, y=0 one pixel to the right -- (1, 0)
+<li>We will not use the x,y detailed level
+<li>Question: how is the color of the pixel encoded?
+</ul>
+
+<br>
+<img src=image-diagram1.png alt="grid of pixels with x,y coordinates">
+
+<ul>
+ <li>The pixels are organized as a grid, identifying each by an (x, y) coordinate, so every pixel can be identified by its (x, y) address
+ <li> x=0, y=0 is the upper left -- aka (0, 0) the top left pixel of the whole image
+ <li> x=1, y=0 is the pixel 1 to the right -- aka (1, 0)
+ <li> x=2, y=0 is the pixel 1 more to the right -- aka (2, 0) -- still in the top row
+ <li>How is the color of each pixel encoded?
+</ul>
+
+<h2>Aside - Newton's Color Prism</h2>
+
+<ul class=slide>
+<li>Newton's famous experiment
+<li>White light - broken up into pure colors, continuous
+<li>Red, orange, yellow, green, blue, indigo, violet (ROY G BIV)
+<li>Pure colors as a palette
+<li>Run the experiment backwards to make white
+<li>Funny thing about "indigo"
+</ul>
+
+<br>
+<img src=newton-prism.jpg alt="newton prism experiment">
+
+<p>
+Sir Isaac Newton did the famous prism experiment, showing that white light is made up of a spectrum pure colored light. Here is a picture of the experiment on my floor. White sunlight is coming in from the left into the glass triangular prism which splits up the light. Coming out of the prism we have a continuous range of pure colors, and a few are picked out by name: red, orange, yellow, green, blue, indigo, violet (ROY G BIV).
+
+<p>Funny story: why add "indigo" in there, instead of just leave it at blue? Reflecting the mysticism of his time, Newton felt the number of colors should match the number of planets, which at the time was seven.
+
+
+<h2>RGB Color Scheme - Red Green Blue</h2>
+
+<ul class=slide>
+<li>Each pixel is one color - how to represent?
+<li>RGB red/green/blue scheme
+<li>Make any color with combinations of red/green/blue light
+<li>Different from mixing paints, here mixing light
+</ul>
+
+<p>How to represent the color of a pixel? The red/green/blue (RGB) scheme is one popular way of representing a color in the computer. In RGB, every color is defined as a particular combination of pure red, green, and blue light.
+
+
+<h2>RGB Explorer</h2>
+
+<p>The best way to see how RGB works is to just play with. This <a href=image-rgb-explorer.html>RGB Explorer</a> page which shows how any color can be made by combining red, green, and blue light.
+
+<h2>RGB - Three Numbers</h2>
+
+<ul class=slide>
+<li>Any color can be represented by combination of red/green/blue light
+<li>Any color can be represented by three numbers
+<li>Not just 0 and 255, intermediate values 12, 238, 39
+<li>e.g. r:250 g:10 b:240 - purple, or just say "250 10 240"
+<li>e.g. r:150 g:150 b:10 - dark yellow, or just say "150 150 10"
+<li>Don't memorize all colors, just understand the basic RGB scheme
+</ul>
+
+<p>So essentially, any color can be encoded as three numbers .. one each for red, green, and blue.
+
+<table>
+ <tr><th>Color</th> <th>Red number</th> <th>Green number</th> <th>Blue number</th> </tr>
+ <tr> <td>red</td> <td>255</td> <td>0</td> <td>0</td> </tr>
+ <tr> <td>purple</td> <td>255</td> <td>0</td> <td>255</td> </tr>
+ <tr> <td>dark yellow</td> <td>100</td> <td>100</td> <td>0</td> </tr>
+ <tr> <td>white</td> <td>255</td> <td>255</td> <td>255</td> </tr>
+ <tr> <td>black</td> <td>0</td> <td>0</td> <td>0</td> </tr>
+</table>
+
+<p>In RGB, a color is defined as a mixture of pure red, green, and blue lights of various strengths. Each of the red, green and blue light levels is encoded as a number in the range 0..255, with 0 meaning zero light and 255 meaning maximum light.
+
+<p>So for example (red=255, green=100, blue=0) is a color where red is maximum, green is medium, and blue is not present at all, resulting in a shade of orange. In this way, specifying the brightness 0..255 for the red, blue, and green color components of the pixel, any color can be formed.
+
+<p><b>Pigment Note</b> -- you may have mixed color paints, such as adding red and green paint together. That sort of "pigment" color mixing works totally differently from the "light" mixing we have here. Light mixing is, I think, easier to follow, and in any case, is the most common way that computers store and manipulate images.
+
+<p>It's not required that you have an intuition about, say, what blue=137 looks like. You just need to understand that any color can be made by combining the three color values.
+
+<h2>Image Diagram with RGB</h2>
+
+<ul class=slide>
+<li>Now have the complete diagram of an image
+<li>Pixels in a grid, each with an x,y address
+<li>Each pixel has 3 numbers to define its color
+<li>Written as "red:6 green:250 blue:7"
+<li>Or just "6 250 7"
+</ul>
+
+<br>
+<img src=image-diagram2.png alt="grid of pixels with x,y coordinates and RGB numbers">
+
+
+<h2>Theme: Digital Atomization</h2>
+
+<ul class=slide>
+<li>Complex whole - "atomized"
+<li>Broken down into lots of little numbers
+<li>"Lots of little numbers" -- the domain of the computer
+<li>Visual change to the image image
+<li>Phrase as changes to the numbers in the computer
+</ul>
+
+<p>We started with a whole image, and reduced it to a big collection of small elements. This a common theme in computer science -- what looks like an organic complicated whole, is "atomized" in the computer ... made up of a very large collection of very simple elements.
+
+<p>So we can start with a whole, textured digital image of something. Then break it down into small square pixels. Then each pixel breaks down to 3 numbers in the range 0..255. This is a typical computer pattern -- something whole and organic is, if you look behind the scenes, is broken down and represented as a lot of little numbers.
+
+
+
+<!--
+ RGB exercises
+ white
+ tan
+ dark green
+ light gray (white, then dark)
+-->
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/image-1-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:33 GMT -->
+</html>
+

@@ -1,0 +1,423 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/code-1-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:18 GMT -->
+<head>
+<title>Introduction to Computing Principles</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Introduction to Computing Principles</h1>
+
+<p>
+
+
+
+<p>by Nick Parlante (<a href="http://www-cs-faculty.stanford.edu/~nick/">Nick's home page</a>)
+
+<!--
+-format lecture-video document .. notes ..
+-powerful + stupid
+-"island" .. play around, zoom out later to say what it means
+-->
+
+<p><b>CS4HS pedagogy breakout</b>:
+<ul>
+ <li>Pre: intimidate by computers, jargon/errors are a wall
+ <li>Post: see the essential ideas, maybe pique interest
+ <li>Strategy: use code, but make it easy, show relevance/power
+</ul>
+
+
+<p>
+This class explores the essential qualities of computers, how they work, what they can and cannot do, and requires not computer background at all.
+In this first section we'll look at the basic features of computers and get started playing with computer code. 
+
+<p>Acknowledgement: thanks to Google for supporting my early research that has helped create this class.
+
+<!-- 
+<h2>Format note: Video + Document</h2>
+
+<ul class="slide">
+
+<li>Not just a video
+<li>Each video there is a written document .. explanations, diagrams, code examples
+<li>Switch back and forth between the video and its document
+<br>-Review explanations, try the examples yourself
+<li>Watching me do it vs. trying it yourself
+<li>Exercises... decide review document first
+
+</ul>
+-->
+
+
+<h2>Fundamental Equation of Computers</h2>
+
+<p>
+The fundamental equation of computers is:
+
+<p style="font-size:166%">&nbsp;&nbsp;Computer = Powerful + Stupid
+
+
+<ul class="slide">
+
+<li>Powerful -- looking through masses of a data
+<br>--Billions of "operations" per second
+<li>Stupid
+<br>--Operations are simple and mechanical
+<br>--Lacks "insight"
+<li>Powerful + Stupid quality ... see in code experiments
+<li>The computer world has this funny, mechanical quality
+<li>But computers still are incredibly useful
+<li>That's what this class is about
+<br>--Visit this funny computer world, see how it works
+<br>--Understand what they can do
+<br>--Not intimidated, computer is not a magic box
+<li>Hidden agenda: too few CS people
+<br>--Open your eyes computer world .. some students interested more computer science
+
+</ul>
+
+
+<ul>
+<li>Computers are very powerful, looking through large amounts of data quickly. Computers can literally perform billions of operations per second.
+<li>However, the individual "operations" that computers can perform are extremely simple and mechanical, nothing like a human thought or insight. A typical operation in the language of computers is adding two numbers together.
+<li>So although the computers are fast at what they do, the operations that they can do are extremely rigid, simple, and mechanical. The computer lacks anything like real insight. Or put another way, computers are <b>not</b> like the HAL 9000 from the movie 2001: A Space Odyssey:  <a href="http://www.youtube.com/watch?v=HwBmPiOmEGQ#t=31s">HAL 9000 youtube clip</a>
+<li>If nothing else, you should not be intimidated by the computer as if it's some sort of brain. The computer is a mechanical tool which can do amazing things, but it requires a human to tell it what to do.
+</ul>
+
+
+<h2>First Approximation - How Does a Computer Work?</h2>
+
+<ul class="slide">
+<li>Computer is driven by "code" (more detail later)
+<li>Code is made of simple, mechanical instructions
+<li>The computer runs the series of instructions
+<li>Computers do not have insight
+<li>Machine, following sequence of instructions
+<li>Question: if the computer is so mechanical...
+</ul>
+
+
+<p>
+<img src="code-1.png" alt="computer running its simple instructions">
+
+
+<h2>But So Many Useful Features</h2>
+
+<ul class="slide">
+<li>Think of all the useful computer features (phone, camera)
+<br>--Email, instant messaging
+<br>--MP3 audio
+<br>--Red-eye reduction
+<li>If computers are so stupid... why are they so useful?
+<li>What connects the two sides?
+</ul>
+
+<p>
+<img src="code-2.png" alt="computer vs. red-eye reduction">
+
+
+<h2>Programmers Make It Happen</h2>
+
+<ul class="slide">
+<li>Human programmer thinks of a useful feature
+<br>--Creativity, insight about problems, computers, ...
+<li>Programmer thinks through the solution
+<li>Breaking it down, directing the computer
+<li>Writing code for the computer
+<li>This is what computer programming is
+<li>Every useful feature you've ever used has this pattern
+<li>Combine the best features of both sides: insight + inexpensive/fast
+<li>This diagram as course summary, visit the left side, coding
+</ul>
+
+<p>
+<img src="code-3.png" alt="programmer writes code to implement their feature idea">
+
+<p>Since the computer is totally mechanical and stupid -- how do they manage to do so many useful things? The gap between the computer and doing something useful is where the human programmer creates solutions. Programming is about a person using their insight about what would be useful and how it could be done, and breaking the steps down into code the computer can follow.
+
+<p>
+<b>Code</b> refers to the language the computer can understand. For these lectures, we'll write and run short snippets of code to understand what the essential qualities of computers, and especially their strengths and limitations.
+
+<!--
+<p>Suppose we have a mechanical turnstile with a geared wheel with numbers on it. People walk through the turnstile and it counts them. Does it "understand" the count; does it "know" something? No. It's purely mechnical, just numbers written on a geared wheel.
+<p>Computers are very powerful in their own way, but not somethinig to be intimidated by.
+-->
+
+<p>Experimenting with code, the nature of computers will come through very clearly ... powerful in their own way, but with a limited, mechanical quality. IMHO, this mixed nature of computers is something everyone should understand, to use them well, to not be intimidated by them.
+
+<!--
+do in this class, the above themes will come through very strongly ... giving you a feel for how computers really work.
+
+njp could talk about a mechanical shape sorter .. does it "understand". Then talk about AI ... does many small things added up look like intelligence.
+-->
+
+<h2>Before Coding - Patience</h2>
+
+<ul class="slide">
+<li>We'll start with some simple coding below
+<li>First code examples are not flashy
+<li>Code is like lego bricks... eventually make great combinations
+<li>But we have to start small
+</ul>
+
+<h2>Foreshadowing</h2>
+
+<p>Within a few hours of lecture, we'll be doing special effects with images such as the following:
+
+<br><img src=monkey.jpg width=200 alt="toy monkey"> <img src=moon.jpg width=200 alt="moon surface"> <img src=banana.jpg width=200 alt="banana">
+
+<p>But for now we just have print()!
+
+<p><b>Patience</b> We're going to start by learning a few programming elements, and later we'll recombine these few elements to solve many problems. These first elements are simple, so they are not much to look at on their own. Be patient, soon we'll put these elements together -- like lego bricks -- to make pretty neat projects.
+
+<h2>Javascript</h2>
+
+<ul class="slide">
+<li>Javascript
+<li>Plus some extensions just for this class
+<li>Programs are small ... not professional Javascript
+<li>These are real programs
+</ul>
+
+<p>For this class, we'll use a variant of the language known as "Javascript", with some added features for this course. The Javascript language works in the web browser, so all of our experiments can live right in the browser with nothing else required. We'll look at just  the of Javascript needed for our experiments, not the full language one would see using Javascript professionally. That said, Javascript is a real language and our code is real code. Our small programs show the important features of code, while keeping things fast and small.
+
+<!-- could say something about syntax around here -->
+
+
+<h2>1. First Code Example - Print</h2>
+
+<p>Here is code which calls the "print" function. Click the Run button below, and your computer will run this code, and the output of the code will appear to the right.
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-1" rows=6 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print(6);
+print(1, 2);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<ul class="slide">
+<li><b>Run</b> executes each line once, running from top to bottom
+<li><b>print</b> is a function -- like a verb in the code
+<li>Numbers within the parenthesis ( ... ) are passed in to the print function
+<li>Multiple values separated by commas
+<li><b>Experiments</b> change the code and run after each change see the new output:
+<br>--Change a number
+<br>--Add more numbers separated by commas inside the print(...)
+<br>--Copy the first line and paste it in twice after the last line
+<br>--I promise the output will get more interesting!
+<li><b>Syntax</b> the code is not free form
+<br>--Syntax is narrow, computer can only understand the code in this form
+<br>--A reflection of the inner, mechanical nature of the computer
+<br>--Don't be put off -- "When in Rome..."
+<br>--We're visiting the world of the computer
+<li>Note "print" is not a normal part of Javascript, just for this class
+</ul>
+
+
+<!--
+<p>Print is a "function" which the code "calls" to invoke it. We pass values for the function to use within the parentheses. These values are called the "arguments" to the function call.  We'll call many other functions as we go, and they will all use this arguments-within-parenthesis pattern. The line of code ends with a semicolon, although the code will often work even if the semicolon is omitted.
+-->
+
+<h2>2. Print String</h2>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-2" rows=7 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+// The line below prints one number and one string
+print(6, "hi");
+print("hello", 2, "bye");</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<ul class="slide">
+<li>Plain numbers, e.g. 6
+<li>A <b>string</b> is a sequence of letters written within quotes to be used as data within the code
+<br>--e.g. "hello"
+<br>--Strings work with the print function, in addition to numbers
+<br>--Strings in the computer store text, such as urls or the text of paragraphs, etc.
+<li>A <b>comment</b> begins with // and extends through the end of the line. A way to write notes about the code, ignored by the computer.
+<li><b>Experiments:</b>
+<br>--Edit the text within a string
+<br>--Add more strings separated by commas
+<br>--Add the string "print" -- inside of string is just data, not treated as code
+</ul>
+
+<li>Note that <b>print</b> is recognized as a function in the code vs. the "hello" string which is just passive data (like verbs and nouns)
+The computer ignores the comments, so they are just a way for you to write notes to yourself about what the code is doing. Comments can be use it to temporarily remove a line of code -- "commenting out" the code, by placing a "//" to its 
+
+
+<h2>Thinking About Syntax and Errors</h2>
+
+<ul class="slide">
+<li>Syntax -- code is structured for the computer
+<li>Very common error -- type in code, with slight syntax problem
+<li>Professional programmers make that sort of "error" all the time
+<li>Fortunately, very easy to fix ... don't worry about it
+<li>Not a reflection of some author flaw
+<li>Just the nature of typing ideas into the mechanical computer language
+<li>Demo: a bunch of typical syntax errors + fixing them
+<li>Beginners can be derailed by syntax step
+<li>Do not be intimidated by these quick little errors
+</ul>
+
+<p><b>Syntax</b> The syntax shown above must be rigidly followed or the code will not work: function name, parenthesis, each string has opening and closing quotes, commas separating values for a function call.
+
+<p>The rigidity of the syntax is a reflection of the limitations of computers .. their natural language is fixed and mechanical. This is important to absorb when working with computers, and I think this is where many people get derailed getting started with computers. You write something that any human could understand, but the computer can only understand the code where it fits the computer's mechanical syntax.
+
+<p>When writing for the computer, it is <b>very common</b> to make a trivial, superficial syntax mistakes in the code. The most expert programmers on earth make that sort of error all the time, and think nothing of it. The syntax errors do not reflect some flawed strategy by the author. It's just a natural step in translating our thoughts into the more mechanical language of the computer. As we'll see below, fixing these errors is very fast.
+
+<p>It's important to not be derailed by these little superficial-error cases. To help teach you the patterns, below we have many examples showing typical errors, so you can see what the error messages look like and see how to fix them. For each snippet of code below, what is the error? Sometimes the error message generated by the computer points to the problem accurately, but sometimes the error message just reveals that the error has so deeply confused the computer that it cannot create an accurate error message. Firefox currently produces the most helpful error messages often pointing to the specific line with problems.
+
+
+<!--
+print("a");
+print(1, "b");
+print(2, "c", 3);
+-->
+
+<h2>Syntax Error Examples</h2>
+
+<p>These syntax problems are quick to fix.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-err1" rows=6 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print("a");
+prlnt(1, "b");
+print(2, "c", 3);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-err1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-err1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-err2" rows=6 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print("a");
+print(1, "b);
+print(2, "c", 3);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-err2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-err2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-err3" rows=6 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print("a");
+print(1, "b");
+print(2, "c", 3;</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-err3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-err3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-err4" rows=6 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print("a");
+print(1 "b");
+print(2, "c", 3);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-err4")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-err4-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<hr>
+
+<h2>Example Problem</h2>
+
+<p>
+Change the code below so, when run, it produces the following output:
+<pre>
+1 2 buckle
+3 4 knock
+</pre>
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code1-3" rows=8 cols=55  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+// Change the code to produce the output above
+print(1, "hi");</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code1-3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code1-3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>For the example problems shown in lecture, the solutions are available as shown below. So you can revisit the problem, practice with it, and still see the solution if you like.
+
+<div><button onclick='unhide(this)'>Show Solution</button><div style='display:none'>
+
+<pre>
+print(1, 2, "buckle");
+print(3, 4, "knock");
+</pre>
+</div>
+
+<p>
+&gt; <a href='code-1-exercises.html'>exercises</a>
+
+</body>
+
+<!-- Mirrored from introcomputing.org/code-1-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:29 GMT -->
+</html>
+

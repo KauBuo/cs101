@@ -1,0 +1,311 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-1-data.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:37 GMT -->
+<head>
+<title>Table Data</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Table Data</h1>
+
+<p>
+
+
+
+<!--
+http://www.moma.org/interactives/exhibitions/2011/talktome/objects/145523/
+-->
+
+<!--
+
+-table structure row/data/applications
+-baby data
+-?limit rows? -- have print limit, so maybe don't bother
+-need to expand line/logic checker today, blah
+ -could detect single =
+
+-bunch of simple == name queries
+
+-starts with (baby data)
+-then add && ||
+-many examples
+-exercises possible
+
+-count one thing pattern
+-count multiple things - two patterns
+
+-then the survey
+
+TODO:
+ -field case sensitive -- fix soon?
+ -improve CSV parsing
+ -
+-->
+
+<ul class="slide">
+<li>New form of data -- "table"
+<li>Code that works on tables
+<br>--Similar to image-code ... basic patterns
+<li>Tables are very common way to organize data on the computer
+</ul>
+
+<p>
+As another example of how data is stored and manipulated in the computer, we'll look at "table data" -- a common a way to organize strings, numbers, dates in rectangular table structure. In particular, we'll start with data from the social security administration <a href="http://www.ssa.gov/oact/babynames/">baby name</a> site.
+
+<!--
+bbedit to fix the data
+
+\s*<td>(\d+)</td> <td>(\w+)</td> <td>(\w+)</td>
+\2,\1,male,2009\r\3,\1,female,2009\r
+
+\s*</tr>\s*<tr.*?>
+\r
+-->
+
+<h2>Social Security Baby Name Example</h2>
+
+<ul class="slide">
+<li>Names for babies born each year
+<li>Top 1000 boy and girl names, 2000 names total
+<li>Organized as a "table"
+<br><b>Fields:</b> name, rank, gender, year (columns)
+<br><b>Rows:</b> one row holds the data for one name
+</ul>
+
+<p>
+<img src=table.png alt="table organized as fields and rows">
+
+<ul>
+<li>The <b>table</b> is made of 2000 <b>rows</b>, each row represents the data of one name
+<li>Each row is divided into 4 <b>fields</b>
+<li>Each of the 4 fields has its own name. The field names are: name, rank, gender, year
+</ul>
+
+<h2>Tables Are Very Common</h2>
+
+<ul class="slide">
+<li>Rectangular table format is very common
+<li>"Databases" -- extension of this basic table idea
+<li>Number of fields is small (categories)
+<li>Number of rows can be millions or billions
+<li>e.g. email inbox: one row = one message, fields: date, subject, from, ...
+<li>e.g. craigslist: one row = one thing for sale: description, price, seller, date, ...
+</ul>
+
+<p>
+Much of the information stored on computers uses this table structure.  One "thing" we want to store -- a baby name, someone's contact info, a craigslist advertisement -- is one row. The number of fields that make up a row is fairly small -- essentially the fixed categories of information we think up for that sort of thing. For example one craigslist advertisement (stored in one row) has a few fields: a short description, a long description, a price, a seller, ... plus a few more fields.
+
+<p>The number of fields is small, but the number of rows can be quite large -- thousands or millions. When someone talks about a "database" on the computer, that builds on this basic idea of a table. Also storing data in a spreadsheet typically uses exactly this table structure.
+
+<h2>Table Code</h2>
+
+<p>
+We'll start with some code -- SimpleTable -- which will serve as a foundation for you to write table code. Run the code to see what it does.
+
+
+<ul class="slide">
+<li>Baby data stored in "baby-2010.csv"
+<br>--".csv" stands for "comma separated values" and it is a simple and widely used standard format to store a table as text in a file.
+<li>Recall we had: <code>for (pixel: image) { <i>code</i></code>
+<li>For tables: <code>for (row: table) { <i>code</i></code>
+<li>print(row) prints out the fields of a row on one line
+</ul>
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-1" rows=9 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+
+for (row: table) {
+  print(row);
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<h2>Table Query Logic</h2>
+
+<ul class="slide">
+<li>Select the rows we want (if-statement)
+<li>Database terminology -- a "query" on the database
+<li>e.g. select rows where the rank is 6
+<br><code>if (row.getField("rank") == 6) { ...</code>
+</ul>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-2" rows=9 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("rank") == 6) {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>The above code loops over all the rows, and the if-statement prints just the rows where the test is true -- here testing if the rank field is equal to 6, but really the if-statement could test anything about the row.
+
+<ul class="slide">
+<li><code>row.getField(<i>"field-name"</i>)</code> -- pick field out of row
+<li>Field names for the baby table: name, rank, gender, year
+<li><code>==</code> are two values equal? (two equal signs)
+<li>Warning: single equal sign <code>=</code> does variable assignment, not comparison. Use <code>==</code> inside if-test. (warning)
+<li>Other comparisons: &lt; &gt; &lt;= &gt;=
+<li>e.g. select row where the name is "Alice":
+<br><code>if (row.getField("name") == "Alice") { ...</code>
+</ul>
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-3" rows=10 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name") == "Alice") {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+The row object has a <code>row.getField(<i>"field-name"</i>)</code> function which returns the data for one field out of the row. Each field has a name -- one of "name" "rank" "gender" "year" in this case -- and the string name of the field is passed in to getField() to indicate which field we want, e.g. <code>row.getField("rank")</code> to retrieve the rank out of that row.
+
+<p>
+You can test if two values are equal in JavaScript with two equal signs joined like this: <code>==</code>. Using ==, the code to test if the name field is "Alice" is <code>row.getField("name") == "Alice"</code>
+
+<p>
+Note that a <b>single</b> equal sign <code>=</code> does variable assignment and not comparison. It's a common mistake to type in one equal sign for a test, when you mean two equal signs. For this class, the Run button will detect an accidental use of a single = in an if-test and give an error message. The regular less-than/greater-than type tests: &lt; &gt; &lt;= &gt;= work as have seen before.
+
+
+<h2>Table Query Examples</h2>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-4" rows=10 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name") == "Alice") {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-4")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-4-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+Write in code above to solve these problems:
+
+<ul>
+<li>Baby table fields: name, rank, gender, year
+<li>name field is "Alice", "Robert", "Bob", "Abby", "Abbey" (try each in turn, yes nobody names their child "Bob" .. apparently always using Robert or Bobby)
+<li>rank field is 1
+<li>rank field is &lt; 10
+<li>rank field is &lt;= 10
+<li>rank field is > 990
+<li>gender field is "girl"
+<li>What is going on for all these: the loop goes through all 2000 rows and evaluates the if-test for each, printing that row only if the test is true.
+</ul>
+
+<p>Solution code:
+
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<p>If logic inside the loop:
+<pre>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name") == "Alice") {
+    print(row);
+  }
+}
+// Change string to "Robert", "Bob", etc.
+</pre>
+<hr>
+<pre>
+  if (row.getField("rank") == 1) {
+    print(row);
+  }
+</pre>
+<hr>
+<pre>
+  if (row.getField("rank") < 10) {
+    print(row);
+  }
+</pre>
+
+<hr>
+<pre>
+  if (row.getField("rank") <= 10) {
+    print(row);
+  }
+</pre>
+
+<hr>
+<pre>
+  if (row.getField("rank") > 990) {
+    print(row);
+  }
+</pre>
+
+<hr>
+<pre>
+  if (row.getField("gender") == "girl") {
+    print(row);
+  }
+</pre>
+
+</div></div>
+
+
+<p>
+&gt; <a href='table-1-exercises.html'>exercises</a>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-1-data.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

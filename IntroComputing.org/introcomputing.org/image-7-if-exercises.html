@@ -1,0 +1,128 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-7-if-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:49 GMT -->
+<head>
+<title>Image 7 Exercises</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Image 7 Exercises</h1>
+
+<p>
+
+
+
+
+<p>
+1. Here is the fence-ivy.jpg image.
+
+<br><img src="fence-ivy.jpg" alt="red fence with green ivy">
+
+<p>
+Write code that picks out the pixels of the green leaves in the image (using the &gt; avg * factor technique, as in lecture). For each green pixel identified, set its green value to 0. The result is that the green leaves are changed to a sort of weird purple color, since setting green to 0, we just have red and blue contributing.
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-7-ex1" rows=15 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("fence-ivy.jpg");
+
+for (pixel: image) {
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-7-ex1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-7-ex1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+2. Here is the stop.jpg image.
+
+<br><image src="stop.jpg" alt="stop sign">
+
+
+<p>
+Write code that picks out the blue sky (using the &gt; avg * factor technique, as in lecture). Change the blue pixels to be red=20 green=20 blue=20 .. so it looks like nighttime. Adjust your code so it changes the sky, but not the white letters in the sign (which are technically a little blue).
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-7-ex2" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("stop.jpg");
+
+for (pixel: image) {
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-7-ex2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-7-ex2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+
+<p>
+3. Here is the curb.jpg image.
+
+<br><image src="curb.jpg" alt="red curb">
+
+<p>
+The goal for this problem is to change the curb to look blue. Detect the red pixels of the curb using the avg technique as usual. For each pixel, change its red and green values to be half the average value, and change its blue value to 1.2 times the average value. In effect, this sets red and green low and blue high, making it look kind of blue. Note that the blue effect will apply to the reddish plants off to the right as well -- now they are blueish plants.
+
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-7-ex3" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("curb.jpg");
+
+for (pixel: image) {
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-7-ex3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-7-ex3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/image-7-if-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:51 GMT -->
+</html>
+

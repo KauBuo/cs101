@@ -1,0 +1,116 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/bits-bytes-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:34 GMT -->
+<head>
+<title>Bits and Bytes</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Bits and Bytes</h1>
+
+<p>
+
+
+
+<p>At the smallest scale in the computer, information is stored as bits and bytes. In this section, we'll look at how that works.
+
+<h2>Bit</h2>
+
+<ul class="slide">
+<li>Bit -- like an atom -- the smallest unit of storage
+<li>A bit stores just a 0 or 1
+<li>"Computer is all 0's and 1's" ... bits
+<li>Anything with two separate states can store 1 bit
+<br>--Nick's tennis racket example
+<li>Chip uses electricity 0/1 states
+<li>Hard drive uses spots North/South magnetism 0/1 states
+<li>Bit too small to be much use
+<li>Group 8 bits into a byte
+</ul>
+
+<p>Everything in a computer is 0's and 1's ... what does that mean? The <b>bit</b> stores just a 0 or 1 .. it's the smallest building block of storage.
+
+
+<h2>Byte</h2>
+
+<ul class="slide">
+<li>One byte = grouping of 8 bits
+<li>e.g. 0 1 0 1 1 0 1 0
+<li>One byte can store one letter, e.g. 'b' or 'x'
+</ul>
+
+
+<h2>How much exactly can one byte hold?</h2>
+
+<ul class="slide">
+<li>How many distinct/separate patterns can be made with 1, 2, or 3 bits?
+<li>(Not hold you responsible for details, go through derivation)
+</ul>
+
+<table>
+ <tr><th>Number of bits</th> <th>Distinct Patterns</th> </tr>
+ <tr> <td>1</td> <td>0 1</td> </tr>
+ <tr> <td>2</td> <td>00 01 10 11</td> </tr>
+ <tr> <td>3</td> <td>000 001 010 011 <br>100 101 110 111</td> </tr>
+</table>
+
+
+<ul class="slide">
+<li>3 Bits
+<li>Consider just the leftmost bit
+<li>It can only be 0 or 1
+<li>Lefmost bit is 0, append 2-bit patterns
+<li>Leftmost bit is 1, append 2-bit patterns again
+<li>Result ... 3-bits has twice as many patterns as 2-bits
+</ul>
+
+<table>
+ <tr><th>Number of bits</th> <th>Distinct Patterns</th> </tr>
+ <tr> <td>1</td> <td>0 1</td> </tr>
+ <tr> <td>2</td> <td>00 01 10 11</td> </tr>
+ <tr> <td>3</td> <td><font style="font-size:140%">0</font>00 <font style="font-size:140%">0</font>01 <font style="font-size:140%">0</font>10 <font style="font-size:140%">0</font>11 <br><font style="font-size:140%">1</font>00 <font style="font-size:140%">1</font>01 <font style="font-size:140%">1</font>10 <font style="font-size:140%">1</font>11</td> </tr>
+</table>
+
+<ul class="slide">
+<li>In general: add 1 bit, double the number of patterns
+<li>1 bit - 2 patterns
+<li>2 bits - 4 
+<li>3 bits - 8
+<li>4 bits - 16
+<li>5 bits - 32
+<li>6 bits - 64
+<li>7 bits - 128
+<li>8 bits - 256
+<li>Mathematically: n bits yields 2&#8319; patterns (2 to the nth power)
+</ul>
+
+<h2>One Byte - 256 Patterns</h2>
+
+<ul class="slide">
+<li>Need to know:
+<li>1 byte is group of 8 bits
+<li>8 bits can make 256 different patterns
+<li>How to use the 256 patterns?
+<li>How to store a number in a byte?
+<li>Start with 0, go up, one pattern per number, until run out of patterns (256)
+<li>0, 1, 2, 3, 4, 5, ... 254, 255
+<li>One byte holds a number 0..255
+<li>Code: pixel.setRed(n) took a number 0..255. Why?
+<li>Red value stored in <b>one byte</b>
+</ul>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/bits-bytes-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:34 GMT -->
+</html>
+

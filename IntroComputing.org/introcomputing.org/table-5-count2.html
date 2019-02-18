@@ -1,0 +1,314 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-5-count2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Counting Multiple Things</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Counting Multiple Things</h1>
+
+<p>
+
+
+
+<p>Now that we have table counting, the natural thing to want to do is count multiple things to compare them.
+
+<ul class="slide">
+<li>Count multiple things in the loop
+<li>Have multiple counters:
+<br><code>count1 = 0;  // boy counter</code>
+<br><code>count2 = 0;  // girl counter</code>
+<li>Series of if-statements inside the loop (our official form)
+<br>--<code>x = x + 1;</code>  -- within if-statement, correct variable
+<br>--Note the if-statements are not nested (more complex)
+<li>After the loop, print both counters
+<li>Alternative: could use more mnemonic variable names, like countBoy and countGirl
+</ul>
+
+<p>
+Do more boy or girl names end with "y"? We want a program which by the end prints "girl count:nn" and "boy count:nn", counting whatever characteristic we are looking for. This is beginning to look like an actual, practical use of computers to sift through data.
+
+<p>One approach is to use two (or more) counters, one for each case we want to count. Here we'll have one boy counter (count1) and one girl counter (count2). Initialize both counters to 0 before the loop. Then in the loop, have two if statements, one for each case we want to count. Inside each if-statement, increment the appropriate counter. At the end of the loop, print the counters. 
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table5-1" rows=22 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+
+count1 = 0;  // boy counter
+count2 = 0;  // girl counter
+for (row: table) {
+
+  if (row.getField("name").endsWith("y") &&
+      row.getField("gender") == "boy") {
+    count1 = count1 + 1;
+  }
+
+  if (row.getField("name").endsWith("y") &&
+      row.getField("gender") == "girl") {
+    count2 = count2 + 1;
+  }
+
+}
+print("boy count:", count1);
+print("girl count:", count2);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table5-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table5-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>It's possible to write the above code in different ways, but we will use that simple pattern: one if-statement for each case we want to count, and the if-statements are all in the loop, one after the other.
+
+
+<h2>Names ending in a, i o?</h2>
+ 
+<p>Code example with 3 counters.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table5-2" rows=24 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+
+count1 = 0;
+count2 = 0;
+count3 = 0;
+for (row: table) {
+
+  if (row.getField("name").endsWith("a")) {
+    count1 = count1 + 1;
+  }
+
+  if (row.getField("name").endsWith("i")) {
+    count2 = count2 + 1;
+  }
+  
+  if (row.getField("name").endsWith("o")) {
+    count3 = count3 + 1;
+  }
+
+}
+print("a count:", count1);
+print("i count:", count2);
+print("o count:", count3);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table5-2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table5-2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+<h1>Class Survey</h1>
+
+<p>
+As another example of a table, we have the class survey of data from the live class at Stanford with people's favorite movies and what have you. The questions for this survey were:
+
+<ul>
+<li>Gender: male/female
+<li>What is your favorite color?
+<li>What is your favorite current TV show?
+<li>What is your favorite current movie?
+<li>What is your favorite sport to play?
+<li>What is your favorite current book?
+<li>What is your favorite soda to drink?
+</ul>
+
+<p>
+The survey answers are automatically translated to a google spreadsheet which can be exported in csv table. This data is available in the file "survey-2012.csv". This also illustrates that .csv format's role as an interchange format between systems.
+
+ <!-- njp explain/link how to set up a survey -->
+
+<p>
+The field names in the table are: gender, color, tv, movie, sport, book, soda. The convertToLowerCase() function of the table changes all the text the table contains to lower case. This simplifies our logic, so we don't have to worry if someone typed in "Blue" or "blue" .. in the table it will always be the lowercase "blue" form. For consistency in the data, I also removed all periods, so soda is "Dr Pepper" not "Dr. Pepper", and I changed the various spellings "coca-cola" to just "coke".
+
+
+<h2>Survey Code Example Problems</h2>
+
+<p>These can all be written using our "loop containing series of if-statements" form.
+
+<p>1. Write code to just print the soda field of each row, so we can get a feel for what people typed in.
+
+<p>2. Count soda favorites: sprite, dr pepper, coke
+
+<p>3. Variant on above: use || to lump together "dr pepper" and "diet dr pepper" for each of the three drinks above.
+
+<p>4. Count sports: football and soccer
+
+<p>5. Variant on above: change the code to only count soccer answers, however keep separate counts for gender male and female.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table5-3" rows=26 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+count = 0;
+for (row: table) {
+  // your code here
+  
+}
+print("count:", count);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table5-3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table5-3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+<p>Table code solutions:
+
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+
+<pre>
+// 1. just print the soda field
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+
+for (row: table) {
+  print(row.getField("soda"));
+}
+</pre>
+<hr>
+
+<pre>
+// 2. count 3x sodas
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+
+count1 = 0;
+count2 = 0;
+count3 = 0;
+for (row: table) {
+
+  if (row.getField("soda") == "sprite") {
+    count1 = count1 + 1;
+  }
+
+  if (row.getField("soda") == "dr pepper") {
+    count2 = count2 + 1;
+  }
+  
+  if (row.getField("soda") == "coke") {
+    count3 = count3 + 1;
+  }
+
+}
+print("sprite count:", count1);
+print("dr pepper count:", count2);
+print("coke count:", count3);
+</pre>
+<hr>
+
+<pre>
+// 3. count 3x sodas, including diet
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+count1 = 0;
+count2 = 0;
+count3 = 0;
+for (row: table) {
+
+  if (row.getField("soda") == "sprite" ||
+      row.getField("soda") == "diet sprite") {
+    count1 = count1 + 1;
+  }
+
+  if (row.getField("soda") == "dr pepper" ||
+      row.getField("soda") == "diet dr pepper") {
+    count2 = count2 + 1;
+  }
+  
+  if (row.getField("soda") == "coke" ||
+      row.getField("soda") == "diet coke") {
+    count3 = count3 + 1;
+  }
+}
+print("sprite + diet count:", count1);
+print("dr pepper + diet count:", count2);
+print("coke + diet count:", count3);
+
+</pre>
+<hr>
+
+<pre>
+// 4. Count soccer vs. football
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+count1 = 0;
+count2 = 0;
+for (row: table) {
+
+  if (row.getField("sport") == "soccer") {
+    count1 = count1 + 1;
+  }
+
+  if (row.getField("sport") == "football") {
+    count2 = count2 + 1;
+  }
+}
+print("soccer count:", count1);
+print("football count:", count2);</pre>
+</pre>
+
+<hr>
+
+<pre>
+// 5. Soccer count, separate out male and female
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+count1 = 0;
+count2 = 0;
+for (row: table) {
+
+  if (row.getField("sport") == "soccer" &&
+      row.getField("gender") == "male") {
+    count1 = count1 + 1;
+  }
+
+  if (row.getField("sport") == "soccer"  &&
+      row.getField("gender") == "female") {
+    count2 = count2 + 1;
+  }
+}
+print("soccer male:", count1);
+print("soccer female:", count2);
+</pre>
+
+
+</div></div>
+
+<p>
+&gt; <a href='table-5-exercises.html'>exercises</a>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-5-count2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

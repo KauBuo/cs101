@@ -1,0 +1,251 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-2-code.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:43 GMT -->
+<head>
+<title>Image Code</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Image Code</h1>
+
+<p>
+
+
+
+<!-- image-2 -->
+
+<p>In this section, we'll look at simple code to load and manipulate a digital image. Here we'll just manipulate one pixel at a time. In the next section, scaling up to operate on thousands of pixels at a time.
+
+<h2>x.png</h2>
+
+<ul class=slide>
+<li>x.png -- tiny example image (10 x 10)
+<li>PNG format, like JPG
+</ul>
+
+<p>
+The image "x.png" is very simple -- it's a very small black square with a white "x" at its center. PNG (Portable Network Graphics) is a image format, like JPG. Here is x.png: <img src=x.png>
+
+<h2>x.png Code Example</h2>
+
+<ul class=slide>
+<li>Three line program
+<li><code>image = new SimpleImage("x.png");</code> -- load into variable
+<li><code>image.setZoom(20);</code>  -- set zoom option to 20 (10, 20, 30, ... whatever)
+<li><code>print(image);</code> -- print image to the right, as usual
+<li>Zoom: each pixel shown 20x size here
+</ul>
+
+<p>Our first image code example loads the x.png image and prints it. Run the code to see what it does. Try changing the <code>image.setZoom(20)</code> to use the number 10 or 30 instead.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image2-1" rows=6 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("x.png");
+image.setZoom(20);
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image2-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image2-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<h2>pixel.setRed(255) Example</h2>
+
+<ul class=slide>
+<li><code>pixel = image.getPixel(0, 0);</code> -- upper left pixel
+<li><code>pixel.setRed(255);</code>  -- set red value of that pixel
+</ul>
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image2-2" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image2-2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image2-2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<h2>Pixel Set Red/Green/Blue Functions</h2>
+
+<ul class=slide>
+<li><code>pixel.setRed(<i>number</i>);</code>  -- set the red value of the pixel to be the given number (0..255)
+
+<li><code>pixel.setGreen(<i>number</i>);</code>  -- set the green value
+
+<li><code>pixel.setBlue(<i>number</i>);</code>  -- set the blue value
+
+</ul>
+
+
+<h2>Aside: Image Functions Reference</h2>
+
+<p>For later reference, there is a separate <a href=image-functions-reference.html>image functions reference</a> page which lists in one place the image functions such as <code>pixel.setRed(<i>number</i>)</code> we are using here.
+
+
+<h2>Experiments On Pixel (0, 0)</h2>
+
+<p>
+To see how <code>image.getPixel(x, y)</code> and <code>pixel.setRed(<i>number</i>)</code> etc. work, we'll try the experiments listed below (use the "show" button to see the solution code).
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image2-3" rows=12 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image2-3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image2-3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<table>
+
+<tr><th>Example Problems</th><th>Solution</th></tr>
+
+<tr><td width="40%">Set pixel (0, 0) to be green.</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+pixel = image.getPixel(0, 0);
+pixel.setGreen(255);
+</pre></div></td></tr>
+
+<tr><td>Set pixel (0, 0) to be yellow.</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);  // idea: set red and green to 255
+pixel.setGreen(255);
+</pre></div></td></tr>
+
+<tr><td>Set pixel (1, 0) to be yellow. Where is that pixel?</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+pixel = image.getPixel(1, 0);
+pixel.setRed(255);
+pixel.setGreen(255);
+// Calling getPixel(1, 0) edits the pixel
+// one to the right of pixel (0, 0).
+</pre></div></td></tr>
+
+<tr><td>Set pixel (0, 0) to white.</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(255);
+</pre></div></td></tr>
+
+<tr><td>Set pixel (0, 0) to be dark yellow -- set the necessary colors to 150 instead of 255.</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+pixel = image.getPixel(0, 0);
+pixel.setRed(150);
+pixel.setGreen(150);
+</pre></div></td></tr>
+
+<tr><td>Set pixel (0, 0) to be a light, pastel red.</td>
+<td><button onclick='unhide(this)'>show</button><div style='display:none'>
+<pre>
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);
+pixel.setGreen(200);
+pixel.setBlue(200);
+// Set red at 255, green and blue equal but lower.
+</pre></div></td></tr>
+
+</table>
+
+
+
+<p>
+&lt; <a href='image-2-exercises.html'>exercises</a>
+
+
+<!--
+Other exercise ideas:
+
+
+-flowers, 0,0 to red .. it's kind of a weak red .. why is that
+-print pixel before/after .. see what's going on
+-make the red pixel vivid: set the others to 0 (flowers)
+
+-little lines, horiz, vert, diagonal
+
+-flowers set red to 0, what do you see?
+
+-switch between x.png and flowers-small.jpg with the same code
+
+<ul>
+<li>Set the three pixels at (0, 0) (1, 0) (2, 0) to be red
+<li>Change the code to work on the "flowers.jpg" image, then back to "square.png" (jpg and png are two commonly used format standards for digital images)
+<li>Set the three pixels at (0, 0) (1, 0) (2, 0) to be yellow
+<li>Consider the three pixels going diagonally down and to the right from (0, 0) -- what are their coordinates? Set those three pixels to be yellow.
+<li>Print the width of the image (the code image.getWidth() retrieves the width, just put it in a print()).
+<li>Set the <b>upper-right</b> pixel to be red (the x coordinate of the upper right pixel is width-1)
+</ul>
+
+-->
+
+
+<!--
+njp - I'm holding this back for now
+
+<h2>Red, Green, and Blue Channels</h2>
+
+<p>Every pixel in the image is made with a mixture of red, green, and blue light. To see this, you can divide the original image into three color "channel" images, one for each color. Below is the flowers.jpg image followed by its three color channels. The red channel shows only the red light with green and blue stuck at 0, the next shows just the green light, and so on. Adding these three channels together yields the original image. Notice that the yellow flowers are bright in both the red and green channels. The green leaves pretty much only appear in the green channel. The blue channel is mostly near 0 everywhere, as the original image just does not have much blue in it.
+
+<p>
+<image src=flowers.jpg width=200>
+<p><img src=flowers-red.jpg width=200>
+<img src=flowers-green.jpg width=200>
+<img src=flowers-blue.jpg width=200>
+
+-->
+
+</body>
+
+<!-- Mirrored from introcomputing.org/image-2-code.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
+</html>
+
+

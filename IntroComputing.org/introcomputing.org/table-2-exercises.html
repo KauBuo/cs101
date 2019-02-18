@@ -1,0 +1,106 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-2-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Table 2 Exercises</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Table 2 Exercises</h1>
+
+<p>
+
+
+
+<p>
+These exercises use the startsWith and endsWith functions on the baby name data. The baby fields are "name", "rank", "gender", "year". As a reminder, here is the key line from the lecture example -- testing if the name field in a row begins with "Ab":
+
+<pre>
+  ...
+  if (row.getField("name").startsWith("Ab")) {
+  ...
+</pre>
+
+
+<p>
+1. Write code to print all the rows where the name starts with "X".
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table2-ex1" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table2-ex1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table2-ex1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+2. Write code to print all the rows where the name starts with "Xz".
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table2-ex2" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table2-ex2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table2-ex2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+3. Write code to print all the rows where the name ends with "x".
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table2-ex3" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table2-ex3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table2-ex3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-2-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

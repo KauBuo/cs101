@@ -1,0 +1,100 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-2-startswith.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>String startsWith endsWith</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>String startsWith endsWith</h1>
+
+<p>
+
+
+
+<p>Previously we did tests with <code>==</code> and <code><</code> -- in this short section, add the startsWith/endsWith functions which test which letters are at the start or end of a string.
+
+
+<ul class="slide">
+<li>Alternative to ==, very handy for baby names
+<li>Test if the name field in a row starts with "Ab":
+<br><code>if (row.getField("name").startsWith("Ab")) { ...</code>
+<li>Test if the name field in a row ends with "zy":
+<br><code>if (row.getField("name").endsWith("zy")) { ...</code>
+<li>Useful functions, not part Javascript, but in other languages
+<li>I added them just for this class
+<li>Use these with row.getField("name") for many examples
+</ul>
+
+<p>
+These tests work very well with the name strings pulled out of the baby data. Here we can look at all the names beginning with "Ab".
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table1-5" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  if (row.getField("name").startsWith("Ab")) {
+    print(row);
+  }
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table1-5")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table1-5-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<ul>
+<li>Variants to try above
+<li>name field starts with "Ab", "A", "a" (lower case), "Z", "Za" (each in turn)
+<li>name field ends with "z", "ly", "la" (each in turn)
+</ul>
+
+<p>
+For our purposes, strings support a <code>s.startsWith("Ab")</code> function, here testing if the string in the variable s starts with the "Ab" .. true or false. Likewise, there is <code>s.endsWith("yz")</code>, here testing if the string in variable s has "yz" at its very end. (Sadly, these two functions are not part of standard JavaScript; I made them work just for out code because they are so useful. These two functions are common in other computer languages.)
+
+
+<p>Solution code:
+
+<div><button onclick='unhide(this)'>Show</button><div style='display:none'>
+<p>If logic inside the loop:
+
+<pre>
+if (row.getField("name").startsWith("Ab")) {
+  print(row);
+}
+// Change string to "A", "a", "Z", .. each in turn
+</pre>
+<hr>
+
+<pre>
+if (row.getField("name").endsWith("z")) {
+  print(row);
+}
+</pre>
+
+</div></div>
+
+<p>
+&gt; <a href='table-2-exercises.html'>exercises</a>
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-2-startswith.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

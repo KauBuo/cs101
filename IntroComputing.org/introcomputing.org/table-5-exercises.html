@@ -1,0 +1,117 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/table-5-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+<head>
+<title>Table 5 Exercises</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Table 5 Exercises</h1>
+
+<p>
+
+
+
+<p>
+Each of the following problems asks you to count two things. The last two lines printed should look like:
+
+<pre>
+count: 23
+count: 42
+</pre>
+
+<p>
+For simplicity, we will just use the word "count" for both lines in the output. The starter code includes lines to set variables <code>count1</code> and <code>count2</code> to zero before the loop. As usual, you can print and count some cases by hand to check your code before submit time.
+
+
+
+<p>
+1. Do more baby names start with "A" or "B"? Write code to count and print those two counts ("A" count, then "B" count). 
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table5-ex1" rows=12 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("baby-2010.csv");
+count1 = 0;
+count2 = 0;
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table5-ex1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table5-ex1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+2. Now we'll look at the survey data. How many people identified "red" or "blue" as their favorite color? The appropriate field in the survey is "color". Write code to count and print those two cases ("red" count, then "blue" count).
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table5-ex2" rows=14 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+count1 = 0;
+count2 = 0;
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table5-ex2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table5-ex2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<p>
+3. Instead of looking at the whole survey, let's look only at the people who identified "coke" as their favorite soda (not "diet coke", just "coke"). How many of them ("coke" rows) identified "red" or "blue" as their favorite color? The appropriate fields in the survey are "soda" and "color". Write code to count and print those two cases ("red" count, then "blue" count), among the coke drinkers.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="table5-ex3" rows=12 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+table = new SimpleTable("survey-2012.csv");
+table.convertToLowerCase();
+count1 = 0;
+count2 = 0;
+for (row: table) {
+  // your code here
+  
+}</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("table5-ex3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='table5-ex3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/table-5-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:38 GMT -->
+</html>
+

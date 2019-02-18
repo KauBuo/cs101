@@ -1,0 +1,311 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/hardware-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:57:21 GMT -->
+<head>
+<title>Computer Hardware</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Computer Hardware</h1>
+
+<p>
+
+
+
+
+<!--
+Outline:
+-3 major categories
+-pictures of hardware
+
+-hard drive video
+
+-KB / MB / GB
+-word problems for above
+
+Q: make up some questions .. end-exercise, or midway
+
+
+ 
+add ideas:
+-typical phone/computer
+
+-->
+
+<ul class="slide">
+<li>Computer - hardware and software
+<li>Like piano and music
+<li>In this section: hardware
+</ul>
+
+<p>
+The computer is an amazingly useful general-purpose technology, to the point that now cameras, phones, thermostats .. these are all now little computers. This section will cover a lot of ground, introducing major parts and themes of how computer hardware works. "Hardware" refers the physical parts of the computer, and  "software" refers to the code that runs on the computer. The piano is the hardware, the music is the software. Hardware and software are deep topics, but many of the basic principles make perfect sense and will give you an insight about what's going on behind the scenes.
+
+<h2>Chips and Transistors</h2>
+
+<ul class="slide">
+<li>Transistor - important building block
+<li>Chip - fingernail sized silicon
+<li>Chip can contain billions of transistors
+<li>e.g. CPU chips, memory chips, flash chips
+<li>"Solid state" - no moving parts
+<li>vs. Silicone
+</ul>
+
+<!-- <li>Chips are very sensitive to dust..<br>Made in clean room, "bunny suits"
+-->
+
+<p>Silicon chip -- linking to wikimedia image by Ioan Sameli, CC licensed
+<br>
+<img src="../upload.wikimedia.org/wikipedia/commons/thumb/c/c7/153056995_5ef8b01016_o.jpg/776px-153056995_5ef8b01016_o.html" alt="silicon chip with tiny wires">
+
+
+<p>Modern computers use tiny electronic components which can be etched onto the surface of a silicon chip. (See: <a href=http://en.wikipedia.org/wiki/Integrated_circuit>wikipedia chip</a>) Note that <b>silicon</b> (chips, solar panels) and <b>silicone</b> (soft rubbery material) are different!
+
+<p>The most common electronic component is the "transistor" which works as a sort of amplifying valve for a flow of electrons. The transistor is a "solid state" device, meaning it has no moving parts. It is a basic building block used to construct more complex electronic components. In particular, a "bit" (below) can be built with an arrangement of 5 transistors. The transistor was invented in the early 1950's, replacing the vacuum tube. Since then, transistors have been made smaller and smaller, allowing more and more of them to be etched onto a silicon chip. 
+
+<h2>Moore's Law</h2>
+
+<ul class="slide">
+<li>Transistors get smaller about every 18-24 months
+<li>Can fit twice as many per chip
+<li>Observation vs. "law"
+<li>In effect, transistors/computers get cheaper (powerful)
+<li>Why computers are now in cars, thermostats
+<li>$50 MP3 player bigger every couple years: 2GB, 4GB, 8GB
+<li>Exponential -- 10 doublings, about 1000 x
+<li>Moore's law ... computers cheap, everywhere
+</ul>
+
+<p>Moore's law (Gordon Moore, Intel co-founder) states that the density of transistors on a chip doubles about every 2 years or so (sometimes listed as every 18 months). It is not a scientific law, just a broad prediction that seems to keep working. More broadly, it captures the idea that per dollar, computer technology (not just transistors) gets exponentially better as time goes along. This is quite clear if you look at the cost or capability of computers/cameras etc. you have owned. It might mean that each new generation of computer is more capable. OR it could mean that keeping capability constant, computers get cheaper and cheaper .. showing up in more in more places as it becomes cost effective (e.g. in your car, your thermostat, ..).
+
+<!-- njp - talk bout last gen ipod -->
+
+<h2>Computer Hardware</h2>
+
+<p>
+Now let's talk about the three major parts that make up a computer -- <b>CPU</b>, <b>RAM</b>, and <b>Persistent Storage</b>. These three are found in a laptop, or a smart phone, or a tablet.
+
+<p><img src=hardware-diagram.png>
+
+
+<h2>1. CPU</h2>
+
+<ul class="slide">
+<li>CPU - Central Processing Unit
+<li>The brains
+<li>Performs simple operations
+<li>e.g. Add two numbers
+<li>Say a computer can run 2 billion operations per second
+<br>-- that's the CPU
+<li>Run button ... code "runs" on the CPU
+</ul>
+
+<p>CPU - Central Processing Unit - inevitably referred to as the "brains" of the computers. The CPU does the active "running" of code, manipulating data, while the other components have a more passive role, such as storing data. When we say that a computer can "add two numbers, a billion times a second" .. that's the CPU. When you hit the Run button, the CPU ultimately "runs" your code. Later on, we will complete the picture of how your Javascript code is run by the CPU.
+
+
+<h2>Bytes</h2>
+
+<ul class="slide">
+<li>Byte -- unit of information storage
+<br>-- a document, an image, a movie .. how many bytes?
+<li>1 byte is enough to hold 1 letter, e.g. 'b' or 'X'
+<li>Below we'll look at storage in: RAM, hard drives, flash drives
+<li>All measured in bytes, despite being very different hardware
+<li>Megabyte, MB, about 1 million bytes
+<li>Gigabyte, GB, about 1 billion bytes
+</ul>
+
+<p>
+The space that data takes up in the computer is measured in by the "byte". One byte is big enough to hold a single typed letter, like 'a'. Here we'll look at storing data in RAM memory and in persistent storage like a hard drive. All of that storage space will be measured in bytes.
+
+
+<h2>2. RAM</h2>
+
+<ul class="slide">
+<li>RAM - Memory, Random Access Memory
+<li>Temporary, working storage bytes
+<li>e.g. new SimpleImage("flowers.jpg")
+  <br>--bytes of image loaded into RAM
+<li>e.g. pixel.setRed(0) ... manipulating bytes in RAM
+<li>RAM is "volatile", not "persistent", .. gone when power goes out
+<li>e.g. You're working on a  doc, then power goes out (vs. "Save")
+</ul>
+
+<p>RAM - Random Access Memory, or just "memory". RAM is the working scratchpad memory the computer uses to store code and data that are being actively used. RAM is effectively a storage area of bytes under the control of the CPU. RAM is relatively fast, able to retrieve the value of any particular byte in a few nanoseconds (1 nanosecond is 1 billionth of a second). The other main feature of RAM is that it only keeps its state so long as it is supplied with power -- RAM is "volatile", not "persistent". 
+
+<p>Suppose you are working on your computer and it suddenly loses power and the screen goes blank. You understand that what you were working on is gone .. RAM has been wiped clean, leaving you only with what you last saved to disk (below).
+
+<!-- njp - could have diagram here, showing saved vs. unsaved state -->
+
+
+<h2>3. Persistent Storage: Hard Drive, Flash Drive</h2>
+
+<ul class="slide">
+<li>Persistent storage
+<br>--"Non volatile" .. preserved when not powered
+<li>Hard drive - stores bytes as a magnetic pattern on a spinning disk
+ <br>--aka "hard disk"
+ <br>--High pitch spinning sound you may have heard
+<li>Flash drive - stores bytes as electrons in a chip
+ <br>--aka "Flash memory"
+ <br>--"Solid state", no moving parts approach
+<li>Flash storage forms: usb key, SD card in camera, flash chips built into a tablet
+<li>Flash used to be very expensive, so most computers used hard disks
+<li>However flash is getting cheaper (Moore's law)
+<li>Not to be confused with "Adobe Flash", a proprietary media format
+</ul>
+
+
+<p>Persistent storage - long term storage for bytes as files and folders. Persistent meaning that the bytes are stored, even when power is removed. A laptop might use a spinning hard drive (also known as "hard disk") for persistent storage of files. Or it could use a "flash drive", also known as a Solid State Disk - SSD, to store bytes on flash chips. The hard drive reads and writes magnetic patterns on a spinning metal disk to store the bytes, while flash is "solid state" .. no moving parts, just silicon chips with tiny groups of electrons to store the bytes. In either case, the storage is persistent, in that it maintains its state even when the power is off.
+
+<p>A flash drive is faster and uses less power than a hard disk. However, per byte, flash is significantly more expensive than hard drive storage. Flash has been getting cheaper, so it may take over niches at the expense of hard drives. Flash is much slower than RAM, so it is not a good replacement for RAM. Note that Adobe "flash" is an unrelated concept; it is a proprietary media format.
+
+<p>Flash storage is what underlies USB thumb drives, SD cards for use in cameras, or the built-in storage in a tablet or phone.
+
+<!--
+<p><a href=nick-hard-drive.webm>Short Video of hard drive</a> -- how it works
+-->
+
+<h2>File System</h2>
+
+<ul class="slide">
+<li>When you take a digital picture, where does it go?
+<li>File system -- organize the bytes of persistent storage
+<li>"File" - a name, a handle to a block of bytes
+<li>e.g. "flowers.jpg" refers to 48KB of image data bytes
+</ul>
+
+<p>The hard drive or flash drive provides persistent storage as a flat area of bytes without much structure. Typically the hard disk or flash disk is formatted with a "file system" which organizes the bytes into the familiar pattern of files and directories, where each file and directory has a somewhat useful name like "resume.txt". When you connect the drive to a computer, the computer presents the drive's file system to the user, allowing them open files, move file around, etc.
+
+<p>Essentially, each file in the file system refers to a block of bytes, so the "flowers.jpg" name refers to a block of 48KB of bytes which are the data of that image. The file system in effect gives the user a name (and probably an icon) for a block of data bytes, and allows the user to perform operations on that data, like move it or copy it or open it with a program. The file system also tracks information about the bytes: how many there are, the time they were last modified.
+
+<p>Microsoft uses the proprietary NTFS file system, and Mac OS X has its Apple proprietary HFS+ equivalent. Many devices (cameras, MP3 players) use the very old Microsoft FAT32 file system on their flash cards. FAT32 is an old and primitive file system, but it is good where wide support is important. <!-- Proprietary and patented formats can be awkward for storage -- in the future, you might need permission from someone to read your own bytes. -->
+
+
+<h2>Pictures of Hardware</h2>
+
+<p>
+<p>Below images of a low-end Shuttle computer with a 1.8ghz CPU, 512MB of RAM and a 160GB hard drive. It cost about $200 in around 2008. It broke, and so became a classroom example.
+
+<p>
+Here is the flat "motherboard", a little smaller than a 8.5 x 11 piece of paper, that the various components plug in to. At the center is the CPU. At the far is the RAM memory. Just to the right of the CPU are a couple support chips. Prominently, one of the chips is covered with a copper "heatsink" .. this presses tightly against the chip, dissipating the heat from the chip into the surrounding air. The CPU also had a very large heatsink, but it was removed to make the CPU visible.
+
+<ul class="slide">
+<li>Motherboard
+<li>CPU metal package, held by lever
+<li>Copper heatsink
+</ul>
+
+<br>
+<img src=hardware-motherboard.jpg alt="picture of motherboard">
+
+<p>
+The CPU is held tightly against the motherboard by a little lever mechanism. Here the mechanism is released so the CPU can be picked up. The fingernail sized CPU is packaged underneath this metal cover which helps conduct the heat from the CPU up to its heatsink. The gray stuff on the metal chip cover is "thermal paste", a material which helps conduct heat from the chip housing to its (not shown) heatsink.
+
+
+<ul class="slide">
+<li>CPU chip in metal package
+<li>Heatsink has been removed
+<li>Bottom of package .. many connections (little wires)
+</ul>
+<br>
+<img src=hardware-cpu.jpg alt="cpu chip package">
+
+
+<p>
+Flipping the CPU over shows the little gold pads on the bottom of the CPU. Each pad is connected by a very fine wire to a spot on the silicon chip.
+
+
+<br>
+<img src=hardware-cpu2.jpg>
+
+<p>
+Here is a picture of another chip, but with the top packaging removed. You see the pinky-fingernail silicon chip at the center with the tiny transistor details etched onto it. At the chip edge, see the very fine wires connecting parts of the chip to outside pads (linking to wikimedia image by Ioan Sameli, CC licensed).
+<br>
+<img src="../upload.wikimedia.org/wikipedia/commons/thumb/c/c7/153056995_5ef8b01016_o.jpg/776px-153056995_5ef8b01016_o.html" alt="silicon chip with tiny wires">
+
+<p>
+Now looking from the side, the heatsink and the RAM memory card can be seen more clearly, sticking up from the motherboard.
+
+<ul class="slide">
+<li>RAM memory card
+<li>Plugs in to motherboard
+<li>512 MB card (4 chips)
+</ul>
+<br>
+<img src=hardware-motherboard2.jpg>
+
+<p>
+RAM is built with a few chips packaged together onto a little card known as a DIMM that plugs into the motherboard (dual inline memory module). Here we see the RAM DIMM removed from its motherboard socket. This is a 512MB DIMM built with 4 chips. A few years earlier, this DIMM might have required 8 chips in order to store 512MB .. Moore's law in action.
+<br>
+<img src=hardware-memory.jpg>
+
+
+<p>
+This is a hard drive that connects to the motherboard with the visible standard SATA connector. This is a 160GB, "3.5 inch" drive referring to the diameter of the spinning disk inside; the whole drive is about the size of small paperback book. This is a standard disk size to use inside a desktop computer. Laptop computers use 2.5 inch drives which are a bit smaller.
+
+<ul class="slide">
+<li>160 GB hard drive
+<li>Connects to motherboard with standard SATA cable
+</ul>
+<br>
+<img src=hardware-drive.jpg>
+
+
+<p>
+This is a USB flash drive that, like a hard drive, provides persistent byte storage. This is also known as a "thumb drive" or "USB key". It is essentially a USB jack connected to a flash storage chip with some support electronics:
+
+<ul class="slide">
+<li>USB thumb drive
+<li>Contains a flash chip, solid state
+<li>SD Card, similar idea
+</ul>
+<br>
+<img src=hardware-usb-key.jpg>
+
+<p>Here it is taken apart, showing the flash chip that actually stores the bytes. This chip can store about 1 billion <b>bits</b> .. how many bytes is that? (A: 8 bits per byte, so that's about 125 MB)
+<br>
+<img src=hardware-usb-key2.jpg>
+
+<p>Here is a "SD Card" which provides storage in a camera. It's very similar to the USB flash drive, just a different shape.
+<br>
+<img src=hardware-sd-card.jpg>
+
+
+<h2>Microcontroller - Cheap Computer Chip</h2>
+
+<ul class="slide">
+<li>Microcontroller
+<li>Complete computer on a chip
+<li>Small CPU, RAM, storage (Moore's law)
+<li>Chip can cost under $1
+<li>Car, microwave, thermostat
+</ul>
+
+<h2>Arduino Computer</h2>
+
+<ul class="slide">
+<li>This is an "arduino" board, microcontroller chip
+<br>--www.arduino.cc
+<li>As low as $20
+<li>Open source, free, not Windows only, tinkering
+<li>Art project -- switches, sensors, lights
+</ul>
+
+<img src=hardware-arduino.jpg alt="arduino microcontroller board">
+
+
+</body>
+<!-- Mirrored from introcomputing.org/hardware-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:59:34 GMT -->
+</html>
+

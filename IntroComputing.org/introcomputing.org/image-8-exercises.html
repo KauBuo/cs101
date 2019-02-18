@@ -1,0 +1,172 @@
+<html>
+
+<!-- Mirrored from introcomputing.org/image-8-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:56 GMT -->
+<head>
+<title>Image 8 Exercises</title>
+<link rel=stylesheet href=style.css type="text/css">
+
+</head>
+<body>
+<script type="text/javascript" src="cs101.js"></script>
+<script type="text/javascript" src="cs101-table.js"></script>
+<script type="text/javascript" src="cs101-simulation.js"></script>
+
+<!-- njp
+<div id=warning-output></div>
+-->
+
+<h1>Image 8 Exercises</h1>
+
+<p>
+
+
+
+<p>
+To play around with the bluescreen code, we'll use a few more images, including these:
+
+<p>
+<img src="paris.jpg" alt="eiffel tower in paris" width=300>
+<br>paris.jpg -- incomparable Eiffel tower in Paris
+
+<p>
+<img src="yosemite.jpg" alt="half dome in Yosemite California" width=300>
+<br>yosemite.jpg -- Half Dome in Yosemite California, an amazing place to visit
+
+<p>
+<img src="redwood.jpg" alt="redwood tree" width=300>
+<br>redwood.jpg -- Redwood tree. Redwood trees are typical of the northern California coast where Stanford is located. (This tree is actually in Nick's front yard)
+
+<p>
+Working with a main image and a back image, there is a problem if the back image is smaller than the main image -- the code will try to access a non-existent pixel, and we get an "x/y out of bounds" error. The following call fixes this problem:
+
+<pre>
+  back.setSameSize(image);
+</pre>
+
+<p>
+The above line resizes the back image if necessary, so it is at least as big as the main image, which is exactly what we need for blue screening, picking pixels from the back image to place into the main image. You'll see this line in the starter code for the problems below.
+
+
+
+
+<p>
+1. Here is the striped-fish-green.jpg image:
+
+<br>
+<img src="striped-fish-green.jpg" alt="toy fish with green background">
+
+<p>Write bluescreen code to place this fish in front of the yosemite.jpg background. The fish has bits of blue on it, but that's ok since we're using a green background in this case. Adjust the code so that all of the green towel below the fish disappears. Little flecks of white will appear in the blue middle section of the fish; we're stuck with those with our current technique.
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-8-ex1" rows=18 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("striped-fish-green.jpg");
+back = new SimpleImage("yosemite.jpg");
+back.setSameSize(image);
+
+for (pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+  // your code here
+  
+}
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-8-ex1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-8-ex1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+<p>
+2. For this problem, we'll accomplish a sort of artistic effect, working with the redwood.jpg image:
+<br>
+<img src="redwood.jpg" alt="redwood tree">
+
+<p>
+And the pebbles.jpg image:
+<br>
+<img src="pebbles.jpg" alt="stone pebbles">
+
+
+<p>
+Write bluescreen code to modify the redwood.jpg image, replacing the trunk and some of the branches of the tree with pixels from pebbles.jpg. The result is a sort of fanciful looking stone-tree image. Adjust the code so that the pebbles are on the trunk and some of the branches; don't put pebbles all over the bottom of the image.
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-8-ex2" rows=16 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("redwood.jpg");
+back = new SimpleImage("pebbles.jpg");
+back.setSameSize(image);
+
+for (pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-8-ex2")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-8-ex2-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+
+
+<p>
+3. This problem is titled "Fish Dreams of Paris". This problem will use paris.jpg:
+
+<br><img src="paris.jpg" alt="eiffel tower in paris">
+
+<p>
+And striped-fish-blue.jpg:
+<br><img src="striped-fish-blue.jpg" alt="toy fish with blue background">
+
+<p>Here the striped fish is facing right in front of a blue background. Parts of the fish itself are blue -- the eye and the vertical stripe in the middle. For this problem, we'll let the background image replace those two blue areas as well.
+
+<p>Write bluescreen code to place striped-fish-blue.jpg in front of paris.jpg. In particular, adjust the code so that the blue background, the blue middle stripe, and blue eye of the fish all show the paris.jpg pixels. Adjust the code so the blue towel background below the fish is almost completely replaced.
+
+
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-8-ex3" rows=18 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("striped-fish-blue.jpg");
+back = new SimpleImage("paris.jpg");
+back.setSameSize(image);
+
+for (pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+  // your code here
+  
+}
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-8-ex3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-8-ex3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
+</body>
+
+<!-- Mirrored from introcomputing.org/image-8-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:57:21 GMT -->
+</html>
+
