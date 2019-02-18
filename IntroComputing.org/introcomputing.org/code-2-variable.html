@@ -15,24 +15,22 @@
 <div id=warning-output></div>
 -->
 
-<h1>Variables and =</h1>
+<h1>变量</h1>
 
 <p>
 
-
-
-<p>This is a short section, to add the idea of <b>variables</b> to the code.
 
 <ul class="slide">
 
-<li>A "variable" is like a box that holds a value
+<li>编程时可以声明变量
+<li>变量就是一个盒子，里面可以放一个东西，想用的时候可以随时拿出来
+<li>声明变量的方法很简单，比如：
 <li><code>x = 7;</code>
-<li>The above line stores the value 7 into the variable named <b>x</b>
-<li>Later appearances of <b>x</b> in the code retrieve the value from the box
-<li>Using = in this way is called "variable assignment"
+<li><code>x=7</code>构建了一个盒子(声明了一个变量)，取名为x，存了一个7
+
 </ul>
 
-<p>
+
 <br><img src="code-variable.png" alt="variable x as a box holding the value 7">
 
 <p>
@@ -44,8 +42,7 @@
 onKeyPress='return handleCR(this ,event)'>
 x = 7;
 print(x);
-print("lucky", x);
-print("x is", x);</textarea>
+print("变量是", x);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("code2-1")'>
 </td>
@@ -96,21 +93,25 @@ value="Run" onClick='evaluateClear("code2-2")'>
 </table>
 
 
-<div><button onclick='unhide(this)'>Show Solution</button><div style='display:none'>
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="code2-3" rows=7 cols=60  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+print(1, 2, "hi");</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("code2-3")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='code2-3-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
 
-<pre>
-x = "Alice";
-print(x, x, x, x);
-print("In high school I had a crush on", x);
-print("Now the", x, "curse is lifted");
-</pre>
-</div>
 
 <p>
-&gt; <a href='code-2-exercises.html'>exercises</a>
+&gt; <a href='code-2-exercises.html'>练习</a>
 
 </body>
 
 <!-- Mirrored from introcomputing.org/code-2-variable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:30 GMT -->
 </html>
-
