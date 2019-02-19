@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-2-code.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:43 GMT -->
 <head>
-<title>Image Code</title>
+<title>图像编程</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,7 +15,7 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image Code</h1>
+<h1>图像编程</h1>
 
 <p>
 
@@ -23,29 +23,38 @@
 
 <!-- image-2 -->
 
-<p>In this section, we'll look at simple code to load and manipulate a digital image. Here we'll just manipulate one pixel at a time. In the next section, scaling up to operate on thousands of pixels at a time.
+<p>我们开始要进行图像编程了
 
 <h2>x.png</h2>
 
 <ul class=slide>
-<li>x.png -- tiny example image (10 x 10)
-<li>PNG format, like JPG
+<li>
+  我们要处理的图像是 x.png
+</li>
+<li>只有 10 * 10 个像素, 很小的, 看的见么：<img src=x.png alt="x.png">
 </ul>
 
-<p>
-The image "x.png" is very simple -- it's a very small black square with a white "x" at its center. PNG (Portable Network Graphics) is a image format, like JPG. Here is x.png: <img src=x.png>
-
-<h2>x.png Code Example</h2>
+<h2>图像处理的工具：显示 + 放大</h2>
 
 <ul class=slide>
-<li>Three line program
-<li><code>image = new SimpleImage("x.png");</code> -- load into variable
-<li><code>image.setZoom(20);</code>  -- set zoom option to 20 (10, 20, 30, ... whatever)
-<li><code>print(image);</code> -- print image to the right, as usual
-<li>Zoom: each pixel shown 20x size here
+<li>3行代码
+<hr>
+<li><code>x = new SimpleImage("x.png");</code>
+<li>
+  定义一个变量x为x.png
+</li>
+<li>注意要声明 x.png 是一个新的new，简单的图像SimpleImage
+<hr>
+<li><code>x.setZoom(20);</code>
+<li>
+  通过 x 的 set设置Zoom焦距方法，把x放大20倍
+</li>
+<hr>
+<li><code>print(x);</code>
+<li>
+  打印出来被放大20倍以后的图像x
+</li>
 </ul>
-
-<p>Our first image code example loads the x.png image and prints it. Run the code to see what it does. Try changing the <code>image.setZoom(20)</code> to use the number 10 or 30 instead.
 
 <p style='max-width:1000'>
 <table class=run>
@@ -65,11 +74,18 @@ value="Run" onClick='evaluateClear("image2-1")'>
 
 
 
-<h2>pixel.setRed(255) Example</h2>
+<h2>图像处理的工具：获得像素点 + 改变像素点的RGB值</h2>
 
 <ul class=slide>
-<li><code>pixel = image.getPixel(0, 0);</code> -- upper left pixel
-<li><code>pixel.setRed(255);</code>  -- set red value of that pixel
+<li><code>p = x.getPixel(0, 0);</code>
+<li>
+  get获得，Pixel像素 => 以上代码获得x的第(0,0)位置的像素点，并存入p中
+</li>
+<hr />
+<li><code>pixel.setRed(255);</code>
+<li>
+  set设置，Red红 => 以上代码把获取的像素点的R值改为255
+</li>
 </ul>
 
 <p style='max-width:1000'>
@@ -77,13 +93,13 @@ value="Run" onClick='evaluateClear("image2-1")'>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image2-2" rows=10 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20);
+x = new SimpleImage("x.png");
+x.setZoom(20);
 
-pixel = image.getPixel(0, 0);
-pixel.setRed(255);
+p = x.getPixel(0, 0);
+p.setRed(255);
 
-print(image);</textarea>
+print(x);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image2-2")'>
 </td>
@@ -93,21 +109,21 @@ value="Run" onClick='evaluateClear("image2-2")'>
 </table>
 
 
-<h2>Pixel Set Red/Green/Blue Functions</h2>
+<h2>设置RGB的方法</h2>
 
 <ul class=slide>
-<li><code>pixel.setRed(<i>number</i>);</code>  -- set the red value of the pixel to be the given number (0..255)
+<li><code>pixel.setRed(<i>number</i>);</code>
 
-<li><code>pixel.setGreen(<i>number</i>);</code>  -- set the green value
+<li><code>pixel.setGreen(<i>number</i>);</code>
 
-<li><code>pixel.setBlue(<i>number</i>);</code>  -- set the blue value
+<li><code>pixel.setBlue(<i>number</i>);</code>
 
 </ul>
 
 
-<h2>Aside: Image Functions Reference</h2>
+<h2>图像处理函数参考</h2>
 
-<p>For later reference, there is a separate <a href=image-functions-reference.html>image functions reference</a> page which lists in one place the image functions such as <code>pixel.setRed(<i>number</i>)</code> we are using here.
+<p>如果日后想要参考函数具体的内容，可进入网页 <a href=image-functions-reference.html>图像处理函数参考</a>
 
 
 <h2>Experiments On Pixel (0, 0)</h2>
@@ -247,5 +263,3 @@ njp - I'm holding this back for now
 
 <!-- Mirrored from introcomputing.org/image-2-code.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 </html>
-
-

@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-functions-reference.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 11:00:04 GMT -->
 <head>
-<title>Image Functions Reference</title>
+<title>图像处理函数参考</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,52 +15,48 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image Functions Reference</h1>
+<h1>图像处理函数参考</h1>
 
 <p>
 
 
-
-<p>For reference, here are all the functions, such as <code>pixel.setRed(<i>number</i>);</code> to load and manipulate images.
-
 <table>
 
 <tr><td width="50%"><code>image = new SimpleImage("flowers.jpg");</code></td>
-<td>Set the variable <i>image</i> to hold the "flowers.jpg" image</td></tr>
+<td>让变量 <i>image</i> 保存 "flowers.jpg" 图像</td></tr>
 
 <td><code>image.setZoom(5);</code></td>
-<td>Set the image to print at 5x size on screen. Useful to make changes on very small images such as "x.png" visible.</td></tr>
+<td>把image保存的图像放大5倍</td></tr>
 
 <td><code>print(image);</code></td>
-<td>Print the image to the screen.</td></tr>
+<td>打印image保存的图像</td></tr>
 
 <tr><td><code>pixel = image.getPixel(0, 0);</code></td>
-<td>Retrieve the pixel at x,y (0, 0) and store it in a variable named <i>pixel</i> (i.e. the upper left pixel). Changes on that pixel, e.g. <code>pixel.setRed(255);</code>, change the pixel in the original image.</td></tr>
+<td>获取image保存图像的第(0,0)点的像素，并保存到变量pixel中</td></tr>
 
 <td><code>print(pixel);</code></td>
-<td>Print the values for one pixel, in the format "r:200 g:12 b:166"</td></tr>
+<td>打印像素rgb值 "r:200 g:12 b:166"</td></tr>
 
-<tr><td><code>pixel.setRed(<i>number</i>);</code></td>
-<td>Change the pixel's red value to be 255 (we can specify any value 0..255 within the parenthesis). There are analogous functions <code>pixel.setGreen(<i>number</i>);</code> and <code>pixel.setBlue(<i>number</i>);</code>for the other two colors. If the number is outside the range 0..255, it is automatically limited to 0 or 255. </td></tr>
+<tr><td><code>pixel.setRed(<i>200</i>);</code></td>
+<td>把pixel所保存像素的红色阶的值改为200，如果输入数值超过0~255的范围，则自动转化成0或者255</td></tr>
 
 <tr><td><code>red = pixel.getRed();</code></td>
-<td>Retrieve the red value from a pixel (a number in the range 0..255), and store it in a variable named <i>red</i>. There are analogous functions <code>pixel.getGreen()</code> and <code>pixel.getBlue()</code></td></tr>
+<td>获得pixel中保存像素的红色阶的值</td></tr>
 
 <tr><td><code>image.getWidth()</code>, <code>image.getHeight()</code></td>
-<td>Retrieve the width and height of an image.</td></tr>
+<td>获得image中保存图像的宽width和高height</td></tr>
 
 <tr><td><code>image.setSize(width, height);</code></td>
-<td>Scale an image up or down in size so it has the given width and height.</td></tr>
+<td>把image中保存图像的宽和高改成新的值</td></tr>
 
-<tr><td><code>image.setSameSize(<it>other_image</i>);</code></td>
-<td>Scale an image up or down in size, keeping its proportions, so it is at least as big as the <i>other_image</i> specified. Useful for bluescreen code where we want to make the background at least as big as the foreground.</td></tr>
+<tr><td><code>image.setSameSize(<it>image2</i>);</code></td>
+<td>以image2位标准，扩展或者收缩image。保证image的长宽比不变，并且最少和image2一样大</td></tr>
 
 </table>
 
 
-<h2>Code Area</h2>
+<h2>尝试代码</h2>
 
-<p>Here's a scratch area to try out code.
 <p style='max-width:1000'>
 <table class=run>
 <tr><td valign=top width=550> <!-- CODE -->
@@ -97,4 +93,3 @@ value="Run" onClick='evaluateClear("image-ref-1")'>
 
 <!-- Mirrored from introcomputing.org/image-functions-reference.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 11:00:04 GMT -->
 </html>
-

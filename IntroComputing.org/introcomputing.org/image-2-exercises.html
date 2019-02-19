@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-2-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 <head>
-<title>Image 2 Exercises</title>
+<title>图像编程练习</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,29 +15,17 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image 2 Exercises</h1>
-
-<p>
-
+<h1>图像编程练习</h1>
 
 
 <p>
-For these exercises, write code to manipulate and print the image "x.png". Some basic starter code to load and print the image is provided. Modify and add lines to the starter code as needed to solve each exercise.
-
-<p>
-1. Write code to set the pixel at (0, 0) to blue (i.e. blue value is 255, red and green are left at 0).
-
+1. 把x.png的(0,0)点像素变成蓝色的
 <p style='max-width:1000'>
 <table class=run>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image2-ex1" rows=9 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20);
-
-pixel = image.getPixel(0, 0);
-
-print(image);</textarea>
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image2-ex1")'>
 </td>
@@ -48,18 +36,13 @@ value="Run" onClick='evaluateClear("image2-ex1")'>
 
 
 <p>
-2. Write code to set the pixel at (0, 0) to be violet (i.e. red and blue both 255, green left at 0).
+2. 把x.png的(5,5)点像素变成暗黄色
 <p style='max-width:1000'>
 <table class=run>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image2-ex2" rows=9 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20);
-
-pixel = image.getPixel(0, 0);
-
-print(image);</textarea>
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image2-ex2")'>
 </td>
@@ -70,32 +53,8 @@ value="Run" onClick='evaluateClear("image2-ex2")'>
 
 
 
-<p>
-3. Write code to set the pixel at <b>(1, 0)</b> to be red.
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image2-ex3" rows=9 cols=70  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20);
-
-pixel = image.getPixel(0, 0);
-
-print(image);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image2-ex3")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image2-ex3-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
-
-
 
 </body>
 
 <!-- Mirrored from introcomputing.org/image-2-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 </html>
-
