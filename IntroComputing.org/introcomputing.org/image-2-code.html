@@ -61,9 +61,9 @@
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image2-1" rows=6 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20);
-print(image);</textarea>
+x = new SimpleImage("x.png");
+x.setZoom(20);
+print(x);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image2-1")'>
 </td>
@@ -82,7 +82,7 @@ value="Run" onClick='evaluateClear("image2-1")'>
   get获得，Pixel像素 => 以上代码获得x的第(0,0)位置的像素点，并存入p中
 </li>
 <hr />
-<li><code>pixel.setRed(255);</code>
+<li><code>p.setRed(255);</code>
 <li>
   set设置，Red红 => 以上代码把获取的像素点的R值改为255
 </li>
@@ -112,11 +112,11 @@ value="Run" onClick='evaluateClear("image2-2")'>
 <h2>设置RGB的方法</h2>
 
 <ul class=slide>
-<li><code>pixel.setRed(<i>number</i>);</code>
+<li><code>p.setRed(<i>number</i>);</code>
 
-<li><code>pixel.setGreen(<i>number</i>);</code>
+<li><code>p.setGreen(<i>number</i>);</code>
 
-<li><code>pixel.setBlue(<i>number</i>);</code>
+<li><code>p.setBlue(<i>number</i>);</code>
 
 </ul>
 
@@ -125,139 +125,9 @@ value="Run" onClick='evaluateClear("image2-2")'>
 
 <p>如果日后想要参考函数具体的内容，可进入网页 <a href=image-functions-reference.html>图像处理函数参考</a>
 
-
-<h2>Experiments On Pixel (0, 0)</h2>
-
 <p>
-To see how <code>image.getPixel(x, y)</code> and <code>pixel.setRed(<i>number</i>)</code> etc. work, we'll try the experiments listed below (use the "show" button to see the solution code).
+&lt; <a href='image-2-exercises.html'>练习</a>
 
-
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image2-3" rows=12 cols=70  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20);
-
-pixel = image.getPixel(0, 0);
-pixel.setRed(255);
-
-print(image);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image2-3")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image2-3-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
-
-
-<table>
-
-<tr><th>Example Problems</th><th>Solution</th></tr>
-
-<tr><td width="40%">Set pixel (0, 0) to be green.</td>
-<td><button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-pixel = image.getPixel(0, 0);
-pixel.setGreen(255);
-</pre></div></td></tr>
-
-<tr><td>Set pixel (0, 0) to be yellow.</td>
-<td><button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-pixel = image.getPixel(0, 0);
-pixel.setRed(255);  // idea: set red and green to 255
-pixel.setGreen(255);
-</pre></div></td></tr>
-
-<tr><td>Set pixel (1, 0) to be yellow. Where is that pixel?</td>
-<td><button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-pixel = image.getPixel(1, 0);
-pixel.setRed(255);
-pixel.setGreen(255);
-// Calling getPixel(1, 0) edits the pixel
-// one to the right of pixel (0, 0).
-</pre></div></td></tr>
-
-<tr><td>Set pixel (0, 0) to white.</td>
-<td><button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-pixel = image.getPixel(0, 0);
-pixel.setRed(255);
-pixel.setGreen(255);
-pixel.setBlue(255);
-</pre></div></td></tr>
-
-<tr><td>Set pixel (0, 0) to be dark yellow -- set the necessary colors to 150 instead of 255.</td>
-<td><button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-pixel = image.getPixel(0, 0);
-pixel.setRed(150);
-pixel.setGreen(150);
-</pre></div></td></tr>
-
-<tr><td>Set pixel (0, 0) to be a light, pastel red.</td>
-<td><button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-pixel = image.getPixel(0, 0);
-pixel.setRed(255);
-pixel.setGreen(200);
-pixel.setBlue(200);
-// Set red at 255, green and blue equal but lower.
-</pre></div></td></tr>
-
-</table>
-
-
-
-<p>
-&lt; <a href='image-2-exercises.html'>exercises</a>
-
-
-<!--
-Other exercise ideas:
-
-
--flowers, 0,0 to red .. it's kind of a weak red .. why is that
--print pixel before/after .. see what's going on
--make the red pixel vivid: set the others to 0 (flowers)
-
--little lines, horiz, vert, diagonal
-
--flowers set red to 0, what do you see?
-
--switch between x.png and flowers-small.jpg with the same code
-
-<ul>
-<li>Set the three pixels at (0, 0) (1, 0) (2, 0) to be red
-<li>Change the code to work on the "flowers.jpg" image, then back to "square.png" (jpg and png are two commonly used format standards for digital images)
-<li>Set the three pixels at (0, 0) (1, 0) (2, 0) to be yellow
-<li>Consider the three pixels going diagonally down and to the right from (0, 0) -- what are their coordinates? Set those three pixels to be yellow.
-<li>Print the width of the image (the code image.getWidth() retrieves the width, just put it in a print()).
-<li>Set the <b>upper-right</b> pixel to be red (the x coordinate of the upper right pixel is width-1)
-</ul>
-
--->
-
-
-<!--
-njp - I'm holding this back for now
-
-<h2>Red, Green, and Blue Channels</h2>
-
-<p>Every pixel in the image is made with a mixture of red, green, and blue light. To see this, you can divide the original image into three color "channel" images, one for each color. Below is the flowers.jpg image followed by its three color channels. The red channel shows only the red light with green and blue stuck at 0, the next shows just the green light, and so on. Adding these three channels together yields the original image. Notice that the yellow flowers are bright in both the red and green channels. The green leaves pretty much only appear in the green channel. The blue channel is mostly near 0 everywhere, as the original image just does not have much blue in it.
-
-<p>
-<image src=flowers.jpg width=200>
-<p><img src=flowers-red.jpg width=200>
-<img src=flowers-green.jpg width=200>
-<img src=flowers-blue.jpg width=200>
-
--->
 
 </body>
 

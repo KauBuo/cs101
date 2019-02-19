@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-3-loops.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 <head>
-<title>Image For-Loop</title>
+<title>循环</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,25 +15,10 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image For-Loop</h1>
+<h1>图形编程: 循环</h1>
 
 <p>
 
-
-
-<!-- tbd
-
-CONTENT:
--pre: access one or two pixels at a time
--pre: grid of lots of little numbers (add art for this case)
-
--loop every pixel .. examples
--set red 0, 150, 255, set green is interesting   (could have diagram of what's happening to the little #'s)
--two things going on here: playing with RGB, "for each" pattern ... do this 100,000 times
-
--->
-
-<p>In this section, we'll look at the "for loop" construct, which can run a bit of code thousands of times -- a big increase in the power available to us.
 
 
 <br>
@@ -41,42 +26,37 @@ CONTENT:
 
 <p>
 <ul class="slide">
-<li>flowers.jpg is 457 pixels wide by 360 pixels high -- 164,520 pixels
-<li>Code operating one pixel at a time ... not practical
-<li>Want: we specify some code, computer runs it again and again, once for each pixel
-<li>"For loop" does this -- big increase in the power of our code
+<li>上图 flowers.jpg  457 pixels 宽 by 360 pixels 高 -- 164,520 pixels
+<li>一个像素一个像素的操作，太不实际了
+<li>
+  我们用高级for循环来实现
+</li>
 </ul>
 
-<p>
-Accessing one pixel at a time, e.g. pixel at (0, 0), then the pixel at (1, 0), etc. is not a good way to work on an image which may have 100,000 or more pixels. We'd like to say something like "for each pixel do this", and let the computer fiddle with the details of going through all the (x, y) values to look at each pixel once. 
-
-<p>
-The very powerful "for loop" structure we'll learn here provides exactly this "for each pixel do this" feature. The loop takes a few lines of our code, and runs those lines again and again, once for each pixel in the image.
-
-
-<h2>For-Loop Structure</h2>
+<h2>高级for循环</h2>
 
 <ul class="slide">
-<li>Syntax: <code>for (pixel: image) { ... }</code>
-<li>Starts the for loop, syntax all required, indentation
-<li>"body" code inside the <code>{ ... }</code>
-<li>Runs body lines for pixel #1
-<li>Goes back to top of body, runs for pixel #2
-<li>Runs again and again, once for each pixel in the image
-<li>For each pixel: (do what the body code says)
+<li>语法: <code>for (p: image) { ...对p的操作... }</code>
+<li> 以上代码表示循环 图形image中的每个像素
+<li>
+  循环到一个像素，就存到p里面，然后就对p做一些操作
+</li>
+<li>
+  然后再循环下一个像素，再存到p里面，再对p同样的操作
+</li>
+<li>
+  以此类推，知道把image中的所有像素p全部操作完成
+</li>
+<li>
+  注意image只是一个存储有图形的变量名称
+</li>
 </ul>
 
-<br>
-<img src=image-for.png alt="parts of the for-loop">
 
-<h2>For-Loop Example 1</h2>
-
-<p>Setting red, green, and blue all to 0 (for 164,520 pixels). What does that do? What if we set red, green, and blue all to 255?
+<h2>高级For循环例子1</h2>
 
 <ul class="slide">
-<li>Body 3 lines: set red, green, and blue all to 0
-<li>For-loop runs those lines, once for each pixel
-<li>What is the result?
+<li>以下代码的结果是什么?
 </ul>
 
 
@@ -85,15 +65,16 @@ The very powerful "for loop" structure we'll learn here provides exactly this "f
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-loop-1" rows=12 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("flowers.jpg");
+x = new SimpleImage("x.png");
+x.setZoom(10)
 
-for (pixel: image) {
-  pixel.setRed(0);
-  pixel.setGreen(0);
-  pixel.setBlue(0);
+for (p: x) {
+  p.setRed(0);
+  p.setGreen(0);
+  p.setBlue(0);
 }
 
-print(image);</textarea>
+print(x);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-loop-1")'>
 </td>
@@ -102,72 +83,21 @@ value="Run" onClick='evaluateClear("image-loop-1")'>
 </td></tr>
 </table>
 
-
-<p>For each pixel, the body code sets the red, green, and blue values all to be 0. The result is a pure black rectangle. None of the original flower data is left; it all got changed to zeros.
-
-<h2>For-Loop Example 2</h2>
+<h2>把红色去掉</h2>
 
 <ul class="slide">
-<li>For each pixel, set red and green to 255, blue to 0
-<li>What is the body code to do this?
-<li>What is the result?
+<li>
+  x.png 没意思，我们这次用 flowers.jpg
+</li>
+<li>全变成黑色没啥用，只去掉红色会怎么样?
 </ul>
-
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image-loop-2" rows=12 cols=50  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("flowers.jpg");
-
-for (pixel: image) {
-  pixel.setRed(255);
-  pixel.setGreen(255);
-  pixel.setBlue(0);
-}
-
-print(image);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image-loop-2")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image-loop-2-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
-
-<p>Result is a solid yellow rectangle. The code overwrites the flower data, changing each pixel in the original image into a pure yellow pixel.
-
-
-<h2>For-Loop Example 3</h2>
-
-<ul class="slide">
-<li>Previous examples overwrote all the flower data ... not realistic
-<li>Work with the data in flowers.jpg
-<li>Yellow flowers -- red and green values high
-<li>For each pixel, set red to 0
-<li>What is the body code to do this?
-<li>What is the result?
-<li>(Not required that you have can predict the result of the RGB operations)
-</ul>
-
-<br>
-<img src=flowers.jpg alt="yellow flowers">
-
-<p>Look again at flowers.jpg.Yellow is made or red + green, so we know that the yellow parts of the image have high red and green values. So what happens if, for each pixel, we set red to 0? What are the RGB values for a typical pixel on the yellow flowers look like before this loop runs? What about after?
 
 <p style='max-width:1000'>
 <table class=run>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-loop-3" rows=10 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("flowers.jpg");
-
-for (pixel: image) {
-  pixel.setRed(0);
-}
-
-print(image);</textarea>
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-loop-3")'>
 </td>
@@ -177,17 +107,9 @@ value="Run" onClick='evaluateClear("image-loop-3")'>
 </table>
 
 
-<p>
-The body code <code>pixel.setRed(0);</code> is run by the loop again and again, once for each pixel in the image. Since the yellow flowers are made with red + green light, setting the red to 0 for each pixel results is greenish flowers. The green leaves aren't changed much, since their red values were near 0 anyway. 
-
-
-<h2>For-Loop Example 4</h2>
-
+<h2>红色通道</h2>
 <ul class="slide">
-<li>For each pixel, set green and blue to 0
-<li>What is the body code to do this?
-<li>The result is known as the "red channel"
-<li>Seeing an image of just the red light areas
+<li>只要红色会怎么样?
 </ul>
 
 <p style='max-width:1000'>
@@ -195,14 +117,7 @@ The body code <code>pixel.setRed(0);</code> is run by the loop again and again, 
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-loop-4" rows=11 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("flowers.jpg");
-
-for (pixel: image) {
-  pixel.setGreen(0);
-  pixel.setBlue(0);
-}
-
-print(image);</textarea>
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-loop-4")'>
 </td>
@@ -212,37 +127,6 @@ value="Run" onClick='evaluateClear("image-loop-4")'>
 </table>
 
 
-<p>Setting green and blue to 0 everywhere, all that is left is the area of red light that went into the original image, aka the "red channel" of the image. The red light is most prominent for the area of yellow flowers, which makes sense as we know that yellow = red + green.
-
-
-
-<h2>For-Loop Conclusions</h2>
-
-<ul class="slide">
-<li>For-loop is a very powerful feature
-<li>Note: Javascript does not have this feature, I added it for CS101
-<li>We write the body code for the effect we want
-<li>Computer handles the bookkeeping to repeat over all the pixels
-<li>Computer = powerful + stupid theme
-<li>Loop: powerful, but mechanical
-<li>Next section - more interesting image transforms
-</ul>
-
-<p>
-&lt; <a href='image-3-exercises.html'>exercises</a>
-
-<!--
-
-exercises
-1. Write code to modify flowers.jpg as follows: set each pixel to have red 255, green 0, blue 255.
-
-2. Write code to modify flowers.jpg as follows: set each pixel to have green of 0, leaving red and blue unchanged. The result should be that the flowers look red, since the yellow was made of red+green light.
-
-
--->
-
-
 </body>
 <!-- Mirrored from introcomputing.org/image-3-loops.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 </html>
-
