@@ -1,0 +1,153 @@
+<html>
+
+<!-- Mirrored from www.cknuckles.com/rgbsliders.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Feb 2019 04:14:07 GMT -->
+<head>
+    <title>RGB Color Slider Tool</title>
+    <style type="text/css">
+      #drawing {
+        border: 2px solid black;
+        background-color: black;
+      }
+      #color {
+        font-family: monospace;
+        font-size: 14pt;
+        margin: 4ex 0ex;
+      }
+      #controls {
+        padding: 10px;
+      }
+      .slider {
+        width: 300px;
+        margin: 0px 0px 10px 0px;
+
+      }
+      .slider_label {
+        margin: 8px 5px 8px 0px;
+        text-align:right;
+      }
+
+      p {
+        max-width:650px;
+      }
+    </style>
+    <link href="../ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="../ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script src="../ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      function hex(k) {
+        var s = k.toString(16);
+        if (k < 16) { s = '0' + s; }
+        return s;
+      }
+
+      function colorChange(event, ui) {
+        var r = $("#red").slider("value");
+        var g = $("#green").slider("value");
+        var b = $("#blue").slider("value");
+        $("#color").text("red:" + r + " green:" + g + " blue:" + b);
+        doDraw(hex(r), hex(g), hex(b));
+
+        if (document.getElementById('show_hex').checked) {
+          showHex(r,g,b);
+        }
+      }
+
+      function showHex(r,g,b) {
+        $('#hex_color').css('visibility','visible');
+        $('#hex_color').html('#' + hex(r).toUpperCase() +  hex(g).toUpperCase() +  hex(b).toUpperCase());
+      }
+
+      function toggleHex() {
+        if (document.getElementById('show_hex').checked) {
+          colorChange(null, null);
+          $('#hex_color').css('visibility','visible');
+        }
+        else {
+          $('#hex_color').css('visibility','hidden');
+        }
+      }
+
+      function initSlider(id) {
+        $(id).slider({max: 255, slide: colorChange, change: colorChange});
+      }
+
+      function doDraw(r, g, b) {
+        var dc = document.getElementById('drawing');
+        if(dc && dc.getContext) {
+          var cxt = dc.getContext('2d');
+
+          cxt.clearRect(0, 0, dc.width, dc.height);
+          cxt.globalCompositeOperation = 'lighter';
+          cxt.strokeStyle = "#000000";
+
+
+          // red
+          cxt.fillStyle = "#"+r+"0000";
+          cxt.fillRect(0, 0, dc.width*7/8, dc.height*7/8);  // xywh
+
+          // green
+          cxt.fillStyle = "#00"+g+"00";
+          cxt.fillRect(dc.width/8, 0, dc.width*6/8, dc.height);  // xywh
+
+          // blue
+          cxt.fillStyle = "#0000"+b;
+          cxt.fillRect(dc.width/8, 0, dc.width*7/8, dc.height*7/8);  // xywh
+        }
+      }
+
+      $(document).ready(function() {
+        initSlider("#red");
+        initSlider("#green");
+        initSlider("#blue");
+      })
+    </script>
+  </head>
+
+<body>
+
+<h1>RGB Color Slider Tool</h1>
+
+<!-- standards based: <input id=red class=slider type="range" name="points" min="0" max="255" oninput="f()" onchange="f()">  -->
+<table>
+  <tr>
+    <td>&nbsp;</td>
+    <td><small>没有颜色 &rarr;&rarr; 暗 &rarr;&rarr; 亮 &rarr;&rarr; 最亮</small></td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <div class="slider_label">Red:</div>
+      <div class="slider_label">Green:</div>
+      <div class="slider_label">Blue:</div>
+    </td>
+    <td valign="top">
+      <div id="controls">
+        <div class="slider" id="red"></div>
+        <div class="slider" id="green"></div>
+        <div class="slider" id="blue"></div>
+        <div id="color">red:0 green:0 blue:0</div>
+        <div>
+          <input type="checkbox" id="show_hex" onclick="toggleHex()" /> <small>Show Hex</small> &nbsp;&nbsp;
+          <big><tt><b id="hex_color" style="visibility:hidden;">#000000</b></tt></big>
+        </div>
+      </div>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+    <canvas id="drawing" width="400" height="400">
+      Sorry, this page requires HTML5 canvas support
+    </canvas>
+    </td>
+  </tr>
+</table>
+
+<br>
+
+
+</body>
+
+<!-- Mirrored from www.cknuckles.com/rgbsliders.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Feb 2019 04:17:55 GMT -->
+</html>
