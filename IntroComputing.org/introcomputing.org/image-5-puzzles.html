@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-5-puzzles.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 <head>
-<title>Image Puzzles</title>
+<title>Image 图像之谜</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,39 +15,16 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image Puzzles</h1>
+<h1>图像之谜</h1>
 
 <p>
 
-
-
-<p>This is a short section to look at type of puzzle built out of image manipulation code.
-
-<h2>Code To Fix the Pixels</h2>
-
-<ul class="slide">
-<li>There is an image of some unknown puzzle object
-<li>Red/green/blue values have been distorted, hiding the real image
-<li>Write code to fix the pixels
-<li>Recover the original image to solve the puzzle
-</ul>
-
-
-<h2>Gold Puzzle</h2>
-
-<p>Here we have the "gold" puzzle image -- fix it to see the real image
-<img src="puzzle-gold.png" alt="gold puzzle image">
-
-
-<p>Gold puzzle parameters:
-<ul class="slide">
-<li>The green and blue values are all just random values in the range 0..255 ("snow")
-<li>The data of the real image is exclusively in the red values
-<li>In addition, the red values have all been divided by 10 (dark)
-<li>The green/blue snow is obscuring the real image
-<li>Write code to recover the real image
-</ul>
-
+  <ul class="slide">
+  <li>下图每个像素两个色阶被设置为了0~255的随机值，一个色阶被调暗了
+  <li>
+    图片里到底隐藏着什么物体呢?
+  </li>
+  </ul>
 
 
 <p style='max-width:1000'>
@@ -55,12 +32,8 @@
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-puzzle-gold" rows=13 cols=45  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("puzzle-gold.png");
+image = new SimpleImage("cold-puzzle.png");
 
-for (pixel: image) {
-  // your code here
-
-}
 
 print(image);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
@@ -73,33 +46,14 @@ value="Run" onClick='evaluateClear("image-puzzle-gold")'>
 
 
 
-<p>Solution code:
+<p>提示:
 <div>
 <button onclick='unhide(this)'>show</button><div style='display:none'>
 <pre>
-// Strategy: zero out blue and green as they
-// are just garbage data.
-// Then scale red up by 10x to see the real
-// image in red.
-
-  // your code here
-  pixel.setGreen(0);
-  pixel.setBlue(0);
-  pixel.setRed(pixel.getRed() * 10);
-
-
+  单通道
 </pre></div>
 </div>
-
-
-<h2>Seeing Red</h2>
-
-<p>In this case, our solution shows the image, but it's all in red. What we have here is basically a black-and-white image, but it is shown in the black-red range, rather than the usual black-white. For this section, we'll say that's good enough. We'll see how to fix the red image so it looks like a proper black-and-white image in a later section.
-
-<p>
-&gt; <a href='image-5-exercises.html'>exercises</a>
 
 </body>
 <!-- Mirrored from introcomputing.org/image-5-puzzles.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:45 GMT -->
 </html>
-
