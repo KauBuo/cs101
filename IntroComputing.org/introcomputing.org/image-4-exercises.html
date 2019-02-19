@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-4-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 <head>
-<title>Image 4 Exercises</title>
+<title>图像编程 4 练习</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,36 +15,25 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image 4 Exercises</h1>
+<h1>图像编程 4 复原练习</h1>
 
 <p>
 
 
 
 <p>
-Here we'll do 5-10-20 puzzles like the one shown in lecture. For each puzzle image, the red, green, and blue values have been divided by a factor of 5, 10, or 20, but you don't know which factor was used on which color. Write code to fix the image, multiplying each color by 5, 10 or, 20 to get them back to their original values. Reminder: here is the line to use in the loop to multiply, for example, the red value of each pixel by 20:
-
-<pre>
-  pixel.setRed(pixel.getRed() * 20);
-</pre>
+所有图片都是按照5-10-20倍数来复原
 
 <p>
-There are a few solutions that look somewhat correct, but just one solution that looks exactly right. Figure out that solution.
-
-<p>
-1. Write code to fix the 51020-poppy.png image which should show an orange California Poppy in the foreground (the California state flower!), with a green and brown out-of-focus background.
+1. 把 51020-rose.png 玫瑰复原
 
 <p style='max-width:1000'>
 <table class=run>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-4-ex1" rows=15 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("51020-poppy.png");
+image = new SimpleImage("51020-rose.png");
 
-for (pixel: image) {
-  // your code here
-  
-}
 
 print(image);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
@@ -57,19 +46,15 @@ value="Run" onClick='evaluateClear("image-4-ex1")'>
 
 
 <p>
-2. Write code to fix the 51020-stop-sky.png image which should show a red stop sign with a background of a light blue sky and green tree leaves.
+2. 把 51020-earth.png 流浪地球 海报复原[白色会有一些偏差，没关系]
 
 <p style='max-width:1000'>
 <table class=run>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-4-ex2" rows=14 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("51020-stop-sky.png");
+image = new SimpleImage("51020-earth.png");
 
-for (pixel: image) {
-  // your code here
-  
-}
 
 print(image);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
@@ -80,36 +65,10 @@ value="Run" onClick='evaluateClear("image-4-ex2")'>
 </td></tr>
 </table>
 
-
-
 <p>
-3. Write code to fix the 51020-oranges.png image which should show a box of oranges. The box itself is dull gray. The sign on the box is black, with "organic" written in light orange, and the rest of the letters are white.
-
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image-4-ex3" rows=14 cols=70  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("51020-oranges.png");
-
-for (pixel: image) {
-  // your code here
-  
-}
-
-print(image);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image-4-ex3")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image-4-ex3-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
 
 
 </body>
 
 <!-- Mirrored from introcomputing.org/image-4-exercises.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 </html>
-

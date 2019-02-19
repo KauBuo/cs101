@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-4-expressions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 <head>
-<title>Image Expressions</title>
+<title>表达式</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,7 +15,7 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image Expressions</h1>
+<h1>图像编程: 表达式</h1>
 
 <p>
 
@@ -23,98 +23,62 @@
 
 <p>In this section, we'll look how to use expressions to greatly expand what we can do in a loop. With expressions, we'll be able to write real image manipulation code, and in particular solve some puzzles based on images.
 
-<h2>Expressions 1 + 1</h2>
+<h2>表达式 1 + 1</h2>
 
-<p>
-We have seen function calls where we pass in a value within the parenthesis, such as the value 42 passed in to the print function below.
-
-<pre>
-  print(42);
-</pre>
-
-<p>
-Instead of a plain number like 42, an "expression" written in the code like 11 + 13 computes the value to use. For example you could write something like this:
+我们可以通过表达式进行必要的数学运算，比如如下代码的结果是 42
 
 <pre>
   print(11 + 31);
 </pre>
 
-<p>
-When that line runs, the computer first computes the expression 11 + 31, yielding 42. Then in effect it calls print(42), passing in the computed value. Anywhere in the code where we have used a fixed number like 0 or 255 of whatever, we can instead write an expression, letting the code compute a value when that line runs.
 
 <h2>pixel.getRed() / pixel.getGreen() / pixel.getBlue()</h2>
 
-<p>
-We have not used them until now, but there are three pixel functions that retrieve the red, green or blue value out of a pixel -- these will be very handy to use in expressions.
-
+我们可以通过这3个方法获得某一个像素点的当前 RGB 值
 <ul>
-<li><code>pixel.getRed()</code>  -- retrieves the red value from a pixel
-<li><code>pixel.getGreen()</code> -- retrieves the green value
-<li><code>pixel.getBlue()</code> -- retrieves the blue value
+<li><code>pixel.getRed()</code>  -- 获得像素 pixel 的 红色阶 值
+<li><code>pixel.getGreen()</code> -- 获得像素 pixel 的 绿色阶 值
+<li><code>pixel.getBlue()</code> -- 获得像素 pixel 的 蓝色阶 值
 </ul>
-
-<h2>Combine pixel.getRed() and pixel.setRed()</h2>
 
 <ul class="slide">
-<li>Suppose we want to <b>double</b> the red value of a pixel
-<li>More realistic operation -- relative
+<li>利用以上代码，结合表达式，就可以实现：把某一个像素点的红色阶的值变成当前值的2倍
 </ul>
 
-
 <pre>
-  // Doubles the pixel's red value
   old = pixel.getRed();
   pixel.setRed(old * 2);
 </pre>
 
-<p>
-The <code>pixel.getRed()</code> can be combined with <code>pixel.setRed(<i>number</i>)</code> to operate on a pixel. For example, the above code snippet doubles the pixel's red value. The first line retrieves the red value from the pixel and stores that value in an variable named <b>old</b>. Say in this case that the red value is 50. The second line computes <code>old * 2</code> (100 in this case), and sets that value back into the pixel as its new red value. The net effect is to double the red value of the pixel from 50 to 100.
-
 <ul class="slide">
-<li>The <b>old</b> variable is not necessary
-<li>Reduce the whole get/set to one line
+<li>把x.png的(3,3)像素的蓝色变成当前值的一半
 </ul>
 
-<pre>
-  pixel.setRed(pixel.getRed() * 2);
-</pre>
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image-expression-practice1" rows=12 cols=50  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+image = new SimpleImage("x.png");
+image.setZoom(20)
+
+p=image.getPixel(3,3)
+p.setBlue(p.getBlue()/2)
+
+print(image);</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image-expression-practice1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image-expression-practice1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+<h2>练习 1</h2>
 
 <ul class="slide">
-<li>How does the line above work?
-<li>Suppose we have a pixel r:50 g:20 b:30
-<li>Q: What does running the line above do to the pixel?
-<li> 1. Evaluates the <code>pixel.getRed() * 2</code> expression (100)
-<li> 2. Then calls <code>pixel.setRed(100);</code>
-<li>Result is changing the pixel to r:100 g:20 b:30
-<li>Whatever the red value, the line doubles it
-</ul>
-
-<p>
-The code <code>pixel.getRed() * 2</code> is an expression, which is whatever the old red value was multiplied by 2. This expression is evaluated first, resulting a number such as 240. Then in effect pixel.setRed(240); is called. The setRed() etc. functions automatically limit the value set to the range 0..255. If setRed() is called with a value a greater than 255, it just uses 255, and likewise if a value less than 0 is passed in, it just uses the value 0.
-
-
-<h2>Loops With Expressions</h2>
-
-<ul class="slide">
-<li>Previously, set red to 0 or 100 or 255 ... inflexible
-<li>Now can express relative changes
-<li>e.g. double the red value (set/get pattern):
-<li>&nbsp; <code>pixel.setRed(pixel.getRed() * 2);</code>
-<li>e.g. halve the red value:
-<li>&nbsp; <code>pixel.setRed(pixel.getRed() * 0.5);</code>
-
-</ul>
-
-<p>Before we could only express ideas like "set the red value to 200". Now we can express what new value we want in terms of the old value, like "triple the red value", or "set the red value to 75% of what it was".
-
-<h2>Image Expression Example 1</h2>
-
-<ul class="slide">
-<li>Suppose we want to change the yellow flowers to look orange
-<li>Set the green value to 75% of its original value (i.e. * 0.75)
-<li>What is getGreen/setGreen combination to do this?
-<li>(Try to work out the code, then look at the solution below)
-
+<li>把花 flowers.jpg 的颜色变得更加橙色一点
 </ul>
 
 
@@ -140,22 +104,19 @@ value="Run" onClick='evaluateClear("image-expression-1")'>
 </table>
 
 
-<p>Solution code:
+<p>提示:
 <div>
 <button onclick='unhide(this)'>show</button><div style='display:none'>
 <pre>
-  // your code here
-  pixel.setGreen(pixel.getGreen() * 0.75);
+  绿色只取之前的75%
 </pre></div>
 </div>
 
 
-<h2>Image Expression Example 2</h2>
+<h2>练习 2</h2>
 
 <ul class="slide">
-<li>Set red, green, and blue each to be * 0.75 of their original values, then try 0.5 and 0.25
-<li>What is the code to do this?
-<li>What is the effect on the image?
+<li>把花 flowers.jpg 的图片变亮 或者 变暗
 </ul>
 
 <p style='max-width:1000'>
@@ -163,14 +124,7 @@ value="Run" onClick='evaluateClear("image-expression-1")'>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-expression-2" rows=13 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("flowers.jpg");
-
-for (pixel: image) {
-  // your code here
-
-}
-
-print(image);</textarea>
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-expression-2")'>
 </td>
@@ -180,121 +134,23 @@ value="Run" onClick='evaluateClear("image-expression-2")'>
 </table>
 
 
-<p>Solution code:
+<p>提示:
 <div>
 <button onclick='unhide(this)'>show</button><div style='display:none'>
 <pre>
-  // your code here
-  pixel.setRed(pixel.getRed() * 0.75);
-  pixel.setGreen(pixel.getGreen() * 0.75);
-  pixel.setBlue(pixel.getBlue() * 0.75);
-  // Then try multipliers of 0.5 and 0.25
-  // The effect is to make the image darker (towards 0)
-</pre></div>
-</div>
-
-
-<h2>Image Expression Example 3</h2>
-
-<ul class="slide">
-<li>Still trying for orange on the flowers
-<li>Try modifying both red and green
-<li>Change red to be 1.3 times its original value
-<li>Change green to be 0.75 times its original value
-<li>What is the code to do this?
-</ul>
-
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image-expression-3" rows=14 cols=50  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("flowers.jpg");
-
-for (pixel: image) {
-  // your code here
-
-}
-
-print(image);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image-expression-3")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image-expression-3-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
-
-
-<p>Solution code:
-<div>
-<button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-  // your code here
-  pixel.setRed(pixel.getRed() * 1.3);
-  pixel.setGreen(pixel.getGreen() * 0.75);
-  // The effect is to change the yellow flowers to light orange
+  整体按比例提升或者降低，注意比例可以保存在一个变量中
 </pre></div>
 </div>
 
 
 
-
-<h2>5-10-20 Image Puzzles</h2>
-
-<ul class="slide">
-<li>5-10-20 Puzzles
-<li>Image where red, green, and blue divided by 5, 10, or 20
-<li>Scale them back up by * 5, * 10, * 20 to recover the original image
-<li>Puzzle: don't know which number goes with which color
-<li>Experiment to figure it out
-<li>There are only 6 possibilities:
-<li> 5 10 20, 5 20 10, 10 5 20, 10 20 5, 20 5 10, 20 10 5
-<li> i.e. 5 first x 2, 10 first x 2, 20 first x 2
-</ul>
-
-<!--
-
-puzzle solutions
-banana 20 5 10 -- shown in lecture
-stop-sky 20 10 5
-oranges 20 5 10
-poppy 10 5 20
-
-avoid: 10 20 5, 10 5 20, i.e. 10 first
-
-image = new SimpleImage("oranges.jpg");
-
-r = 30
-g = 10
-b = 20
-for (pixel: image) {
-  pixel.setRed(pixel.getRed() / r);
-  pixel.setGreen(pixel.getGreen() / g);
-  pixel.setBlue(pixel.getBlue() / b);
-}
-print (image);
-
-image = new SimpleImage("canvas.png");
-for (pixel: image) {
-  // your code here
-  pixel.setRed(pixel.getRed() * r);
-  pixel.setGreen(pixel.getGreen() * g);
-  pixel.setBlue(pixel.getBlue() * b);
-}
-
-print(image);
-
--->
-
-<h2>5-10-20 Banana Puzzle</h2>
+<h2>5-10-20 香蕉之谜</h2>
 
 <ul class="slide">
-<li>Yellow banana, background of dark red bricks
-<li>Bits of dark green moss between the bricks
-<li>Use code pattern: <code>pixel.setRed(pixel.getRed() * 5);</code>
-<li>Scale up all three colors, using factors 5, 10, 20 to fix the image
+<li>RGB一个5倍，一个10倍，一个20倍，还原香蕉
+<li>
+  你可以先打印一下图片看看原图是什么样子的
+</li>
 </ul>
 
 
@@ -306,10 +162,6 @@ print(image);
 <textarea id="image-expression-banana" rows=12 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
 image = new SimpleImage("51020-banana.png");
-for (pixel: image) {
-  // your code here
-
-}
 
 print(image);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
@@ -322,22 +174,16 @@ value="Run" onClick='evaluateClear("image-expression-banana")'>
 
 
 
-<p>Solution code:
+<p>提示:
 <div>
 <button onclick='unhide(this)'>show</button><div style='display:none'>
 <pre>
-  // your code here
-  pixel.setRed(pixel.getRed() * 20);
-  pixel.setGreen(pixel.getGreen() * 5);
-  pixel.setBlue(pixel.getBlue() * 10);
+  到底是太红了，太绿了还是太蓝了? 如果调整之后还是太蓝了，是不是表示蓝的倍数应该少一点?
 </pre></div>
 </div>
 
 <p>
-In the solution image, you will see some "banding" of the yellow of the banana. This is because the red and green channels were scaled down to a range as small as just 0, 1, 2, .. 12. With so few values, the image only represent a few different shades of yellow, and those are the bands we see if we look carefully at the banana. We will talk about "banding" more when we talk about digital media formats.
-
-<p>
-&gt; <a href='image-4-exercises.html'>exercises</a>
+&gt; <a href='image-4-exercises.html'>练习</a>
 
 <!--
 
@@ -348,4 +194,3 @@ In the solution image, you will see some "banding" of the yellow of the banana. 
 </body>
 <!-- Mirrored from introcomputing.org/image-4-expressions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:44 GMT -->
 </html>
-
