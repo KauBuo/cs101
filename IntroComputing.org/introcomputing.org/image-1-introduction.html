@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-1-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:30 GMT -->
 <head>
-<title>数字图像基础知识</title>
+<title>����ͼ�����֪ʶ</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,52 +15,52 @@
 <div id=warning-output></div>
 -->
 
-<h1>数字图像基础知识</h1>
+<h1>����ͼ�����֪ʶ</h1>
 
 
-<h2>数字图像</h2>
+<h2>����ͼ��</h2>
 
 <ul class=slide>
-<li>以下数字图像看似很清晰
-<li>实际上它是由无数小方块组成的
+<li>��������ͼ���ƺ�����
+<li>ʵ��������������С������ɵ�
 </ul>
 
 <br>
 <img src=flowers.jpg alt="yellow flowers">
 
-<h2>像素</h2>
+<h2>����</h2>
 
 <ul class=slide>
-<li>放大10倍，既可以看到这些小方块
-<li>学称: 像素 "pixels"
-<li>每个像素只有一种颜色
-<li>这个图片宽800像素，高600像素
-<li>所以一共有 800 * 600 = 480,000 像素
-<li>或者称之为 0.5 百万像素 megapixels
-<li>如果一个图片是 8000 * 6000 的，那么就基本上属于 5百万像素了
-<li>你的手机是多少像素呢?
+<li>�Ŵ�10�����ȿ��Կ�����ЩС����
+<li>ѧ��: ���� "pixels"
+<li>ÿ������ֻ��һ����ɫ
+<li>���ͼƬ��800���أ���600����
+<li>����һ���� 800 * 600 = 480,000 ����
+<li>���߳�֮Ϊ 0.5 �������� megapixels
+<li>���һ��ͼƬ�� 8000 * 6000 �ģ���ô�ͻ��������� 5����������
+<li>����ֻ��Ƕ���������?
 </ul>
 
 
 <br>
 <img src=flowers-pixels.png alt="zoom in to see pixels">
 
-<h2>像素定位</h2>
+<h2>���ض�λ</h2>
 
 <ul class=slide>
-<li>以下坐标系用来定位像素
-<li>图片左上角是(0,0)
-<li>x轴向右发展,y轴向下发展
-<li>比如第一个像素点就是：像素点 (1,0)
+<li>��������ϵ������λ����
+<li>ͼƬ���Ͻ���(0,0)
+<li>x�����ҷ�չ,y�����·�չ
+<li>�����һ�����ص���ǣ����ص� (1,0)
 </ul>
 
 <br>
 <img src=pixel_loc.jpg alt="grid of pixels with x,y coordinates">
 
-<h2>如何造颜色</h2>
+<h2>�������ɫ</h2>
 
 <ul class=slide>
-<li>牛顿的三棱镜试验告诉我们，颜色可以可以被分开
+<li>ţ�ٵ����⾵����������ǣ���ɫ���Կ��Ա��ֿ�
 </ul>
 <br>
 <img src=newton-prism.jpg alt="newton prism experiment">
@@ -68,7 +68,7 @@
 <h2></h2>
 
 <ul class=slide>
-<li>我们就可以反向把颜色合成
+<li>���ǾͿ��Է������ɫ�ϳ�
 </ul>
 <br>
 <img src=iphone_rgb.jpg alt="iphone RGB">
@@ -76,40 +76,40 @@
 <h2></h2>
 
 <ul class=slide>
-<li>每一个像素点都有三个颜色的灯
-<li>红色R,绿色G,蓝色B
-<li>通过调节RGB每个小灯的亮度，就可以合成出任何一种整体的颜色的像素点,进而构成整个画面
+<li>ÿһ�����ص㶼��������ɫ�ĵ�
+<li>��ɫR,��ɫG,��ɫB
+<li>ͨ������RGBÿ��С�Ƶ����ȣ��Ϳ��Ժϳɳ��κ�һ���������ɫ�����ص�,����������������
 </ul>
 
-<h2>RGB探索工具</h2>
+<h2>RGB̽������</h2>
 
-<p>用这个工具看看到底不同亮度的RGB混合的效果<a href=www.cknuckles.com/rgbsliders.html>RGB探索工具</a>
+<p>��������߿������ײ�ͬ���ȵ�RGB��ϵ�Ч��<a href=www.cknuckles.com/rgbsliders.html>RGB̽������</a>
 
-<h2>RGB - 3个数</h2>
+<h2>RGB - 3����</h2>
 
 <ul class=slide>
-<li>从探索工具可以看出 RGB分别被表示成了三个数
-<li>每一个数字从 0~255
-<li>0最暗，255最亮
-<li>这样，不同的数字混合就能实现不同的效果了
+<li>��̽�����߿��Կ��� RGB�ֱ𱻱�ʾ����������
+<li>ÿһ�����ִ� 0~255
+<li>0���255����
+<li>��������ͬ�����ֻ�Ͼ���ʵ�ֲ�ͬ��Ч����
 </ul>
 
 
 <table>
- <tr><th>颜色</th> <th>R</th> <th>G</th> <th>B</th> </tr>
- <tr> <td>红色</td> <td>255</td> <td>0</td> <td>0</td> </tr>
- <tr> <td>紫色</td> <td>255</td> <td>0</td> <td>255</td> </tr>
- <tr> <td>暗黄色</td> <td>100</td> <td>100</td> <td>0</td> </tr>
- <tr> <td>白色</td> <td>255</td> <td>255</td> <td>255</td> </tr>
- <tr> <td>黑色</td> <td>0</td> <td>0</td> <td>0</td> </tr>
+ <tr><th>��ɫ</th> <th>R</th> <th>G</th> <th>B</th> </tr>
+ <tr> <td>��ɫ</td> <td>255</td> <td>0</td> <td>0</td> </tr>
+ <tr> <td>��ɫ</td> <td>255</td> <td>0</td> <td>255</td> </tr>
+ <tr> <td>����ɫ</td> <td>100</td> <td>100</td> <td>0</td> </tr>
+ <tr> <td>��ɫ</td> <td>255</td> <td>255</td> <td>255</td> </tr>
+ <tr> <td>��ɫ</td> <td>0</td> <td>0</td> <td>0</td> </tr>
 </table>
 
-<h2>用RGB系统表示的图像坐标系</h2>
+<h2>��RGBϵͳ��ʾ��ͼ������ϵ</h2>
 
 <ul class=slide>
-<li>以下图示现在应该可以看懂了吧?
-<li>计算机科学家就是靠坐标定位，靠RGB显示不同颜色，拼出来不同的图像显示在屏幕上的
-<li>厉害吧?
+<li>����ͼʾ����Ӧ�ÿ��Կ����˰�?
+<li>�������ѧ�Ҿ��ǿ����궨λ����RGB��ʾ��ͬ��ɫ��ƴ������ͬ��ͼ����ʾ����Ļ�ϵ�
+<li>������?
 </ul>
 
 <br>
