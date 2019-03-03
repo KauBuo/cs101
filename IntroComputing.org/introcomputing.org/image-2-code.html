@@ -61,9 +61,10 @@
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image2-1" rows=6 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-x = new SimpleImage("x.png");
-x.setZoom(20);
-print(x);</textarea>
+//声明一个变量获取 x.png 的内容
+//把它放大20倍
+//打印这个图像
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image2-1")'>
 </td>
@@ -93,13 +94,12 @@ value="Run" onClick='evaluateClear("image2-1")'>
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image2-2" rows=10 cols=70  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-x = new SimpleImage("x.png");
-x.setZoom(20);
-
-p = x.getPixel(0, 0);
-p.setRed(255);
-
-print(x);</textarea>
+//声明一个变量获取 x.png 的内容
+//把它放大20倍
+//获得图像(0,0)点像素
+//把该像素改成红色的
+//打印这个图像
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image2-2")'>
 </td>
