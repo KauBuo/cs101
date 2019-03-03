@@ -41,8 +41,7 @@
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="code1-1" rows=6 cols=55  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-print(6);
-print(1, 2);
+
 </textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("code1-1")'>
@@ -63,8 +62,8 @@ value="Run" onClick='evaluateClear("code1-1")'>
 <textarea id="code1-2" rows=7 cols=55  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
 //这是一行注释，注释的内容不会被运行
-print(6, "hi");
-print("hello", 2, "bye");</textarea>
+//打印 6 hi
+//打印 hello 2 bye</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("code1-2")'>
 </td>
