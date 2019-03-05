@@ -53,64 +53,12 @@
 </ul>
 
 
-<h2>高级For循环例子1</h2>
 
+
+
+<h2>只要红色会怎么样?</h2>
 <ul class="slide">
-<li>以下代码的结果是什么?
-</ul>
-
-
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image-loop-1" rows=12 cols=50  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-x = new SimpleImage("x.png");
-x.setZoom(10)
-
-for (p: x) {
-  p.setRed(0);
-  p.setGreen(0);
-  p.setBlue(0);
-}
-
-print(x);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image-loop-1")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image-loop-1-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
-<h2>把红色去掉</h2>
-
-<ul class="slide">
-<li>
-  x.png 没意思，我们这次用 flowers.jpg
-</li>
-<li>全变成黑色没啥用，只去掉红色会怎么样?
-</ul>
-
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image-loop-3" rows=10 cols=50  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-//姓名:XXX 班级:X 学号:XXXX
-</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image-loop-3")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image-loop-3-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
-
-
-<h2>红色通道</h2>
-<ul class="slide">
-<li>只要红色会怎么样?
+<li>只保留 flowers.jpg 的红色阶，猜猜这种操作学称什么?
 </ul>
 
 <p style='max-width:1000'>

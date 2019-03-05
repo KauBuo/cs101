@@ -42,16 +42,16 @@
 </ul>
 
 <ul class="slide">
-<li>利用以上代码，结合表达式，就可以实现：把某一个像素点的红色阶的值变成当前值的2倍
+<li>利用以上代码，结合表达式，就可以实现：把某一个像素点的红色阶的当前值+100
 </ul>
 
 <pre>
   old = pixel.getRed();
-  pixel.setRed(old * 2);
+  pixel.setRed(old + 100);
 </pre>
 
 <ul class="slide">
-<li>把x.png的(3,3)像素的蓝色变成当前值的一半
+<li>把x.png的(0,0)像素的R+100
 </ul>
 
 <p style='max-width:1000'>
@@ -59,13 +59,8 @@
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-expression-practice1" rows=12 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("x.png");
-image.setZoom(20)
 
-p=image.getPixel(3,3)
-p.setBlue(p.getBlue()/2)
-
-print(image);</textarea>
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-expression-practice1")'>
 </td>
@@ -78,7 +73,7 @@ value="Run" onClick='evaluateClear("image-expression-practice1")'>
 <h2>练习 1</h2>
 
 <ul class="slide">
-<li>把花 flowers.jpg 的颜色变得更加橙色一点
+<li>把花 flowers.jpg 的颜色变亮，但是不要太亮
 </ul>
 
 
@@ -117,7 +112,7 @@ value="Run" onClick='evaluateClear("image-expression-1")'>
 <h2>练习 2</h2>
 
 <ul class="slide">
-<li>把花 flowers.jpg 的图片变亮 或者 变暗
+<li>把花 flowers.jpg 的颜色变暗，但是不要太暗
 </ul>
 
 <p style='max-width:1000'>
@@ -146,10 +141,10 @@ value="Run" onClick='evaluateClear("image-expression-2")'>
 
 
 
-<h2>5-10-20 香蕉之谜</h2>
+<h2>5-10-20 流浪地球之谜</h2>
 
 <ul class="slide">
-<li>RGB一个5倍，一个10倍，一个20倍，还原香蕉
+<li>所有像素的RGB统一一个变化5倍，一个10倍，一个20倍，还原海报
 <li>
   你可以先打印一下图片看看原图是什么样子的
 </li>
@@ -164,9 +159,10 @@ value="Run" onClick='evaluateClear("image-expression-2")'>
 <textarea id="image-expression-banana" rows=12 cols=50  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
 //姓名:XXX 班级:X 学号:XXXX
-image = new SimpleImage("51020-banana.png");
+image = new SimpleImage("51020-earth.png");
 
-print(image);</textarea>
+print(image);
+</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-expression-banana")'>
 </td>
