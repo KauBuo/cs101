@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-7-if-logic.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:46 GMT -->
 <head>
-<title>Image If-Statement Logic</title>
+<title>if判断语句</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,167 +15,18 @@
 <div id=warning-output></div>
 -->
 
-<h1>Image If-Statement Logic</h1>
 
-<p>
+<h1>if判断语句</h1>
 
-
-
-<!-- 
-if-logic here ... leave bluescreen for next lecture
-
-things need to introduce here or earlier:
--avg computation and setting. This ends up getting used a lot
--talk about getX getY (would work well with print-limit feature)
-
-
-HW ideas:
--10-20-30 stuff
--iron puzzle etc.
--if-color stuff like below
-
-
--maybe compare these side by side:
- pattern" of loop w/ pixel
- pattern of loop w/if to select pixel
-
-
-blue-flower
-make outer blue area yellow
-image = new SimpleImage("blue-flower.jpg");
-for (pixel: image) {
-  if (pixel.getBlue() > 170) {
-    //pixel.setRed(0);
-    pixel.setRed(pixel.getRed() * 2);
-    pixel.setGreen(pixel.getGreen() * 2);
-    pixel.setBlue(pixel.getBlue() / 3);
-  }
-}
-print(image);
-
-
-blue-flower
-make dark areas inky black (in particular the upper right, detect with red)
-image = new SimpleImage("blue-flower.jpg");
-for (pixel: image) {
-  if (pixel.getRed() < 80) {
-    //pixel.setRed(0);
-    pixel.setRed(0);
-    pixel.setGreen(0);
-    pixel.setBlue(0);
-  }
-}
-print(image);
-
-
-fence-ivy -- leaves
- -could set to black
- -could set green 0, leaving purple
-image = new SimpleImage("fence-ivy.jpg");
-for (pixel: image) {
-  if (pixel.getGreen() > 125) {
-    //pixel.setRed(0);
-    pixel.setGreen(0);
-  }
-}
-print(image);
-
-fence itself -- set to light, faded red
-image = new SimpleImage("fence-ivy.jpg");
-for (pixel: image) {
-  if (pixel.getRed() > 170) {
-    //pixel.setRed(0);
-    pixel.setRed(pixel.getRed() * 2);
-    pixel.setGreen(pixel.getGreen() * 2);
-    pixel.setBlue(pixel.getBlue() * 2);
-  }
-}
-print(image);
-
-
-curb -- set to gray .. awesome!
-image = new SimpleImage("curb.jpg");
-for (pixel: image) {
-  if (pixel.getRed() > 230) {
-    avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
-    pixel.setRed(avg);
-    pixel.setGreen(avg);
-    pixel.setBlue(avg);
-  }
-}
-print(image);
--->
-
-
-<ul class="slide">
-<li>Theme 1: <b>Bulk</b> operation -- e.g. for-loop
-<li>&nbsp;Small body code, loop runs it over thousands of pixels
-<li>Them 2: <b>Logic</b> test true/false -- e.g. if-statement (this section)
-<li>&nbsp;Run some code only if a test is true
-</ul>
-
-<p>Our use of loops thus far have allowed us to write a little bit of code which is run for many data points. That's one big theme in computer code. The if-statement, the topic of this section, will add a second theme: the ability to write a true/false test to control if a bit of code runs or not. Combined with the loop, the if-statement will greatly expand what we can do with code.
-
-
-
-<h2>If-Statement Syntax</h2>
-
-<!--
-plan:
- -if red/sign
- -then have blue/red flower example
- -add back "avg"
- -explain poke above strategy
- -fix red sign
- -can do variants here, with "avg" strategy in force
- -then have curb, fence, flower, etc. problems
- -strategy: only do one problem without avg
--->
-
-<p>The if-statement has a true/false test which controls if some code is run or not. Here is an example if-statement shown inside a for-loop:
-
-<pre>
-image = new SimpleImage("flowers.jpg");
-
-for (pixel: image) {
-  if (pixel.getRed() > 160) {
-    pixel.setRed(0);
-    pixel.setGreen(0);
-    pixel.setBlue(0);
-  }
-}
-
-print(image);
-</pre>
-
-<ul class="slide">
-<li>If-Statment syntax, in for-loop context
-<li><code>if</code>
-<li><code>(pixel.getRed() > 160)</code> -- "test" inside parenthesis
-<li>Evaluate test -- true or false
-<li>Tests just &lt; (less than) or &gt; (greater than) compare numbers (for now)
-<li><code>{ .. }</code> -- curly braces around then-code (indent)
-<li>Run the then-code if the test is true (here sets to black)
-<li>Syntax is all required (cs101 error message)
-<li>This loop/if pattern solves many problems (select pixels)
-</ul>
-
-
-<p>For each pixel, the if-statement above retrieves the red value, and tests if the value is greater than 180. If the test is true, the if-statement runs the then-code inside the curly braces. If the test is false, the then-code is skipped. In this case, the then-code changes the pixel to be black.
-
-
-<h2>If Color Example</h2>
-
+<h2>警示牌：单色转变</h2>
 <p>
 Here we'll use this picture of a stop sign:
 <br><img src=stop.jpg alt="red stop sign, white letters">
 
 <ul class="slide">
-<li>Goal: change the red sign to be blue
-<li>Test: <code>(pixel.getRed() > 160)</code>
-<li>For each pixel, check if (red > 160)
-<li>One strategy to test for red areas (needs improvement)
-<li>Then-code: change the pixel to bright blue
+<li>下面这段代码，用if语句判断了每个像素的红色阶是否>160
+<li>如果大于，则设置为纯蓝色的
+<li>看看什么效果？
 </ul>
 
 
@@ -202,64 +53,38 @@ value="Run" onClick='evaluateClear("image-logic-1")'>
 </table>
 
 
-<ul>
-<li>Above code works ok, but not perfectly
-<li>The if-statement runs once for each pixel in the image.
-<li>The test will be true or false for each pixel.
-<li>Experiments:
-<li>Nothing magic about 160 -- adjust it to get the result we want
-<li>1. Adjust the 160 value. If we change it to 220 or 250, will the if-test select more or fewer pixels than at 160? What if we set it to 100? 50?
-<li>With a &gt;, the 160 is like a hurdle we raise or lower
-<li>When adjusting a test, consider if your goal is to make the test more or less restrictive
-<li>Can also put any code we want for the then-code
-<li>2. Set red/green/blue all to 0
-</ul>
 
-<h2>The Problem With (red > 160) Test</h2>
+<h2>(red > 160) 效果并不好, 怎么办呢?</h2>
 
-<p>Trying to change the stop sign to be blue, the test (red > 160) gets both white and red areas. The problem with that approach is that the red value is high in two kinds of cases -- the red part of the sign we want, but also parts of the scene that are near white. Recall that pure white is (255, 255, 255), so in whitish areas, all three values are high, so our (red > 160) test gets those too -- the white letters inside the sign are a clear example of this problem. Next we'll improve the test so it can distinguish the red and white parts of the sign.
-
-
-<h2>Color Bars</h2>
-
-<p>Suppose we have three pixels. Each pixel has the familiar red/green/blue values. Suppose these three values are graphed as bar graphs like this:
+<p>
+  <ul class="slide">
+  <li>从以下这个图，我们可以看到，某种颜色趋势其实不一定是由数值来判断的
+  <li>而是通过RGB三者的关系来判断的
+  <li>但是问题又来了，这个关系好说不好码代码啊? 怎么实现呢?
+  </ul>
 
 <p>
 <br>
 <img src=image-if-avg1.png alt="red/green/blue bar graphs of three pixels">
 
-<p><b>Q:</b> Each pixel has one of red/green/blue which is strongest. Look at the graphs to figure which shade dominates for each pixel. It's just whichever bar is tallest. Or to be specific, whichever bar is tallest <b>relative to the others</b>. The problem with our earlier strategy was that it just looked at absolute numbers -- (red > 160) -- failing to take into account this relative quality -- which bar is higher than the other two.
 
-<h2>Recall Average of Pixel Color</h2>
 
-<p>Recall this code which, inside a loop, computes the average of the red, blue, and green values and stores that number in a variable "avg".
+<h2>再次借助平均值</h2>
 
+<img src=image-if-avg2.png alt="red/green/blue bar graphs with avg shown">
+<ul class="slide">
+<li>经过研究，发现原来主色调与平均色avg呈现如上图关系
+<li>那么我们只要找到R>avg的值是否就可以实现想要的效果了呢
+<li>可以在下面的代码框试验一下
+</ul>
+<p>
+平均值的计算如下
 <pre>
   avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
 </pre>
 
-
-<h2>Color Bars With Average</h2>
-
 <p>
-Here are the three pixels again, but now the <b>avg</b> value is show as a line drawn across the bars.
 
-<p>
-<img src=image-if-avg2.png alt="red/green/blue bar graphs with avg shown">
-
-<p>The avg gives us a handy way to tell if a color is high relative to the others. A pixel is reddish if the red value is over the avg. So here the first pixel is reddish and the other two are not. Or in terms of code, the test will look like <code>(pixel.getRed() > avg)</code> -- this will add the "relative to the other colors" quality that the previous test was missing.
-
-<h2>Color Avg Test Example - Stop</h2>
-
-<ul class="slide">
-<li>Revisit the change sign to blue problem, using the avg
-<li>Test: <code>(pixel.getRed() > avg * 1.1)</code>
-<li>This works very well, picking out pixels with red cast
-<li><code> * 1.1</code> adjustment factor, tighten/loosen to get look we want
-<li>e.g. * 1.7 makes test more restrictive
-<li>e.g. * 0.9 makes test less restrictive
-<li>Here 1.4 looks pretty good
-</ul>
 
 <p style='max-width:1000'>
 <table class=run>
@@ -270,7 +95,7 @@ image = new SimpleImage("stop.jpg");
 for (pixel: image) {
   avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
 
-  if (pixel.getRed() > avg * 1.1) {
+  if (pixel.getRed() > avg) {
     pixel.setRed(0);
     pixel.setGreen(0);
     pixel.setBlue(255);
@@ -286,18 +111,23 @@ value="Run" onClick='evaluateClear("image-logic-2")'>
 </table>
 
 
+<ul class="slide">
+<li>发现还是不行? 为什么呢？
+<li>提示一下：条件太低了，想办法严格一点
+<li>用四则运算中的某一个运算，让条件严格一点
+</ul>
 
-<p>This is a better way to select the red parts of the sign. For each pixel, first compute the average value for that pixel. Then compare the red value to the average to decide if the pixel is reddish. Rather than checking the literal value of the red (e.g. 160), this checks if the red is relatively large compared to the other two colors .. does the pixel lean towards red. If the test is <code>(pixel.getRed() > avg)</code> we get all the areas that have every a tiny red cast, which is not restrictive enough. The fix is to multiply the avg by some factor to make it more restrictive, like this:
-<code>(pixel.getRed() > avg * 1.1)</code>. The specific value, 1.1, can be tuned by trying different values, until we get the look we want. Try the values: 0.9, 1.2, 1.4, 2, 2.5. The larger the value, the higher the bar is set to detect red pixels. By adjusting the * factor, we can zero in on the look we want. Here I think 1.4 looks pretty good.
 
-<h2>Color Avg Test Example - Curb</h2>
-
-<p>Suppose you are visiting Stanford and you park your car here, and get a parking ticket. Philosophically, they say that you are better off taking in events as they have actually happened. Nonetheless, here we'll try to fix history in code.
+<h2>路基：彩色转变</h2>
+<ul class="slide">
+<li>刚才我们尝试了把红色的变成单色：则设置为纯蓝色的
+<li>现在我想把红色的路基，变成：灰色的!
+<li>怎么实现?
+</ul>
 
 <br>
 <img src=curb.jpg alt="red curb">
 
-<p>Challenge: write code to detect the red curb, (a) change it to medium gray red=120 green=120 blue=120. (b) change just the red curb to be <b>grayscale</b>, which will look more realistic. Rather than changing the whole image to grayscale, we change just the red areas. Recall that the algorithm to change grayscale is to set red/green/blue values all to be the average value.
 
 <p style='max-width:1000'>
 <table class=run>
@@ -305,15 +135,9 @@ value="Run" onClick='evaluateClear("image-logic-2")'>
 <textarea id="image-logic-3" rows=14 cols=65  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
 image = new SimpleImage("curb.jpg");
-for (pixel: image) {
-  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
 
-  if (pixel.getRed() > avg * 1.5) {
-    pixel.setRed(120);
-    pixel.setGreen(120);
-    pixel.setBlue(120);
-  }
-}
+
+
 print(image);</textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
 value="Run" onClick='evaluateClear("image-logic-3")'>
@@ -325,44 +149,20 @@ value="Run" onClick='evaluateClear("image-logic-3")'>
 
 
 
-<p>Solution code (b):
+<p>提示:
 <div>
 <button onclick='unhide(this)'>show</button><div style='display:none'>
 <pre>
-// This solution looks the best to me for (b).
-image = new SimpleImage("curb.jpg");
-for (pixel: image) {
-  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
-
-  if (pixel.getRed() > avg * 1.1) {
-    pixel.setRed(avg);
-    pixel.setGreen(avg);
-    pixel.setBlue(avg);
-  }
-}
-print(image);
+平均啊平均！
 </pre></div>
 </div>
 
-<ul class="slide">
-<li>Tune the * 1.5 to detect the red areas
-<li>Setting to solid gray (120, 120, 120) looks a little crude
-<li>Note that we put gray on the red plants to the right
-<li>Our strategy chooses exclusively on pixel color, so necessarily get the red plants too
-<li>(b) Rather than (120, 120, 120), change the red pixels to grayscale
-<li>This looks much better, as it reflects the dark/light of the real curb
-<li>Just draining out the red
-<li>Conclusions:
-<li>--<code>(pixel.getRed() > avg * 1.5)</code> pattern to detect pixel by color
-<li>--The then-code can do anything we wish to the pixel
-</ul>
-
-
+<!--
 <p>
 &gt; <a href='image-7-if-exercises.html'>exercises</a>
 
 
-<!--
+
 Exercises for this
 
 -stop sign
@@ -401,4 +201,3 @@ Exercises
 </body>
 <!-- Mirrored from introcomputing.org/image-7-if-logic.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:49 GMT -->
 </html>
-
