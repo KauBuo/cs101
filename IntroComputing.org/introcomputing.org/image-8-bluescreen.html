@@ -2,7 +2,7 @@
 
 <!-- Mirrored from introcomputing.org/image-8-bluescreen.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:51 GMT -->
 <head>
-<title>Bluescreen</title>
+<title>蓝屏特效</title>
 <link rel=stylesheet href=style.css type="text/css">
 
 </head>
@@ -15,41 +15,51 @@
 <div id=warning-output></div>
 -->
 
-<h1>Bluescreen</h1>
+<h1>蓝屏特效</h1>
+
+<ul class="slide">
+<li>先运行一下代码，看看效果是什么？
+<li>这里你要做的是想尽一切办法去尝试琢磨出来这段代码到底怎么回事儿
+<li>整段代码中应该只有2个陌生的东西,应该没问题
+<li>提示1: 参考官方文档<a href=image-functions-reference.html>图像处理函数参考</a>
+<li>提示2: 本页面的代码随便更改，改坏了退出再进就会又恢复了
+<li>提示3：勇于尝试，假设你不知道leaves.jpg是个什么东西，那么有办法先看看么?
+<li>
+</ul>
+
+
 
 <p>
 
+  <p style='max-width:1000'>
+  <table class=run>
+  <tr><td valign=top width=550> <!-- CODE -->
+  <textarea id="image-bluescreen-1" rows=18 cols=65  class=tacode spellcheck=false
+  onKeyPress='return handleCR(this ,event)'>
+  image = new SimpleImage("stop.jpg");
+  back = new SimpleImage("leaves.jpg");
 
+  for (pixel: image) {
+    avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+    if (pixel.getRed() > avg * 1.5) {
+      x = pixel.getX();
+      y = pixel.getY();
+      pixel2 = back.getPixel(x, y);
+      pixel.setRed(pixel2.getRed());
+      pixel.setGreen(pixel2.getGreen());
+      pixel.setBlue(pixel2.getBlue());
+    }
+  }
+  print(image);</textarea>
+  <br><input type=button style='width:220;height:40;background-color:lightgray'
+  value="Run" onClick='evaluateClear("image-bluescreen-1")'>
+  </td>
+  <td valign=top> <!-- OUTPUT -->
+  <div id='image-bluescreen-1-output' style="font-family:courier;font-size:14;"></div>
+  </td></tr>
+  </table>
 
 <!--
-
-red-sign ... copy over leaves
- -back image
- -pixel2
-
- -other images:
- -sign/red (blue .. change to pull in leaves)
- -curb (pos/neg)
- -abby-green
- -monkey-moon
-
- exercises:
- -monkey-extra-blue
- -striped fish - blue bg
-  -works fine .. diff from monkey
-
- 
- -striped fish-green
-  -mostly works, a little hard to separate
-   from area below the fish .. 
-   -2 version a bit better
-
- -banana blue or green
-
-Also have:
- -paris
-
--->
 <p>
 Building on the earlier image manipulation and logic sections, here we see how to implement a movie special effect.
 
@@ -69,12 +79,6 @@ Building on the earlier image manipulation and logic sections, here we see how t
 <img src=stop.jpg width=260 alt="stop sign">
 <img src=leaves.jpg width=300 alt="leaves background texture">
 
-<!--
-
-<p>
-We have played with logic to detect just specific color areas in an image .. what could we do with those areas? The "bluescreen" (also known as "chroma key") algorithm in movie special effects, (a) selects areas in an image by color as we do above, and (b) substitute in pixels from <b>another image</b>. This is how many movie special effects are done (a video is just a series of images shown in succession over time).
-
--->
 
 
 <h2>Bluescreen Algorithm</h2>
@@ -111,33 +115,7 @@ We have played with logic to detect just specific color areas in an image .. wha
 
 
 
-<p style='max-width:1000'>
-<table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
-<textarea id="image-bluescreen-1" rows=18 cols=65  class=tacode spellcheck=false
-onKeyPress='return handleCR(this ,event)'>
-image = new SimpleImage("stop.jpg");
-back = new SimpleImage("leaves.jpg");
 
-for (pixel: image) {
-  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
-  if (pixel.getRed() > avg * 1.5) {
-    x = pixel.getX();
-    y = pixel.getY();
-    pixel2 = back.getPixel(x, y);
-    pixel.setRed(pixel2.getRed());
-    pixel.setGreen(pixel2.getGreen());
-    pixel.setBlue(pixel2.getBlue());
-  }
-}
-print(image);</textarea>
-<br><input type=button style='width:220;height:40;background-color:lightgray'
-value="Run" onClick='evaluateClear("image-bluescreen-1")'>
-</td>
-<td valign=top> <!-- OUTPUT -->
-<div id='image-bluescreen-1-output' style="font-family:courier;font-size:14;"></div>
-</td></tr>
-</table>
 
 
 <p>
@@ -150,15 +128,16 @@ The above bluescreen example code detects the red part of the sign, and for thos
 
 
 <p>
-Experiments: (a) Try copying the leaves to the sky instead of to the red parts of the sign (similar to the earlier Night Mode problem). (b) Make the code a little shorter by eliminating the need for "x" and "y" variables. Put the calls to pixel.getX() and pixel.getY() right in the back.getPixel(...) call. 
+Experiments: (a) Try copying the leaves to the sky instead of to the red parts of the sign (similar to the earlier Night Mode problem). (b) Make the code a little shorter by eliminating the need for "x" and "y" variables. Put the calls to pixel.getX() and pixel.getY() right in the back.getPixel(...) call.
 
-<h2>Abby Bluescreen</h2>
+-->
+
+<h2>宝贝</h2>
 
 <!-- note, demo down to 1.0 but not lower ... looks best that way -->
 
-<p><img src=abby.jpg alt="Baby abby on her bouncy chair">
+<p>最终效果图: <img src=baby-tree.png alt="宝贝">
 
-<br>In this example we have the abby.jpg image -- make it appear that the green parts of her little chair are sprouting leaves.
 
 <!--
  Demo:
@@ -172,14 +151,15 @@ Experiments: (a) Try copying the leaves to the sky instead of to the red parts o
 <tr><td valign=top width=550> <!-- CODE -->
 <textarea id="image-bluescreen-2" rows=18 cols=65  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
+//姓名:XXX 班级:X 学号:XXX
 image = new SimpleImage("abby.jpg");
 back = new SimpleImage("leaves.jpg");
 
 for (pixel: image) {
   avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
   if (pixel.getGreen() > avg * 1.5) {
-    // your code here
-    
+    //这里输入你的代码
+
   }
 }
 print(image);</textarea>
@@ -193,62 +173,32 @@ value="Run" onClick='evaluateClear("image-bluescreen-2")'>
 
 
 
-<p>Solution code:
-<div>
-<button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-// Here the pixel2 = ... computation is shortened to one line
-image = new SimpleImage("abby.jpg");
-back = new SimpleImage("leaves.jpg");
-
-for (pixel: image) {
-  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
-  // your code here
-  if (pixel.getGreen() > avg * 1.05) {
-    // 1. Get pixel2 from back image at same x,y (one line)
-    pixel2 = back.getPixel(pixel.getX(), pixel.getY());
-
-    // 2. Copy pixel2 over to pixel
-    pixel.setRed(pixel2.getRed());
-    pixel.setGreen(pixel2.getGreen());
-    pixel.setBlue(pixel2.getBlue());
-  }
-}
-print(image);
-</pre></div>
-</div>
-
-
-
-<h2>Monkey Bluescreen Like The Movies</h2>
+<h2>登月猴子</h2>
 
 <!-- nip - video, forgot to show other backgrounds
 
--->
 
 <p>Now we'll do one like the movies -- film the movie start in front of a blue screen.
+-->
+<p>结果图
+<br><img src=monkey-moon.png alt="登月猴子">
 
-<p>Here is our monkey movie star:
-<br><img src=monkey.jpg alt="monkey shown in front of blue background">
-
-<p>Here is our background, the famous Apollo 8 photo of the earth shown rising
-above the moon horizon.
-
-<br><img src=moon.jpg>
 
 
 <p style='max-width:1000'>
 <table class=run>
-<tr><td valign=top width=550> <!-- CODE -->
+<tr><td valign=top width=550>
 <textarea id="image-bluescreen-3" rows=22 cols=65  class=tacode spellcheck=false
 onKeyPress='return handleCR(this ,event)'>
+//姓名:XXX 班级:X 学号:XXX
+//提示: 猴子图片的背景色的判断思路：B值差一点点(小数点点)不到平均值[注意是不到，而不是超过哦]
 image = new SimpleImage("monkey.jpg");
 back = new SimpleImage("moon.jpg");
 
 for (pixel: image) {
   avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
   // your code here
-  
+
 }
 
 print(image);</textarea>
@@ -262,43 +212,7 @@ value="Run" onClick='evaluateClear("image-bluescreen-3")'>
 
 
 
-<p>Solution code:
-<div>
-<button onclick='unhide(this)'>show</button><div style='display:none'>
-<pre>
-image = new SimpleImage("monkey.jpg");
-back = new SimpleImage("moon.jpg");
-
-for (pixel: image) {
-  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
-  // your code here
-  if (pixel.getBlue() > avg * 0.92) {
-    pixel2 = back.getPixel(pixel.getX(), pixel.getY());
-    pixel.setRed(pixel2.getRed());
-    pixel.setGreen(pixel2.getGreen());
-    pixel.setBlue(pixel2.getBlue());
-  }
-}
-
-print(image);
-</pre></div>
-</div>
-
-
-<h2>Bluescreen Summary</h2>
-
-<ul class="slide">
-<li>Real technique
-<li>1. Two images: image, back
-<li>2. Loop over image, detect color area
-<li>3. Color area: copy over x,y pixel from back to image
-</ul>
-
-<p>
-&gt; <a href='image-8-exercises.html'>exercises</a>
-
 </body>
 
 <!-- Mirrored from introcomputing.org/image-8-bluescreen.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Jan 2019 10:56:56 GMT -->
 </html>
-
