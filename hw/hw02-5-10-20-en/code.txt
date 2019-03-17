@@ -1,0 +1,8 @@
+i = new SimpleImage("tuzi.png");
+
+for (p:i){
+p.setRed(p.getRed()/10)
+p.setGreen(p.getGreen()/20)
+p.setBlue(p.getBlue()/5)
+}
+print(i);

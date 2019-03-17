@@ -1,0 +1,18 @@
+image = new SimpleImage("abby.jpg");
+back = new SimpleImage("leaves.jpg");
+
+for (pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
+  if (pixel.getGreen() > avg * 1.05) {
+  
+  a = pixel.getX()
+  b = pixel.getY()
+  
+  pixel_1 = back.getPixel(a,b)
+  
+  pixel.setRed(pixel_1.getRed())
+  pixel.setBlue(pixel_1.getBlue())
+  pixel.setGreen(pixel_1.getGreen())
+
+  }
+}
