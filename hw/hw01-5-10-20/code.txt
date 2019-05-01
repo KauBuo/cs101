@@ -1,8 +1,0 @@
-p = new SimpleImage ("51020-earth.png")
-for (i:p){
-
-    i.setRed(i.getRed()*10)
-    i.setGreen(i.getGreen()*20)
-    i.setBlue(i.getBlue()*5)
-}
-print (p)
