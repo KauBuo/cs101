@@ -117,15 +117,13 @@ value="Run" onClick='evaluateClear("code1-ex1")'>
 onKeyPress='return handleCR(this ,event)'>
 //1. 声明一个变量获取 x.png 的内容
 img = new SimpleImage("x.png");
-2. 把它放大20倍
+//2. 把它放大20倍
 img.setZoom(20);
-p.setRed(255);
-
-4. 获得图像(0,0)点像素
+//3. 获得图像(0,0)点像素
 p = img.getPixel(0, 0);
-5. 把该像素改成红色的
-
-6. 打印这个图像
+//4. 把该像素改成红色的
+p.setRed(255);
+//5. 打印这个图像
 print(img);
 </textarea>
 <br><input type=button style='width:220;height:40;background-color:lightgray'
