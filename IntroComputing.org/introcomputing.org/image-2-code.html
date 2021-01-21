@@ -24,6 +24,39 @@
 <!-- image-2 -->
 
 <p>我们开始要进行图像编程了
+<h2>首先载入 flowers.jpg 注意网页目录下有该图片，直接引用其名称即可载入</h2>
+<ul class=slide>
+  <li>
+    第一步：把flowers.jpg载入变量x
+  </li>
+  <li>
+    <code>x = new SimpleImage("flowers.jpg")</code>
+  </li>
+  <li>
+    第二步：打印x(既可以实现把x封装的flowers.jpg图像打印出来)
+  </li>
+  <li>
+    <code>print(x)</code>
+  </li>
+</ul>
+<p style='max-width:1000'>
+<table class=run>
+<tr><td valign=top width=550> <!-- CODE -->
+<textarea id="image2-1" rows=10 cols=70  class=tacode spellcheck=false
+onKeyPress='return handleCR(this ,event)'>
+x = new SimpleImage("flowers.jpg")
+print(x)
+</textarea>
+<br><input type=button style='width:220;height:40;background-color:lightgray'
+value="Run" onClick='evaluateClear("image2-1")'>
+</td>
+<td valign=top> <!-- OUTPUT -->
+<div id='image2-1-output' style="font-family:courier;font-size:14;"></div>
+</td></tr>
+</table>
+
+
+
 
 <h2>x.png</h2>
 
